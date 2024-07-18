@@ -12,8 +12,7 @@ class IntroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final introController = Get.put(IntroScreenController());
     return Scaffold(
-        body: Obx(
-          () =>   Container(
+        body:  Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(color: primaryColor),
@@ -40,31 +39,33 @@ class IntroScreen extends StatelessWidget {
                             childAspectRatio: 1.5,
                             crossAxisCount: 2),
                         itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              introController.selectSport(index);
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  color:introController.selectedSportIndex.contains(index)?secondaryColor: greyColor,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Image.asset(
-                                      introController.sportIconList[index].icon,
-                                      height: 50,
-                                      width: 50,
-                                    ),
-                                    Text(
-                                      introController.sportIconList[index].name,
-                                      style: TextStyle(
-                                          color: lightWhiteColor, fontSize: 18),
-                                    ),
-                                  ],
+                          return Obx(()=>
+                            GestureDetector(
+                              onTap: () {
+                                introController.selectSport(index);
+                              },
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    color:introController.selectedSportIndex.contains(index)?secondaryColor: greyColor,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Image.asset(
+                                        introController.sportIconList[index].icon,
+                                        height: 70,
+                                        width: 70,
+                                      ),
+                                      Text(
+                                        introController.sportIconList[index].name,
+                                        style: TextStyle(
+                                            color: lightWhiteColor, fontSize: 14),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -95,7 +96,7 @@ class IntroScreen extends StatelessWidget {
                         ))
                   ],
                 ),
-              )),
+              )
         ));
   }
 }

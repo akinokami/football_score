@@ -23,6 +23,7 @@ class NewsDetailsScreen extends StatelessWidget {
         title:  Text('News Details',style: TextStyle(color: Colors.white,fontSize: 20) ),
       ),
       body: Container(
+        padding: const EdgeInsets.all(kPadding15),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration:  BoxDecoration(
