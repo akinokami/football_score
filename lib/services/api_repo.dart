@@ -1,7 +1,40 @@
+import 'package:football_score/models/app_model.dart';
+import 'package:football_score/services/api_constant.dart';
 import 'package:football_score/services/api_utils.dart';
+import 'package:football_score/utils/custom_exception.dart';
+
+import '../models/news_model.dart';
 
 class ApiRepo {
   final ApiUtils apiUtils = ApiUtils();
+
+  Future<AppModel> getAppConfig() async {
+    try {
+      final response =
+          await apiUtils.get(url: ApiConstant.baseUrl, queryParameters: {
+        "mark": "gif",
+        "version": 373,
+        "app": "",
+        "language": "en",
+      });
+      final appConfig = response.data;
+      return AppModel.fromJson(appConfig);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<NewsModel> getNews({required String url}) async {
+    try {
+      final response = await apiUtils.get(
+        url: url,
+      );
+      final news = response.data;
+      return NewsModel.fromJson(news);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
 
   /// Movie
   // Future<List<SliderModel>> getMovieSlider() async {
