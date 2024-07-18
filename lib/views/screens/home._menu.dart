@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:football_score/utils/app_theme.dart';
 import 'package:get/get.dart';
 import 'package:football_score/controller/home_controller.dart';
 import 'package:football_score/views/screens/matches/matches_scren.dart';
@@ -27,9 +28,9 @@ class Home extends StatelessWidget {
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
             currentIndex: landingPageController.tabIndex.value,
-            backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
+            backgroundColor: primaryColor,
             unselectedItemColor: Colors.white.withOpacity(0.5),
-            selectedItemColor: Colors.white,
+            selectedItemColor: secondaryColor,
             unselectedLabelStyle: unselectedLabelStyle,
             selectedLabelStyle: selectedLabelStyle,
             items: [
@@ -37,12 +38,12 @@ class Home extends StatelessWidget {
                 icon: Container(
                   margin: const EdgeInsets.only(bottom: 7),
                   child: const Icon(
-                    Icons.home,
+                    Icons.sports_outlined,
                     size: 20.0,
                   ),
                 ),
                 label: 'Matches',
-                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: primaryColor,
               ),
               BottomNavigationBarItem(
                 icon: Container(
@@ -53,8 +54,9 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 label: 'Upcoming',
-                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: primaryColor,
               ),
+
               BottomNavigationBarItem(
                 icon: Container(
                   margin: const EdgeInsets.only(bottom: 7),
@@ -64,7 +66,7 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 label: 'Results',
-                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: primaryColor,
               ),
               BottomNavigationBarItem(
                 icon: Container(
@@ -75,7 +77,7 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 label: 'News',
-                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: primaryColor,
               ),
             ],
           ),
@@ -91,9 +93,10 @@ class Home extends StatelessWidget {
       bottomNavigationBar: buildBottomNavigationMenu(context, homeController),
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
-            children: const [
-              MatchesScren(),
+            children:  [
+              MatchesScreen(),
               UpcomingScreen(),
+
               ResultScreen(),
               NewsScreen(),
             ],

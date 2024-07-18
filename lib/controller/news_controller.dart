@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:football_score/services/api_repo.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/constants.dart';
@@ -15,9 +16,11 @@ class NewsConroller extends GetxController {
 
   RxList<Articles> articleList = <Articles>[].obs;
 
+
   @override
   void onInit() {
     getAppConfig();
+
     super.onInit();
   }
 
@@ -34,7 +37,7 @@ class NewsConroller extends GetxController {
     } catch (e) {
       isLoading.value = false;
       constants.showSnackBar(
-          title: 'Error', msg: e.toString(), textColor: AppTheme.red);
+          title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {
       isLoading.value = false;
     }
@@ -49,7 +52,7 @@ class NewsConroller extends GetxController {
     } catch (e) {
       isLoadingNews.value = false;
       constants.showSnackBar(
-          title: 'Error', msg: e.toString(), textColor: AppTheme.red);
+          title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {
       isLoadingNews.value = false;
     }

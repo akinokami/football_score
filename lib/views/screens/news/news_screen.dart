@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:football_score/controller/news_controller.dart';
+import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
+
+import 'news_details_screen.dart';
 
 class NewsScreen extends StatelessWidget {
   const NewsScreen({super.key});
@@ -11,8 +14,11 @@ class NewsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final newsController = Get.put(NewsConroller());
     return Scaffold(
+        backgroundColor: primaryColor,
         appBar: AppBar(
-          title: const Text('News'),
+          backgroundColor: primaryColor,
+          automaticallyImplyLeading: false,
+          toolbarHeight: 20,
           centerTitle: true,
         ),
         body: Obx(
@@ -49,17 +55,19 @@ class NewsScreen extends StatelessWidget {
                                       color:
                                           newsController.selectedIndex.value ==
                                                   index
-                                              ? Colors.green
-                                              : Colors.white,
-                                      border: Border.all(
-                                        color: Colors.green,
-                                      ),
+                                              ? secondaryColor
+                                              : greyColor,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(20))),
                                   child: CustomText(
                                     text: newsController.appModel.value.menus
                                             ?.news?[index].label ??
                                         '',
+                                    textColor:
+                                        newsController.selectedIndex.value ==
+                                                index
+                                            ? whiteColor
+                                            : blackTextColor,
                                   ),
                                 ),
                               ),
@@ -82,7 +90,9 @@ class NewsScreen extends StatelessWidget {
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {
-                                        //
+                                        Get.to(() => NewsDetailsScreen(articles:  newsController
+                                          .articleList[index].body,imageUrl: newsController.articleList[index].thumb,),
+                                            );
                                       },
                                       child: Container(
                                           margin: const EdgeInsets.symmetric(
@@ -91,7 +101,7 @@ class NewsScreen extends StatelessWidget {
                                               left: 10, right: 10),
                                           alignment: Alignment.center,
                                           decoration: BoxDecoration(
-                                              color: Colors.grey[300],
+                                              color: greyColor,
                                               borderRadius:
                                                   const BorderRadius.all(
                                                       Radius.circular(10))),
@@ -122,6 +132,7 @@ class NewsScreen extends StatelessWidget {
                                                           .title ??
                                                       '',
                                                   maxLines: 3,
+                                                  textColor: whiteColor,
                                                   size: 14,
                                                 ),
                                               ),
