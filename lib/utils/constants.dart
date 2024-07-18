@@ -17,8 +17,8 @@ class Constants {
     Get.snackbar(
       title ?? "",
       msg ?? "",
-      colorText: textColor ?? AppTheme.blackTextColor,
-      backgroundColor: bgColor ?? AppTheme.white,
+      colorText: textColor ?? blackTextColor,
+      backgroundColor: bgColor ?? whiteColor,
       snackPosition: SnackPosition.TOP,
     );
   }
