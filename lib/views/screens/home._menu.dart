@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:get/get.dart';
 import 'package:football_score/controller/home_controller.dart';
-import 'package:football_score/views/screens/matches/matches_scren.dart';
+import 'package:football_score/views/screens/matches/match_screen.dart';
 import 'package:football_score/views/screens/news/news_screen.dart';
 import 'package:football_score/views/screens/results/result_screen.dart';
 import 'package:football_score/views/screens/upcoming/upcoming_screen.dart';
@@ -56,7 +56,6 @@ class Home extends StatelessWidget {
                 label: 'Upcoming',
                 backgroundColor: primaryColor,
               ),
-
               BottomNavigationBarItem(
                 icon: Container(
                   margin: const EdgeInsets.only(bottom: 7),
@@ -93,10 +92,9 @@ class Home extends StatelessWidget {
       bottomNavigationBar: buildBottomNavigationMenu(context, homeController),
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
-            children:  [
-              MatchesScreen(),
+            children: [
+              MatchScreen(),
               UpcomingScreen(),
-
               ResultScreen(),
               NewsScreen(),
             ],

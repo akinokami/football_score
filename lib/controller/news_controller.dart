@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:football_score/services/api_repo.dart';
-import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/constants.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +14,6 @@ class NewsConroller extends GetxController {
   Rx<NewsModel> newsModel = NewsModel().obs;
 
   RxList<Articles> articleList = <Articles>[].obs;
-
 
   @override
   void onInit() {

@@ -1,4 +1,5 @@
 import 'package:football_score/models/app_model.dart';
+import 'package:football_score/models/match_model.dart';
 import 'package:football_score/services/api_constant.dart';
 import 'package:football_score/services/api_utils.dart';
 import 'package:football_score/utils/custom_exception.dart';
@@ -31,6 +32,18 @@ class ApiRepo {
       );
       final news = response.data;
       return NewsModel.fromJson(news);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<MatchModel> getMatches({required String url}) async {
+    try {
+      final response = await apiUtils.get(
+        url: url,
+      );
+      final matches = response.data;
+      return MatchModel.fromJson(matches);
     } catch (e) {
       throw CustomException(e.toString());
     }
