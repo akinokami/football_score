@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:football_score/controller/app_config_controller.dart';
 import 'package:football_score/controller/match_controller.dart';
 import 'package:football_score/utils/app_theme.dart';
+import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
@@ -38,7 +39,7 @@ class MatchScreen extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Obx(
-                            () => InkWell(
+                            () => GestureDetector(
                               onTap: () {
                                 matchController.changeIndex(
                                     index,
@@ -90,49 +91,132 @@ class MatchScreen extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: matchController.matchList.length,
                         itemBuilder: (context, index) {
-                          return InkWell(
+                          return GestureDetector(
                             onTap: () {
                               //
                             },
-                            child: Container(
-                                margin: const EdgeInsets.symmetric(vertical: 5),
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    color: greyColor,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(10))),
+                            child: Card(
+                              color: cardColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    CachedNetworkImage(
-                                      width: 75,
-                                      height: 75,
-                                      imageUrl: matchController
-                                              .matchList[index].teamALogo ??
-                                          '',
-                                      placeholder: (context, url) =>
-                                          const Center(
-                                              child:
-                                                  CircularProgressIndicator()),
-                                      errorWidget: (context, url, error) =>
-                                          const Icon(Icons.error),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          .25,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .15,
+                                            child: Text(
+                                              matchController.matchList[index]
+                                                      .teamAName ??
+                                                  '',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                color: lightWhiteColor,
+                                                fontSize: 8,
+                                              ),
+                                            ),
+                                          ),
+                                          kSizedBoxW5,
+                                          CachedNetworkImage(
+                                            width: 20,
+                                            height: 20,
+                                            imageUrl: matchController
+                                                    .matchList[index]
+                                                    .teamALogo ??
+                                                '',
+                                            placeholder: (context, url) =>
+                                                const Center(
+                                                    child:
+                                                        CircularProgressIndicator()),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(Icons.error),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    const SizedBox(
-                                      width: 10,
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          .15,
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            "${matchController.matchList[index].fsA ?? ''} - ${matchController.matchList[index].fsB ?? ''}",
+                                            style: TextStyle(
+                                                color: lightWhiteColor,
+                                                fontSize: 8),
+                                          ),
+                                          Text(
+                                            "  vs  ",
+                                            style: TextStyle(
+                                                color: lightWhiteColor,
+                                                fontSize: 8),
+                                          ),
+                                          Text(
+                                            "  ${matchController.matchList[index].dateUtc ?? ''}  ",
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                                color: lightWhiteColor,
+                                                fontSize: 8),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    Expanded(
-                                      child: CustomText(
-                                        text: matchController
-                                                .matchList[index].teamAName ??
-                                            '',
-                                        maxLines: 3,
-                                        textColor: whiteColor,
-                                        size: 14,
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          .25,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          CachedNetworkImage(
+                                            width: 20,
+                                            height: 20,
+                                            imageUrl: matchController
+                                                    .matchList[index]
+                                                    .teamBLogo ??
+                                                '',
+                                            placeholder: (context, url) =>
+                                                const Center(
+                                                    child:
+                                                        CircularProgressIndicator()),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(Icons.error),
+                                          ),
+                                          kSizedBoxW5,
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .15,
+                                            child: Text(
+                                              matchController.matchList[index]
+                                                      .teamAName ??
+                                                  '',
+                                              style: TextStyle(
+                                                color: lightWhiteColor,
+                                                fontSize: 10,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
-                                )),
+                                ),
+                              ),
+                            ),
                           );
                         },
                       ),
