@@ -12,64 +12,61 @@ class IntroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final introController = Get.put(IntroScreenController());
     return Scaffold(
-      body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(color: primaryColor),
-          child: Padding(
-            padding: const EdgeInsets.all(kPadding15),
-            child: ListView(
-              children: [
-                Text(
-                  "What league do you interested ?",
-                  style: TextStyle(color: whiteColor, fontSize: 30),
-                ),
-                kSizedBoxH20,
-                Text(
-                  "You can choose more than one",
-                  style: TextStyle(color: greyColor, fontSize: 20),
-                ),
-                kSizedBoxH20,
-                GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: introController.sportIconList.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+        body:  Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(color: primaryColor),
+              child: Padding(
+                padding: const EdgeInsets.all(kPadding15),
+                child: ListView(
+                  children: [
+                    Text(
+                      "What league do you interested ?",
+                      style: TextStyle(color: whiteColor, fontSize: 30),
+                    ),
+                    kSizedBoxH20,
+                    Text(
+                      "You can choose more than one",
+                      style: TextStyle(color: greyColor, fontSize: 20),
+                    ),
+                    kSizedBoxH20,
+                    GridView.builder(
+                        shrinkWrap: true,
+                        itemCount: introController.sportIconList.length,
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             mainAxisSpacing: kPadding10,
                             crossAxisSpacing: kPadding10,
                             childAspectRatio: 1.5,
                             crossAxisCount: 2),
-                    itemBuilder: (context, index) {
-                      return Obx(
-                        () => GestureDetector(
-                          onTap: () {
-                            introController.selectSport(index);
-                          },
-                          child: Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                color: introController.selectedSportIndex
-                                        .contains(index)
-                                    ? secondaryColor
-                                    : greyColor,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset(
-                                    introController.sportIconList[index].icon,
-                                    height: 50,
-                                    width: 50,
+                        itemBuilder: (context, index) {
+                          return Obx(()=>
+                            GestureDetector(
+                              onTap: () {
+                                introController.selectSport(index);
+                              },
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    color:introController.selectedSportIndex.contains(index)?secondaryColor: greyColor,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Image.asset(
+                                        introController.sportIconList[index].icon,
+                                        height: 70,
+                                        width: 70,
+                                      ),
+                                      Text(
+                                        introController.sportIconList[index].name,
+                                        style: TextStyle(
+                                            color: lightWhiteColor, fontSize: 14),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    introController.sportIconList[index].name,
-                                    style: TextStyle(
-                                        color: lightWhiteColor, fontSize: 18),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
@@ -90,18 +87,7 @@ class IntroScreen extends StatelessWidget {
                     style: TextStyle(color: whiteColor, fontSize: 20),
                   ),
                 ),
-                kSizedBoxH20,
-                TextButton(
-                    onPressed: () {
-                      Get.to(Home());
-                    },
-                    child: Text(
-                      "Skip",
-                      style: TextStyle(color: lightWhiteColor, fontSize: 16),
-                    ))
-              ],
-            ),
-          )),
-    );
+              )
+        ));
   }
 }

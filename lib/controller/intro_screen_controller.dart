@@ -8,12 +8,13 @@ class IntroScreenController extends GetxController {
   @override
   void onInit() {
     sportIconList = [
-      SportIconModel(icon: 'assets/images/football.webp', name: 'Football'),
-      SportIconModel(icon: 'assets/images/soccer.webp', name: 'Soccer'),
-      SportIconModel(icon: 'assets/images/tennis.webp', name: 'Tennis'),
-      SportIconModel(icon: 'assets/images/volleyball.webp', name: 'Volleyball'),
-      SportIconModel(icon: 'assets/images/cricket.webp', name: 'Cricket'),
-      SportIconModel(icon: 'assets/images/basketball.webp', name: 'Basketball'),
+      SportIconModel(icon: 'assets/images/mls.webp', name: 'MLS'),
+      SportIconModel(
+          icon: 'assets/images/saudi.webp', name: 'Saudi Pro League'),
+      SportIconModel(icon: 'assets/images/k1.webp', name: 'K1 League'),
+      SportIconModel(icon: 'assets/images/jone.webp', name: 'j1 League'),
+      SportIconModel(icon: 'assets/images/aleague.webp', name: 'A League'),
+      SportIconModel(icon: 'assets/images/j2.webp', name: 'J2 League'),
     ].obs;
     super.onInit();
   }
