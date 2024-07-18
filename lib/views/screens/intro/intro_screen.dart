@@ -68,10 +68,10 @@ class IntroScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
-                      );
+                            ));
+
+
+
                     }),
                 kSizedBoxH20,
                 MaterialButton(
@@ -87,7 +87,9 @@ class IntroScreen extends StatelessWidget {
                     style: TextStyle(color: whiteColor, fontSize: 20),
                   ),
                 ),
-              )
+              ],
+            ),
+          ),
         ));
   }
 }
