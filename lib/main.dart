@@ -10,17 +10,13 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Football Score',
-      theme: ThemeData(
-       useMaterial3: true
-      ),
+      theme: ThemeData(useMaterial3: true),
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
-
   }
 }

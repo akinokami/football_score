@@ -4,6 +4,7 @@ import 'package:football_score/services/api_constant.dart';
 import 'package:football_score/services/api_utils.dart';
 import 'package:football_score/utils/custom_exception.dart';
 
+import '../models/match_detail_model.dart';
 import '../models/news_model.dart';
 
 class ApiRepo {
@@ -44,6 +45,22 @@ class ApiRepo {
       );
       final matches = response.data;
       return MatchModel.fromJson(matches);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<MatchDetailModel> getMatchDetail({required int matchId}) async {
+    try {
+      final response =
+          await apiUtils.get(url: ApiConstant.matchDetailUrl, queryParameters: {
+        "id": matchId,
+        "version": 373,
+        "language": "en",
+        "app": "af",
+      });
+      final matches = response.data;
+      return MatchDetailModel.fromJson(matches);
     } catch (e) {
       throw CustomException(e.toString());
     }
