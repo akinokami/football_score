@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:football_score/controller/app_config_controller.dart';
 import 'package:football_score/models/match_model.dart';
 import 'package:football_score/services/api_repo.dart';
 import 'package:football_score/utils/constants.dart';
@@ -12,7 +13,13 @@ class MatchController extends GetxController {
 
   @override
   void onInit() {
-    //
+    getMatches(Get.find<AppConfigController>()
+            .appModel
+            .value
+            .menus
+            ?.matchTab?[0]
+            .api ??
+        '');
     super.onInit();
   }
 

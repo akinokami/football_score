@@ -62,6 +62,7 @@ class MatchScreen extends StatelessWidget {
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(20))),
                                 child: CustomText(
+                                  size: 12,
                                   text: appConfigController.appModel.value.menus
                                           ?.matchTab?[index].label ??
                                       '',
@@ -122,7 +123,7 @@ class MatchScreen extends StatelessWidget {
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 8,
+                                                fontSize: 10,
                                               ),
                                             ),
                                           ),
@@ -154,20 +155,20 @@ class MatchScreen extends StatelessWidget {
                                             "${matchController.matchList[index].fsA ?? ''} - ${matchController.matchList[index].fsB ?? ''}",
                                             style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 8),
+                                                fontSize: 10),
                                           ),
                                           Text(
                                             "  vs  ",
                                             style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 8),
+                                                fontSize: 10),
                                           ),
                                           Text(
                                             "  ${matchController.matchList[index].dateUtc ?? ''}  ",
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 8),
+                                                fontSize: 10),
                                           ),
                                         ],
                                       ),
@@ -202,7 +203,7 @@ class MatchScreen extends StatelessWidget {
                                                 .15,
                                             child: Text(
                                               matchController.matchList[index]
-                                                      .teamAName ??
+                                                      .teamBName ??
                                                   '',
                                               style: TextStyle(
                                                 color: lightWhiteColor,

@@ -37,7 +37,7 @@ class NewsScreen extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return Obx(
-                              () => InkWell(
+                              () => GestureDetector(
                                 onTap: () {
                                   newsController.changeIndex(
                                       index,
@@ -88,11 +88,16 @@ class NewsScreen extends StatelessWidget {
                                   shrinkWrap: true,
                                   itemCount: newsController.articleList.length,
                                   itemBuilder: (context, index) {
-                                    return InkWell(
+                                    return GestureDetector(
                                       onTap: () {
-                                        Get.to(() => NewsDetailsScreen(articles:  newsController
-                                          .articleList[index].body,imageUrl: newsController.articleList[index].thumb,),
-                                            );
+                                        Get.to(
+                                          () => NewsDetailsScreen(
+                                            articles: newsController
+                                                .articleList[index].body,
+                                            imageUrl: newsController
+                                                .articleList[index].thumb,
+                                          ),
+                                        );
                                       },
                                       child: Container(
                                           margin: const EdgeInsets.symmetric(

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../model/sport_icon_model.dart';
+import '../models/sport_icon_model.dart';
 
 class IntroScreenController extends GetxController {
   RxList<SportIconModel> sportIconList = <SportIconModel>[].obs;
