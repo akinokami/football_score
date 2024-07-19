@@ -87,6 +87,15 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                       ),
                       child: TabBar(
                         controller: tabController,
+                        onTap: (value) {
+                          if (value == 0) {
+                            //
+                          } else if (value == 1) {
+                            matchDetailController.getLineUp();
+                          } else {
+                            //
+                          }
+                        },
                         indicator: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                             25.0,
@@ -130,16 +139,63 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   )
                                 : Column(
                                     children: [
-                                      CustomText(text: 'Subtitution'),
-                                      Row(
-                                        children: [
-                                          // ListView.builder(
-                                          //     shrinkWrap: true,
-                                          //     itemCount: matchDetailController.lineupModel.value.data.,
-                                          //     itemBuilder: (context, index) {
-
-                                          //     },)
-                                        ],
+                                      const CustomText(text: 'Subtitution'),
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.70,
+                                        child: ListView.builder(
+                                          shrinkWrap: true,
+                                          itemCount: matchDetailController
+                                              .lineupModel
+                                              .value
+                                              .lupList?[0]
+                                              .lupData!
+                                              .home!
+                                              .sub!
+                                              .length,
+                                          itemBuilder: (context, index) {
+                                            return Column(
+                                              children: [
+                                                CachedNetworkImage(
+                                                  width: 75,
+                                                  height: 75,
+                                                  imageUrl:
+                                                      matchDetailController
+                                                              .lineupModel
+                                                              .value
+                                                              .lupList?[0]
+                                                              .lupData!
+                                                              .home!
+                                                              .sub![index]
+                                                              .person
+                                                              ?.logo ??
+                                                          '',
+                                                  placeholder: (context, url) =>
+                                                      const Center(
+                                                          child:
+                                                              CircularProgressIndicator()),
+                                                  errorWidget: (context, url,
+                                                          error) =>
+                                                      const Icon(Icons.error),
+                                                ),
+                                                CustomText(
+                                                  text: matchDetailController
+                                                          .lineupModel
+                                                          .value
+                                                          .lupList?[0]
+                                                          .lupData!
+                                                          .home!
+                                                          .sub![index]
+                                                          .person
+                                                          ?.name ??
+                                                      '',
+                                                  textColor: Colors.white,
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ),
                                       )
                                     ],
                                   ),

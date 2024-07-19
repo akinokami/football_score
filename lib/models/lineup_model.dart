@@ -1,15 +1,15 @@
 class LineupModel {
   Team? team;
-  List<MatchLineup>? data;
+  List<MatchLineup>? lupList;
 
-  LineupModel({this.team, this.data});
+  LineupModel({this.team, this.lupList});
 
   LineupModel.fromJson(Map<String, dynamic> json) {
     team = json['team'] != null ? Team.fromJson(json['team']) : null;
     if (json['data'] != null) {
-      data = <MatchLineup>[];
+      lupList = <MatchLineup>[];
       json['data'].forEach((v) {
-        data!.add(MatchLineup.fromJson(v));
+        lupList!.add(MatchLineup.fromJson(v));
       });
     }
   }
@@ -19,8 +19,8 @@ class LineupModel {
     if (team != null) {
       data['team'] = team!.toJson();
     }
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    if (lupList != null) {
+      data['data'] = lupList!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -93,15 +93,15 @@ class Away {
 class MatchLineup {
   String? template;
   String? title;
-  LupData? data;
+  LupData? lupData;
   String? scheme;
 
-  MatchLineup({this.template, this.title, this.data, this.scheme});
+  MatchLineup({this.template, this.title, this.lupData, this.scheme});
 
   MatchLineup.fromJson(Map<String, dynamic> json) {
     template = json['template'];
     title = json['title'];
-    data = json['data'] != null ? LupData.fromJson(json['data']) : null;
+    lupData = json['data'] != null ? LupData.fromJson(json['data']) : null;
     scheme = json['scheme'];
   }
 
@@ -109,8 +109,8 @@ class MatchLineup {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['template'] = template;
     data['title'] = title;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
+    if (lupData != null) {
+      data['data'] = lupData!.toJson();
     }
     data['scheme'] = scheme;
     return data;
@@ -119,8 +119,8 @@ class MatchLineup {
 
 class LupData {
   List<Official>? official;
-  Away? home;
-  Away? away;
+  Home? home;
+  Home? away;
   String? venue;
   String? weather;
   String? temperature;
@@ -146,8 +146,8 @@ class LupData {
         official!.add(Official.fromJson(v));
       });
     }
-    home = json['home'] != null ? Away.fromJson(json['home']) : null;
-    away = json['away'] != null ? Away.fromJson(json['away']) : null;
+    home = json['home'] != null ? Home.fromJson(json['home']) : null;
+    away = json['away'] != null ? Home.fromJson(json['away']) : null;
     venue = json['venue'];
     weather = json['weather'];
     temperature = json['temperature'];

@@ -26,7 +26,6 @@ class MatchDetailController extends GetxController {
       final result = await ApiRepo().getMatchDetail(matchId: matchId.value);
       matchDetailModel.value = result;
     } catch (e) {
-      isLoading.value = false;
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {
@@ -35,16 +34,15 @@ class MatchDetailController extends GetxController {
   }
 
   Future<void> getLineUp() async {
-    isLoading.value = true;
+    isLoadingTab.value = true;
     try {
       final result = await ApiRepo().getLineup(matchId: matchId.value);
       lineupModel.value = result;
     } catch (e) {
-      isLoading.value = false;
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {
-      isLoading.value = false;
+      isLoadingTab.value = false;
     }
   }
 }
