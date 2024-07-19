@@ -21,9 +21,7 @@ class NewsController extends GetxController {
   }
 
   void startNew() {
-    getNews(
-        Get.find<AppConfigController>().appModel.value.menus?.news?[0].api ??
-            '');
+    getNews(Get.find<AppConfigController>().newsTabList[0].api ?? '');
     selectedIndex.value = 0;
   }
 
