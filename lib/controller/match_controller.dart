@@ -13,6 +13,11 @@ class MatchController extends GetxController {
 
   @override
   void onInit() {
+    startMatch();
+    super.onInit();
+  }
+
+  void startMatch() {
     getMatches(Get.find<AppConfigController>()
             .appModel
             .value
@@ -20,7 +25,7 @@ class MatchController extends GetxController {
             ?.matchTab?[0]
             .api ??
         '');
-    super.onInit();
+    selectedIndex.value = 0;
   }
 
   void changeIndex(int index, String url) {

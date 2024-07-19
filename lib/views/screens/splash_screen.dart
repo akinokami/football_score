@@ -10,7 +10,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-final splashScreenController = Get.put(SplashScreenController());
+    final splashScreenController = Get.put(SplashScreenController());
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,

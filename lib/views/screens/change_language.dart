@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:football_score/utils/dimen_const.dart';
 import 'package:get/get.dart';
 
-import '../../controller/change_language_controller.dart';
+import '../../controller/language_controller.dart';
 import '../../utils/app_theme.dart';
 
 class ChangeLanguageScreen extends StatelessWidget {
@@ -10,45 +9,74 @@ class ChangeLanguageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final changeLanguageController = Get.put(ChangeLanguageController());
+    final languageController = Get.put(LanguageController());
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         iconTheme: IconThemeData(color: lightWhiteColor),
         centerTitle: true,
         backgroundColor: primaryColor,
-        title:  Text('Change Language',style: TextStyle(color: lightWhiteColor)),
+        title: Text('change_language'.tr,
+            style: TextStyle(color: lightWhiteColor)),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-           Obx(()=>
-            GestureDetector(
-                onTap: (){
-                  changeLanguageController.changeLanguage("en",context);
-                },
-               child: Card(
-                 color: cardColor,
-                 child: ListTile(
-                   leading: Image.asset("assets/images/usa.webp",width: 20,height: 30,),
-                    title: Text("English",style: TextStyle(color: lightWhiteColor),),
-                    trailing: Icon(changeLanguageController.isEnglish.value?Icons.check_circle:Icons.check_circle_outline,color:changeLanguageController.isEnglish.value==true?secondaryColor: lightWhiteColor,),
-                 ),
-               ),
-             ),
-           ),
-            Obx(()=>
-              GestureDetector(
-                onTap: (){
-                  changeLanguageController.changeLanguage("zh",context);
+            Obx(
+              () => GestureDetector(
+                onTap: () {
+                  languageController.changeLanguage("en", "US");
                 },
                 child: Card(
                   color: cardColor,
                   child: ListTile(
-                    leading: Image.asset("assets/images/china.webp",width: 20,height: 30,),
-                    title: Text("中国人",style: TextStyle(color: lightWhiteColor),),
-                    trailing: Icon(!changeLanguageController.isEnglish.value?Icons.check_circle:Icons.check_circle_outline,color:changeLanguageController.isEnglish.value==true?lightWhiteColor: secondaryColor,),
+                    leading: Image.asset(
+                      "assets/images/usa.webp",
+                      width: 20,
+                      height: 30,
+                    ),
+                    title: Text(
+                      "English",
+                      style: TextStyle(color: lightWhiteColor),
+                    ),
+                    trailing: Icon(
+                      languageController.language.value == "en"
+                          ? Icons.check_circle
+                          : Icons.check_circle_outline,
+                      color: languageController.language.value == "en"
+                          ? secondaryColor
+                          : lightWhiteColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Obx(
+              () => GestureDetector(
+                onTap: () {
+                  languageController.changeLanguage("zh", "CN");
+                },
+                child: Card(
+                  color: cardColor,
+                  child: ListTile(
+                    leading: Image.asset(
+                      "assets/images/china.webp",
+                      width: 20,
+                      height: 30,
+                    ),
+                    title: Text(
+                      "中国人",
+                      style: TextStyle(color: lightWhiteColor),
+                    ),
+                    trailing: Icon(
+                      languageController.language.value == "zh"
+                          ? Icons.check_circle
+                          : Icons.check_circle_outline,
+                      color: languageController.language.value == "zh"
+                          ? secondaryColor
+                          : lightWhiteColor,
+                    ),
                   ),
                 ),
               ),
