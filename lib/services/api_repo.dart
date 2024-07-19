@@ -6,7 +6,6 @@ import 'package:football_score/services/api_constant.dart';
 import 'package:football_score/services/api_utils.dart';
 import 'package:football_score/utils/custom_exception.dart';
 import 'package:football_score/utils/global.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../models/lineup_model.dart';
 import '../models/match_detail_model.dart';
@@ -133,7 +132,7 @@ class ApiRepo {
                 ? "vi-VN"
                 : "en-US",
       });
-      final overviews = response.data;
+      final overviews = response.data['data'][0];
       return OverviewModel.fromJson(overviews);
     } catch (e) {
       throw CustomException(e.toString());

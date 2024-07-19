@@ -29,7 +29,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
 
   @override
   void initState() {
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
 
@@ -224,8 +224,6 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         controller: tabController,
                         onTap: (value) {
                           if (value == 0) {
-                            matchDetailController.getOverview();
-                          } else if (value == 1) {
                             matchDetailController.getLineUp();
                           } else {
                             matchDetailController.getPreview();
@@ -243,9 +241,6 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         dividerColor: Colors.transparent,
                         tabs: const [
                           Tab(
-                            text: 'Overview',
-                          ),
-                          Tab(
                             text: 'Lineups',
                           ),
                           Tab(
@@ -259,24 +254,16 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                       child: TabBarView(
                         controller: tabController,
                         children: [
-                          Obx(
-                            () => matchController.isLoading.value
-                                ? const Center(
-                                    child: CircularProgressIndicator(),
-                                  )
-                                : OverviewWidget(
-                                    tendencies: matchDetailController
-                                            .overviewModel
-                                            .value
-                                            .oList?[0]
-                                            .oData
-                                            ?.tendencies ??
-                                        [],
-                                    match: widget.match,
-                                    matchDetailModel: matchDetailController
-                                        .matchDetailModel.value,
-                                  ),
-                          ),
+                          // Obx(
+                          //   () => matchController.isLoading.value
+                          //       ? const Center(
+                          //           child: CircularProgressIndicator(),
+                          //         )
+                          //       : OverviewWidget(
+                          //           overviewModel: matchDetailController
+                          //               .overviewModel.value,
+                          //         ),
+                          // ),
                           Obx(
                             () => matchDetailController.isLoadingTab.value
                                 ? const Center(

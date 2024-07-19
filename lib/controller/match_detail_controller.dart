@@ -21,7 +21,7 @@ class MatchDetailController extends GetxController {
   void onInit() {
     matchId.value = Get.arguments['matchId'];
     getMatchDetail();
-    getOverview();
+    getLineUp();
     super.onInit();
   }
 
