@@ -7,4 +7,7 @@ class ApiConstant {
 
   static String lineUpUrl =
       'https://sport-data.allfootballapp.com/soccer/biz/af/v1/match/lineup/';
+
+  static String previewUrl =
+      'https://sport-data.allfootballapp.com/soccer/biz/v1/match/preview/';
 }

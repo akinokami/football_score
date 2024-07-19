@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:football_score/models/lineup_model.dart';
+import 'package:football_score/models/preview_model.dart';
 import 'package:football_score/services/api_repo.dart';
 import 'package:football_score/utils/constants.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class MatchDetailController extends GetxController {
   final isLoadingTab = false.obs;
   Rx<MatchDetailModel> matchDetailModel = MatchDetailModel().obs;
   Rx<LineupModel> lineupModel = LineupModel().obs;
+  Rx<PreviewModel> previewModel = PreviewModel().obs;
 
   @override
   void onInit() {
@@ -38,6 +40,19 @@ class MatchDetailController extends GetxController {
     try {
       final result = await ApiRepo().getLineup(matchId: matchId.value);
       lineupModel.value = result;
+    } catch (e) {
+      constants.showSnackBar(
+          title: 'Error', msg: e.toString(), textColor: Colors.red);
+    } finally {
+      isLoadingTab.value = false;
+    }
+  }
+
+  Future<void> getPreview() async {
+    isLoadingTab.value = true;
+    try {
+      final result = await ApiRepo().getPreview(matchId: matchId.value);
+      previewModel.value = result;
     } catch (e) {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
