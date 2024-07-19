@@ -36,8 +36,7 @@ class NewsScreen extends StatelessWidget {
                       height: 35,
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: appConfigController
-                            .appModel.value.menus?.news?.length,
+                        itemCount: appConfigController.newsTabList.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Obx(
@@ -45,8 +44,8 @@ class NewsScreen extends StatelessWidget {
                               onTap: () {
                                 newsController.changeIndex(
                                     index,
-                                    appConfigController.appModel.value.menus
-                                            ?.news?[index].api ??
+                                    appConfigController
+                                            .newsTabList[index].api ??
                                         '');
                               },
                               child: Container(
@@ -63,8 +62,8 @@ class NewsScreen extends StatelessWidget {
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(20))),
                                 child: CustomText(
-                                  text: appConfigController.appModel.value.menus
-                                          ?.news?[index].label ??
+                                  text: appConfigController
+                                          .newsTabList[index].label ??
                                       '',
                                   textColor:
                                       newsController.selectedIndex.value ==

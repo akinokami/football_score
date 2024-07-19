@@ -8,6 +8,8 @@ import '../utils/constants.dart';
 class AppConfigController extends GetxController {
   final isLoading = false.obs;
   Rx<AppModel> appModel = AppModel().obs;
+  RxList<MatchTab> mTabList = <MatchTab>[].obs;
+  RxList<News> newsTabList = <News>[].obs;
 
   @override
   void onInit() {
@@ -20,6 +22,31 @@ class AppConfigController extends GetxController {
     try {
       final result = await ApiRepo().getAppConfig();
       appModel.value = result;
+      mTabList.value = appModel.value.menus?.matchTab
+              ?.where((element) =>
+                  element.id != 50003 &&
+                  element.id != 18 &&
+                  element.id != 262 &&
+                  element.id != 4 &&
+                  element.id != 3 &&
+                  element.id != 5)
+              .toList() ??
+          [];
+
+      newsTabList.value = appModel.value.menus?.news
+              ?.where((element) =>
+                  element.id != "1" &&
+                  element.id != "208" &&
+                  element.id != "106" &&
+                  element.id != "4" &&
+                  element.id != "13" &&
+                  element.id != "5" &&
+                  element.id != "6" &&
+                  element.id != "113" &&
+                  element.id != "114" &&
+                  element.id != "14")
+              .toList() ??
+          [];
     } catch (e) {
       isLoading.value = false;
       constants.showSnackBar(

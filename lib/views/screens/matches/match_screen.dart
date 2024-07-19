@@ -35,10 +35,7 @@ class MatchScreen extends StatelessWidget {
                       height: 35,
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: (appConfigController
-                                    .appModel.value.menus?.matchTab?.length ??
-                                0) -
-                            5,
+                        itemCount: appConfigController.mTabList.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Obx(
@@ -46,8 +43,7 @@ class MatchScreen extends StatelessWidget {
                               onTap: () {
                                 matchController.changeIndex(
                                     index,
-                                    appConfigController.appModel.value.menus
-                                            ?.matchTab?[index].api ??
+                                    appConfigController.mTabList[index].api ??
                                         '');
                               },
                               child: Container(
@@ -66,8 +62,8 @@ class MatchScreen extends StatelessWidget {
                                         Radius.circular(20))),
                                 child: CustomText(
                                   size: 12,
-                                  text: appConfigController.appModel.value.menus
-                                          ?.matchTab?[index].label ??
+                                  text: appConfigController
+                                          .mTabList[index].label ??
                                       '',
                                   textColor:
                                       matchController.selectedIndex.value ==
