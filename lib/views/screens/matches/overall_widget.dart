@@ -17,6 +17,7 @@ class OverviewWidget extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                   child: ListView.builder(
@@ -43,7 +44,7 @@ class OverviewWidget extends StatelessWidget {
                                     match?.events?[index].teamId)
                                   CustomText(
                                     text:
-                                        "${match?.events?[index].minute ?? ''} '",
+                                        "${match?.events?[index].minute ?? ''}' ${match?.events?[index].code ?? ''}",
                                     size: 12,
                                     textColor: Colors.white,
                                   ),
@@ -78,7 +79,7 @@ class OverviewWidget extends StatelessWidget {
                                     match?.events?[index].teamId)
                                   CustomText(
                                     text:
-                                        "${match?.events?[index].minute ?? ''} '",
+                                        "${match?.events?[index].minute ?? ''}' ${match?.events?[index].code ?? ''}",
                                     size: 12,
                                     textColor: Colors.white,
                                   ),
