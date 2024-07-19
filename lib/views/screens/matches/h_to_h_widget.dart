@@ -21,22 +21,22 @@ class HToHWidget extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(bottom: 10.0),
             child: Card(
-              color: greyColor,
+              color: cardColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomText(
                       fontWeight: FontWeight.bold,
-                        size: 14,
-                        text:
-                        DateFormat('d MMM yyyy, h:mm a').format(
-                          DateTime.parse(
-                            previewModel?.preData?.matches?[index].startTime ?? '',
-                          ),
-                        ),),
+                      size: 14,
+                      text: DateFormat('d MMM yyyy, h:mm a').format(
+                        DateTime.parse(
+                          previewModel?.preData?.matches?[index].startTime ??
+                              '',
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
@@ -49,33 +49,32 @@ class HToHWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                           SizedBox(
+                            SizedBox(
                               width: MediaQuery.of(context).size.width * 0.2,
                               child: Text(
-                                  previewModel
-                                      ?.preData?.matches?[index].homeTeam?.name ??
-                                      '',style:  TextStyle(color: whiteColor)),
-                           ),
+                                  previewModel?.preData?.matches?[index]
+                                          .homeTeam?.name ??
+                                      '',
+                                  style: TextStyle(color: whiteColor)),
+                            ),
                             kSizedBoxW10,
                             CachedNetworkImage(
                               width: 20,
                               height: 20,
-                              imageUrl: previewModel
-                                      ?.preData?.matches?[index].homeTeam?.logo ??
+                              imageUrl: previewModel?.preData?.matches?[index]
+                                      .homeTeam?.logo ??
                                   '',
-                              placeholder: (context, url) =>
-                                  const Center(child: CircularProgressIndicator()),
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator()),
                               errorWidget: (context, url, error) =>
                                   const Icon(Icons.error),
                             ),
-
-
                           ],
                         ),
                       ),
                       CustomText(
                           text:
-                          "${previewModel?.preData?.matches?[index].homeScore ?? ''} - ${previewModel?.preData?.matches?[index].awayScore ?? ''}"),
+                              "${previewModel?.preData?.matches?[index].homeScore ?? ''} - ${previewModel?.preData?.matches?[index].awayScore ?? ''}"),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.3,
                         child: Row(
@@ -84,22 +83,22 @@ class HToHWidget extends StatelessWidget {
                             CachedNetworkImage(
                               width: 20,
                               height: 20,
-                              imageUrl: previewModel
-                                  ?.preData?.matches?[index].awayTeam?.logo ??
+                              imageUrl: previewModel?.preData?.matches?[index]
+                                      .awayTeam?.logo ??
                                   '',
-                              placeholder: (context, url) =>
-                              const Center(child: CircularProgressIndicator()),
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator()),
                               errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
+                                  const Icon(Icons.error),
                             ),
                             kSizedBoxW10,
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.2,
                               child: Text(
-
-                                  previewModel
-                                      ?.preData?.matches?[index].awayTeam?.name ??
-                                      '',style:  TextStyle(color: whiteColor)),
+                                  previewModel?.preData?.matches?[index]
+                                          .awayTeam?.name ??
+                                      '',
+                                  style: TextStyle(color: whiteColor)),
                             )
                           ],
                         ),

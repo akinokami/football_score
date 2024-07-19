@@ -1,5 +1,6 @@
 import 'package:football_score/models/app_model.dart';
 import 'package:football_score/models/match_model.dart';
+import 'package:football_score/models/overview_model.dart';
 import 'package:football_score/models/preview_model.dart';
 import 'package:football_score/services/api_constant.dart';
 import 'package:football_score/services/api_utils.dart';
@@ -94,6 +95,22 @@ class ApiRepo {
       });
       final previews = response.data['data'][0];
       return PreviewModel.fromJson(previews);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<OverviewModel> getOverview({required String matchId}) async {
+    try {
+      final response = await apiUtils
+          .get(url: ApiConstant.overviewUrl + matchId, queryParameters: {
+        "app": "af",
+        "version": 373,
+        "force": 1,
+        "language": Global.language == "en" ? "en-US" : "zh-CN",
+      });
+      final overviews = response.data;
+      return OverviewModel.fromJson(overviews);
     } catch (e) {
       throw CustomException(e.toString());
     }

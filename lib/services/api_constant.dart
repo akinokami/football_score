@@ -10,4 +10,7 @@ class ApiConstant {
 
   static String previewUrl =
       'https://sport-data.allfootballapp.com/soccer/biz/v1/match/preview/';
+
+  static String overviewUrl =
+      'https://sport-data.allfootballapp.com/soccer/biz/match/overview/';
 }

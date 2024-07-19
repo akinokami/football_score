@@ -108,7 +108,7 @@ class NewsScreen extends StatelessWidget {
                                     const EdgeInsets.only(left: 10, right: 10),
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                    color: greyColor,
+                                    color: cardColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(10))),
                                 child: Row(

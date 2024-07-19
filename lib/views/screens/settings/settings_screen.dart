@@ -22,69 +22,110 @@ class SettingsScreen extends StatelessWidget {
           title: Text('settings'.tr, style: TextStyle(color: lightWhiteColor)),
           centerTitle: true,
         ),
-        body: ListView(
-          children: [
-            Text('general'.tr,
-                style: TextStyle(
-                    color: lightWhiteColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold)),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: ListView(
+            children: [
+              Text('general'.tr,
+                  style: TextStyle(
+                      color: lightWhiteColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
 
-            GestureDetector(
-              onTap: () {
-                Get.to(const ChangeLanguageScreen());
-              },
-              child: Card(
-                  color: cardColor,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
+              GestureDetector(
+                onTap: () {
+                  Get.to(const ChangeLanguageScreen());
+                },
+                child: Card(
+                    color: cardColor,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/chnage_lan.webp",
+                                width: 20,
+                                height: 30,
+                              ),
+                              kSizedBoxW10,
+                              Text('language'.tr,
+                                  style: TextStyle(
+                                      color: lightWhiteColor, fontSize: 14)),
+                            ],
+                          ),
+                        ),
+                        Row(
                           children: [
-                            Image.asset(
-                              "assets/images/chnage_lan.webp",
-                              width: 20,
-                              height: 30,
-                            ),
-                            kSizedBoxW10,
-                            Text('language'.tr,
+                            Text(
+                                languageController.language.value == "en"
+                                    ? 'english'.tr
+                                    : 'chinese'.tr,
                                 style: TextStyle(
                                     color: lightWhiteColor, fontSize: 14)),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                color: lightWhiteColor,
+                                size: 20,
+                              ),
+                            ),
                           ],
                         ),
-                      ),
-                      Row(
-                        children: [
-                          Text(languageController.language.value=="en"?'english'.tr:'chinese'.tr,
-                              style: TextStyle(
-                                  color: lightWhiteColor, fontSize: 14)),
-                          Icon(
+                      ],
+                    )),
+              ),
+              kSizedBoxH20,
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Divider(color: lightWhiteColor,),
+              // ),
+              Text('other'.tr,
+                  style: TextStyle(
+                      color: lightWhiteColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+              GestureDetector(
+                onTap: () {
+                  Get.to(const PrivacyPolicyScreen());
+                },
+                child: Card(
+                    color: cardColor,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.privacy_tip_outlined,
+                                color: lightWhiteColor,
+                                size: 20,
+                              ),
+                              kSizedBoxW10,
+                              Text('policy'.tr,
+                                  style: TextStyle(
+                                      color: lightWhiteColor, fontSize: 14)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
                             Icons.arrow_forward_ios,
                             color: lightWhiteColor,
                             size: 20,
                           ),
-                        ],
-                      ),
-                    ],
-                  )),
-            ),
-            kSizedBoxH20,
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Divider(color: lightWhiteColor,),
-            // ),
-            Text('other'.tr,
-                style: TextStyle(
-                    color: lightWhiteColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold)),
-            GestureDetector(
-              onTap: () {
-                Get.to(const PrivacyPolicyScreen());
-              },
-              child: Card(
+                        ),
+                      ],
+                    )),
+              ),
+              kSizedBoxH10,
+              Card(
                   color: cardColor,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,57 +135,28 @@ class SettingsScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(
-                              Icons.privacy_tip_outlined,
+                              Icons.info_outlined,
                               color: lightWhiteColor,
                               size: 20,
                             ),
                             kSizedBoxW10,
-                            Text('policy'.tr,
+                            Text('version'.tr,
                                 style: TextStyle(
                                     color: lightWhiteColor, fontSize: 14)),
                           ],
                         ),
                       ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: lightWhiteColor,
-                        size: 20,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 15),
+                        child: Text(appVersion,
+                            style: TextStyle(
+                                color: lightWhiteColor, fontSize: 14)),
                       ),
                     ],
                   )),
-            ),
-            kSizedBoxH10,
-            Card(
-                color: cardColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.info_outlined,
-                            color: lightWhiteColor,
-                            size: 20,
-                          ),
-                          kSizedBoxW10,
-                          Text('version'.tr,
-                              style: TextStyle(
-                                  color: lightWhiteColor, fontSize: 14)),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 15),
-                      child: Text(appVersion,
-                          style:
-                              TextStyle(color: lightWhiteColor, fontSize: 14)),
-                    ),
-                  ],
-                )),
-          ],
+            ],
+          ),
         ));
   }
 }

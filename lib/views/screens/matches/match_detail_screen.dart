@@ -210,7 +210,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                     Container(
                       height: 45,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: greyColor,
                         borderRadius: BorderRadius.circular(
                           25.0,
                         ),
@@ -222,7 +222,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         controller: tabController,
                         onTap: (value) {
                           if (value == 0) {
-                            //
+                            matchDetailController.getOverview();
                           } else if (value == 1) {
                             matchDetailController.getLineUp();
                           } else {
@@ -237,7 +237,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                           color: secondaryColor,
                         ),
                         labelColor: Colors.white,
-                        unselectedLabelColor: Colors.black,
+                        unselectedLabelColor: Colors.white,
                         dividerColor: Colors.transparent,
                         tabs: const [
                           Tab(

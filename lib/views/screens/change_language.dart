@@ -19,7 +19,8 @@ class ChangeLanguageScreen extends StatelessWidget {
         title: Text('change_language'.tr,
             style: TextStyle(color: lightWhiteColor)),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
