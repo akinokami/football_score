@@ -16,6 +16,7 @@ class EnLanguage {
     'settings': 'Settings',
     'matches': 'Matches',
     'news': 'News',
+    'news_detail': 'News Details',
     'agree': 'I agreed to the privacy policy.',
     'accept': 'Accept',
   };

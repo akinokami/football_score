@@ -15,6 +15,7 @@ class ZhLanguage {
     'settings': '设置',
     'matches': '比赛',
     'news': '消息',
+    'news_detail': '新闻详情',
     'agree': '我同意隐私政策。',
     'accept': '接受',
   };

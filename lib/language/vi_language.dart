@@ -16,6 +16,7 @@ class ViLanguage {
     'settings': 'Cài đặt',
     'matches': 'Diêm',
     'news': 'Tin tức',
+    'news_detail': 'Chi tiết tin tức',
     'agree': 'Tôi đồng ý với chính sách bảo mật.',
     'accept': 'Chấp nhận',
   };
