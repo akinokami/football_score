@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:football_score/controller/app_config_controller.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/change_language.dart';
-import 'package:get/get.dart' hide Trans;
+import 'package:get/get.dart';
+
 import 'package:get_storage/get_storage.dart';
 import '../../../controller/intro_screen_controller.dart';
-import '../../../generated/locale_keys.g.dart';
 import '../../../utils/app_theme.dart';
 import '../../../utils/global.dart';
 import '../../widgets/custom_text.dart';
 import '../home._menu.dart';
-import 'package:easy_localization/easy_localization.dart' as easy;
+
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
 
@@ -117,11 +117,12 @@ class _IntroScreenState extends State<IntroScreen> {
           actions: [
             GestureDetector(
               onTap: () {
-                Get.to(ChangeLanguageScreen());
+                Get.to(() => const ChangeLanguageScreen());
               },
               child: Row(
                 children: [
-                  CustomText(text: "English", size: 16, textColor: whiteColor),
+                  CustomText(
+                      text: 'language'.tr, size: 16, textColor: whiteColor),
                   Icon(
                     Icons.language,
                     color: whiteColor,
@@ -140,12 +141,12 @@ class _IntroScreenState extends State<IntroScreen> {
             child: ListView(
               children: [
                 Text(
-                  LocaleKeys.kLeagueChoice.tr(),
+                  'what_league'.tr,
                   style: TextStyle(color: whiteColor, fontSize: 30),
                 ),
                 kSizedBoxH20,
                 Text(
-                  LocaleKeys.kYouCanChooseMultiple.tr(),
+                  'you_can_choose'.tr,
                   style: TextStyle(color: greyColor, fontSize: 20),
                 ),
                 kSizedBoxH20,
@@ -208,7 +209,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: Text(
-                      "Next",
+                      'next'.tr,
                       style: TextStyle(color: whiteColor, fontSize: 20),
                     ),
                   ),
