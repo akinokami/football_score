@@ -8,6 +8,8 @@ import 'package:football_score/views/screens/matches/match_detail_screen.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
+import '../../../controller/match_detail_controller.dart';
+
 class MatchScreen extends StatelessWidget {
   const MatchScreen({super.key});
 
@@ -15,6 +17,7 @@ class MatchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final appConfigController = Get.put(AppConfigController());
     final matchController = Get.put(MatchController());
+    final overViewController = Get.put(MatchDetailController());
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
@@ -96,6 +99,7 @@ class MatchScreen extends StatelessWidget {
                               Get.to(
                                   () => MatchDetailScreen(
                                         match: matchController.matchList[index],
+                                    tendencies: overViewController.overviewModel.value.oList?[0].oData?.tendencies??[],
                                       ),
                                   arguments: {
                                     'matchId': matchController

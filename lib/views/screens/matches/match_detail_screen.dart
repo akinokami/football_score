@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:football_score/models/match_model.dart';
+import 'package:football_score/models/overview_model.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/matches/h_to_h_widget.dart';
@@ -15,8 +16,9 @@ import '../../../controller/match_controller.dart';
 import '../../../controller/match_detail_controller.dart';
 
 class MatchDetailScreen extends StatefulWidget {
-  const MatchDetailScreen({super.key, required this.match});
+  const MatchDetailScreen({super.key, required this.match, required this.tendencies});
   final Matches match;
+  final List<Tendencies> tendencies;
   @override
   State<MatchDetailScreen> createState() => _MatchDetailScreenState();
 }
@@ -263,6 +265,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                     child: CircularProgressIndicator(),
                                   )
                                 : OverviewWidget(
+                              tendencies: widget.tendencies,
                                     match: widget.match,
                                     matchDetailModel: matchDetailController
                                         .matchDetailModel.value,
