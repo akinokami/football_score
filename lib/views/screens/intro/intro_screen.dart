@@ -109,7 +109,6 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final languageController = Get.put(LanguageController());
     return Scaffold(
         appBar: AppBar(
@@ -204,10 +203,16 @@ class _IntroScreenState extends State<IntroScreen> {
                       SizedBox(
                           width: MediaQuery.of(context).size.width,
                           height: 100,
-                          child: Text( 'first_language'.tr, style: TextStyle(color: lightWhiteColor, fontSize: 14,fontWeight: FontWeight.bold),)),
+                          child: Text(
+                            'first_language'.tr,
+                            style: TextStyle(
+                                color: lightWhiteColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          )),
                       kSizedBoxH20,
                       Obx(
-                            () => GestureDetector(
+                        () => GestureDetector(
                           onTap: () {
                             languageController.changeLanguage("en", "US");
                           },
@@ -236,7 +241,7 @@ class _IntroScreenState extends State<IntroScreen> {
                         ),
                       ),
                       Obx(
-                            () => GestureDetector(
+                        () => GestureDetector(
                           onTap: () {
                             languageController.changeLanguage("zh", "CN");
                           },
@@ -264,6 +269,35 @@ class _IntroScreenState extends State<IntroScreen> {
                           ),
                         ),
                       ),
+                      Obx(
+                        () => GestureDetector(
+                          onTap: () {
+                            languageController.changeLanguage("vi", "VN");
+                          },
+                          child: Card(
+                            color: cardColor,
+                            child: ListTile(
+                              leading: Image.asset(
+                                "assets/images/vietnam.webp",
+                                width: 20,
+                                height: 30,
+                              ),
+                              title: Text(
+                                "Tiếng Việt",
+                                style: TextStyle(color: lightWhiteColor),
+                              ),
+                              trailing: Icon(
+                                languageController.language.value == "vi"
+                                    ? Icons.check_circle
+                                    : Icons.check_circle_outline,
+                                color: languageController.language.value == "vi"
+                                    ? secondaryColor
+                                    : lightWhiteColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       // Spacer(),
                       // MaterialButton(onPressed: (){},child: Text("Save",style: TextStyle(color: lightWhiteColor),),color: secondaryColor,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
                       // kSizedBoxH10
@@ -276,86 +310,105 @@ class _IntroScreenState extends State<IntroScreen> {
                     width: MediaQuery.of(context).size.width,
                     child: MaterialButton(
                       onPressed: () {
-                        if (languageController.language.value.isNotEmpty&&first!='') {
+                        if (languageController.language.value.isNotEmpty &&
+                            first != '') {
                           Get.to(HomeMenu());
-                        }else{
-
-                          final languageController = Get.put(LanguageController());
-                          WidgetsBinding.instance.addPostFrameCallback((_) async {
-
-                              return showDialog(
-                                context: context,
-                                barrierDismissible: false,
-                                builder: (ctx) => Builder(builder: (context) {
-                                  return StatefulBuilder(
-                                    builder: (context, StateSetter setState) {
-                                      return AlertDialog(
-                                        title: CustomText(
-                                          text: 'policy'.tr,
-                                          fontWeight: FontWeight.w500,
-                                          textColor: secondaryColor,
-                                        ),
-                                        content: Container(
-                                          height: MediaQuery.of(context).size.height * 0.70,
-                                          child: SingleChildScrollView(
-                                              child: Column(
-                                                children: [
-                                                  Text(languageController.language.value=="en"?Global.policyEn:Global.policyCn, style: TextStyle(fontSize: 12,color: primaryColor)),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                    children: [
-                                                      Checkbox(
-                                                        shape: RoundedRectangleBorder(
-                                                            borderRadius: BorderRadius.circular(6)),
-                                                        activeColor: Colors.green,
-                                                        side: BorderSide(
-                                                          width: 1.5,
-                                                          color: isChecked ? Colors.green : Colors.black,
-                                                        ),
-                                                        value: isChecked,
-                                                        onChanged: (bool? value) {
-                                                          setState(() {
-                                                            isChecked = value!;
-                                                            if (isChecked) {
-                                                              isAccepted = true;
-                                                            } else {
-                                                              isAccepted = false;
-                                                            }
-                                                          });
-                                                        },
-                                                      ),
-                                                      CustomText(
-                                                        text: 'agree'.tr,
-                                                        size: 12,
-                                                        textColor: secondaryColor,
-                                                      )
-                                                    ],
+                        } else {
+                          final languageController =
+                              Get.put(LanguageController());
+                          WidgetsBinding.instance
+                              .addPostFrameCallback((_) async {
+                            return showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (ctx) => Builder(builder: (context) {
+                                return StatefulBuilder(
+                                  builder: (context, StateSetter setState) {
+                                    return AlertDialog(
+                                      title: CustomText(
+                                        text: 'policy'.tr,
+                                        fontWeight: FontWeight.w500,
+                                        textColor: secondaryColor,
+                                      ),
+                                      content: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.70,
+                                        child: SingleChildScrollView(
+                                            child: Column(
+                                          children: [
+                                            Text(
+                                                languageController
+                                                            .language.value ==
+                                                        "en"
+                                                    ? Global.policyEn
+                                                    : Global.policyCn,
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: primaryColor)),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Checkbox(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              6)),
+                                                  activeColor: Colors.green,
+                                                  side: BorderSide(
+                                                    width: 1.5,
+                                                    color: isChecked
+                                                        ? Colors.green
+                                                        : Colors.black,
                                                   ),
-                                                  MaterialButton(
-                                                    disabledColor: secondaryColor.withOpacity(0.3),
-                                                    color: isAccepted ? secondaryColor : greyColor,
-                                                    child: CustomText(
-                                                      text: 'accept'.tr,
-                                                      size: 14,
-                                                      textColor: Colors.white,
-                                                    ),
-                                                    onPressed: isAccepted
-                                                        ? () {
+                                                  value: isChecked,
+                                                  onChanged: (bool? value) {
+                                                    setState(() {
+                                                      isChecked = value!;
+                                                      if (isChecked) {
+                                                        isAccepted = true;
+                                                      } else {
+                                                        isAccepted = false;
+                                                      }
+                                                    });
+                                                  },
+                                                ),
+                                                CustomText(
+                                                  text: 'agree'.tr,
+                                                  size: 12,
+                                                  textColor: secondaryColor,
+                                                )
+                                              ],
+                                            ),
+                                            MaterialButton(
+                                              disabledColor: secondaryColor
+                                                  .withOpacity(0.3),
+                                              color: isAccepted
+                                                  ? secondaryColor
+                                                  : greyColor,
+                                              child: CustomText(
+                                                text: 'accept'.tr,
+                                                size: 14,
+                                                textColor: Colors.white,
+                                              ),
+                                              onPressed: isAccepted
+                                                  ? () {
                                                       final box = GetStorage();
-                                                      box.write('first', 'notfirst');
+                                                      box.write(
+                                                          'first', 'notfirst');
                                                       Get.to(HomeMenu());
                                                     }
-                                                        : null,
-                                                  ),
-                                                ],
-                                              )),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                }),
-                              );
-
+                                                  : null,
+                                            ),
+                                          ],
+                                        )),
+                                      ),
+                                    );
+                                  },
+                                );
+                              }),
+                            );
                           });
                         }
                       },

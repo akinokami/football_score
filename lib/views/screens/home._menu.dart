@@ -44,7 +44,6 @@ class HomeMenu extends StatelessWidget {
                 label: 'matches'.tr,
                 backgroundColor: primaryColor,
               ),
-
               BottomNavigationBarItem(
                 icon: Container(
                   margin: const EdgeInsets.only(bottom: 7),
@@ -81,12 +80,7 @@ class HomeMenu extends StatelessWidget {
       bottomNavigationBar: buildBottomNavigationMenu(context, homeController),
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
-            children: const [
-              MatchScreen(),
-
-              NewsScreen(),
-              SettingsScreen()
-            ],
+            children: const [MatchScreen(), NewsScreen(), SettingsScreen()],
           )),
     ));
   }

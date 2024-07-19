@@ -10,7 +10,7 @@ class SplashScreenController extends GetxController {
     final box = GetStorage();
     first = box.read('first') ?? '';
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       (first == '')
           ? Get.to(() => const IntroScreen())
           : Get.to(() => HomeMenu());

@@ -47,6 +47,7 @@ class AppConfigController extends GetxController {
                   element.id != "14")
               .toList() ??
           [];
+      print("asfdfdffdf");
     } catch (e) {
       isLoading.value = false;
       constants.showSnackBar(

@@ -82,6 +82,35 @@ class ChangeLanguageScreen extends StatelessWidget {
                 ),
               ),
             ),
+            Obx(
+              () => GestureDetector(
+                onTap: () {
+                  languageController.changeLanguage("vi", "VN");
+                },
+                child: Card(
+                  color: cardColor,
+                  child: ListTile(
+                    leading: Image.asset(
+                      "assets/images/vietnam.webp",
+                      width: 20,
+                      height: 30,
+                    ),
+                    title: Text(
+                      "Tiếng Việt",
+                      style: TextStyle(color: lightWhiteColor),
+                    ),
+                    trailing: Icon(
+                      languageController.language.value == "vi"
+                          ? Icons.check_circle
+                          : Icons.check_circle_outline,
+                      color: languageController.language.value == "vi"
+                          ? secondaryColor
+                          : lightWhiteColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
             // Spacer(),
             // MaterialButton(onPressed: (){},child: Text("Save",style: TextStyle(color: lightWhiteColor),),color: secondaryColor,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
             // kSizedBoxH10

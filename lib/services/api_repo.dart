@@ -22,7 +22,11 @@ class ApiRepo {
         "mark": "gif",
         "version": 373,
         "app": "",
-        "language": Global.language == "en" ? "en" : "zh-CN",
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en",
       });
       final appConfig = response.data;
       return AppModel.fromJson(appConfig);
@@ -34,7 +38,11 @@ class ApiRepo {
   Future<NewsModel> getNews({required String url}) async {
     try {
       final response = await apiUtils.get(url: url, queryParameters: {
-        "language": Global.language == "en" ? "en-US" : "zh-CN",
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
       });
       final news = response.data;
       return NewsModel.fromJson(news);
@@ -61,7 +69,11 @@ class ApiRepo {
           await apiUtils.get(url: ApiConstant.matchDetailUrl, queryParameters: {
         "id": matchId,
         "version": 373,
-        "language": Global.language == "en" ? "en-US" : "zh-CN",
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
         "app": "af",
       });
       final matches = response.data;
@@ -77,7 +89,11 @@ class ApiRepo {
           .get(url: ApiConstant.lineUpUrl + matchId, queryParameters: {
         "app": "af",
         "version": 373,
-        "language": Global.language == "en" ? "en-US" : "zh-CN",
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
       });
       final lineups = response.data;
       return LineupModel.fromJson(lineups);
@@ -91,7 +107,11 @@ class ApiRepo {
       final response = await apiUtils
           .get(url: ApiConstant.previewUrl + matchId, queryParameters: {
         "app": "af",
-        "language": Global.language == "en" ? "en-US" : "zh-CN",
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
       });
       final previews = response.data['data'][0];
       return PreviewModel.fromJson(previews);
@@ -107,7 +127,11 @@ class ApiRepo {
         "app": "af",
         "version": 373,
         "force": 1,
-        "language": Global.language == "en" ? "en-US" : "zh-CN",
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
       });
       final overviews = response.data;
       return OverviewModel.fromJson(overviews);

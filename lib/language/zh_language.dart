@@ -1,5 +1,6 @@
 class ZhLanguage {
   Map<String, String> zhLanguage = {
+    'vietnam': 'Tiếng Việt',
     'english': 'English',
     'chinese': '中文',
     'language': '语言',
@@ -8,14 +9,13 @@ class ZhLanguage {
     'next': '下一个',
     'change_language': '改變語言',
     'general': '一般的',
-    'other' :'其他',
-    'policy':'隐私政策',
-    'version':'版本',
-    'settings':'设置',
-    'matches':'比赛',
-    'news':'消息',
-    'agree':'我同意隐私政策。',
-    'accept':'接受',
-
+    'other': '其他',
+    'policy': '隐私政策',
+    'version': '版本',
+    'settings': '设置',
+    'matches': '比赛',
+    'news': '消息',
+    'agree': '我同意隐私政策。',
+    'accept': '接受',
   };
 }

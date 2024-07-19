@@ -21,7 +21,10 @@ class NewsController extends GetxController {
   }
 
   void startNew() {
-    getNews(Get.find<AppConfigController>().newsTabList[0].api ?? '');
+    if (Get.find<AppConfigController>().mTabList.isNotEmpty) {
+      getNews(Get.find<AppConfigController>().newsTabList[0].api ?? '');
+    }
+
     selectedIndex.value = 0;
   }
 

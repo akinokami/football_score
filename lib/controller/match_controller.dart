@@ -18,7 +18,9 @@ class MatchController extends GetxController {
   }
 
   void startMatch() {
-    getMatches(Get.find<AppConfigController>().mTabList[0].api ?? '');
+    if (Get.find<AppConfigController>().mTabList.isNotEmpty) {
+      getMatches(Get.find<AppConfigController>().mTabList[0].api ?? '');
+    }
     selectedIndex.value = 0;
   }
 

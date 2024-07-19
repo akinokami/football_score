@@ -45,7 +45,9 @@ class MyApp extends StatelessWidget {
       translations: Languages(),
       locale: Global.language == 'zh'
           ? const Locale('zh', 'CN')
-          : const Locale('en', 'US'),
+          : Global.language == 'vi'
+              ? const Locale('vi', 'VN')
+              : const Locale('en', 'US'),
       fallbackLocale: const Locale('en', 'US'),
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
