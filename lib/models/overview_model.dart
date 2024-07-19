@@ -200,7 +200,7 @@ class Tendencies {
   String? y;
   String? minute;
   List<TeamAGoal>? teamAGoal;
-  Null? teamBGoal;
+  List<TeamAGoal>? teamBGoal;
 
   Tendencies(
       {this.matchId,
@@ -221,7 +221,13 @@ class Tendencies {
         teamAGoal!.add(TeamAGoal.fromJson(v));
       });
     }
-    teamBGoal = json['team_b_goal'];
+    if (json['team_b_goal'] != null) {
+      teamBGoal = <TeamAGoal>[];
+      json['team_b_goal'].forEach((v) {
+        teamBGoal!.add(TeamAGoal.fromJson(v));
+      });
+    }
+    //teamBGoal = json['team_b_goal'];
   }
 
   Map<String, dynamic> toJson() {
@@ -233,7 +239,9 @@ class Tendencies {
     if (teamAGoal != null) {
       data['team_a_goal'] = teamAGoal!.map((v) => v.toJson()).toList();
     }
-    data['team_b_goal'] = teamBGoal;
+    if (teamAGoal != null) {
+      data['team_b_goal'] = teamAGoal!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
