@@ -7,7 +7,7 @@ import 'package:get_storage/get_storage.dart';
 
 import 'generated/codegen_loader.g.dart';
 
-void main() async{
+void main() async {
   await GetStorage.init();
   runApp(EasyLocalization(
     supportedLocales: const [
@@ -15,7 +15,6 @@ void main() async{
         'en',
       ),
       Locale("zh"),
-
     ],
     startLocale: const Locale('en'),
     path: 'assets/translations',
@@ -26,29 +25,25 @@ void main() async{
     child: const MyApp(),
   ));
 }
-initialization()async{
+
+initialization() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Football Score',
-      theme: ThemeData(
-       useMaterial3: true
-      ),
-      localizationsDelegates:
-      context.localizationDelegates,
+      theme: ThemeData(useMaterial3: true),
+      localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
-
   }
 }

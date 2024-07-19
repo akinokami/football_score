@@ -4,6 +4,7 @@ import 'package:football_score/controller/app_config_controller.dart';
 import 'package:football_score/controller/match_controller.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
+import 'package:football_score/views/screens/matches/match_detail_screen.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
@@ -95,6 +96,10 @@ class MatchScreen extends StatelessWidget {
                           return GestureDetector(
                             onTap: () {
                               //
+                              Get.to(() => MatchDetailScreen(), arguments: {
+                                'matchId':
+                                    matchController.matchList[index].matchId,
+                              });
                             },
                             child: Card(
                               color: cardColor,
