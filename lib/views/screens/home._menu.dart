@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:football_score/utils/app_theme.dart';
+import 'package:football_score/views/screens/settings/settings_screen.dart';
 import 'package:get/get.dart';
 import 'package:football_score/controller/home_controller.dart';
 import 'package:football_score/views/screens/matches/match_screen.dart';
 import 'package:football_score/views/screens/news/news_screen.dart';
-import 'package:football_score/views/screens/results/result_screen.dart';
-import 'package:football_score/views/screens/upcoming/upcoming_screen.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -45,26 +44,16 @@ class Home extends StatelessWidget {
                 label: 'Matches',
                 backgroundColor: primaryColor,
               ),
+
               BottomNavigationBarItem(
                 icon: Container(
                   margin: const EdgeInsets.only(bottom: 7),
                   child: const Icon(
-                    Icons.calendar_month,
+                    Icons.menu_book,
                     size: 20.0,
                   ),
                 ),
-                label: 'Upcoming',
-                backgroundColor: primaryColor,
-              ),
-              BottomNavigationBarItem(
-                icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
-                    Icons.location_history,
-                    size: 20.0,
-                  ),
-                ),
-                label: 'Results',
+                label: 'News',
                 backgroundColor: primaryColor,
               ),
               BottomNavigationBarItem(
@@ -75,7 +64,7 @@ class Home extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: 'News',
+                label: 'Settings',
                 backgroundColor: primaryColor,
               ),
             ],
@@ -92,11 +81,11 @@ class Home extends StatelessWidget {
       bottomNavigationBar: buildBottomNavigationMenu(context, homeController),
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
-            children: [
+            children: const [
               MatchScreen(),
-              UpcomingScreen(),
-              ResultScreen(),
+
               NewsScreen(),
+              SettingsScreen()
             ],
           )),
     ));

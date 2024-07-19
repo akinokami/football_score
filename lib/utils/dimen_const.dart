@@ -14,3 +14,5 @@ const double kPadding10 = 10;
 const double kPadding15 = 15;
 const double kPadding30 = 30;
 
+
+const String appVersion = '1.0.0';

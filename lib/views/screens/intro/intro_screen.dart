@@ -78,6 +78,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           ],
                         ),
                         MaterialButton(
+                          disabledColor: secondaryColor.withOpacity(0.3),
                           color: isAccepted ? secondaryColor : greyColor,
                           child: CustomText(
                             text: 'Accept',

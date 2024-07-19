@@ -21,7 +21,7 @@ class ChangeLanguageScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
            Obx(()=>
             GestureDetector(
@@ -53,9 +53,9 @@ class ChangeLanguageScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Spacer(),
-            MaterialButton(onPressed: (){},child: Text("Save",style: TextStyle(color: lightWhiteColor),),color: secondaryColor,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
-            kSizedBoxH10
+            // Spacer(),
+            // MaterialButton(onPressed: (){},child: Text("Save",style: TextStyle(color: lightWhiteColor),),color: secondaryColor,elevation: 0,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
+            // kSizedBoxH10
           ],
         ),
       ),
