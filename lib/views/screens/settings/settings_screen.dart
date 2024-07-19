@@ -3,6 +3,7 @@ import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/privacy_policy_screen.dart';
 import 'package:get/get.dart';
 
+import '../../../controller/language_controller.dart';
 import '../../../utils/app_theme.dart';
 import '../change_language.dart';
 
@@ -11,18 +12,19 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final languageController = Get.put(LanguageController());
     return Scaffold(
         backgroundColor: primaryColor,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           //iconTheme: IconThemeData(color: lightWhiteColor),
           backgroundColor: primaryColor,
-          title: Text('Settings', style: TextStyle(color: lightWhiteColor)),
+          title: Text('settings'.tr, style: TextStyle(color: lightWhiteColor)),
           centerTitle: true,
         ),
         body: ListView(
           children: [
-            Text('General',
+            Text('general'.tr,
                 style: TextStyle(
                     color: lightWhiteColor,
                     fontSize: 16,
@@ -47,7 +49,7 @@ class SettingsScreen extends StatelessWidget {
                               height: 30,
                             ),
                             kSizedBoxW10,
-                            Text('Language',
+                            Text('language'.tr,
                                 style: TextStyle(
                                     color: lightWhiteColor, fontSize: 14)),
                           ],
@@ -55,7 +57,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text('language'.tr,
+                          Text(languageController.language.value=="en"?'english'.tr:'chinese'.tr,
                               style: TextStyle(
                                   color: lightWhiteColor, fontSize: 14)),
                           Icon(
@@ -73,7 +75,7 @@ class SettingsScreen extends StatelessWidget {
             //   padding: const EdgeInsets.all(8.0),
             //   child: Divider(color: lightWhiteColor,),
             // ),
-            Text('Other',
+            Text('other'.tr,
                 style: TextStyle(
                     color: lightWhiteColor,
                     fontSize: 16,
@@ -97,7 +99,7 @@ class SettingsScreen extends StatelessWidget {
                               size: 20,
                             ),
                             kSizedBoxW10,
-                            Text('Privacy Policy',
+                            Text('policy'.tr,
                                 style: TextStyle(
                                     color: lightWhiteColor, fontSize: 14)),
                           ],
@@ -127,7 +129,7 @@ class SettingsScreen extends StatelessWidget {
                             size: 20,
                           ),
                           kSizedBoxW10,
-                          Text('Version',
+                          Text('version'.tr,
                               style: TextStyle(
                                   color: lightWhiteColor, fontSize: 14)),
                         ],

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final box = GetStorage();
-    String language = box.read('language');
+    String language = box.read('language')??"en";
     return GetMaterialApp(
       title: 'Football Score',
       theme: ThemeData(useMaterial3: true),

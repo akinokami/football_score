@@ -41,7 +41,7 @@ class HomeMenu extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: 'Matches',
+                label: 'matches'.tr,
                 backgroundColor: primaryColor,
               ),
 
@@ -53,7 +53,7 @@ class HomeMenu extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: 'News',
+                label: 'news'.tr,
                 backgroundColor: primaryColor,
               ),
               BottomNavigationBarItem(
@@ -64,7 +64,7 @@ class HomeMenu extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: 'Settings',
+                label: 'settings'.tr,
                 backgroundColor: primaryColor,
               ),
             ],

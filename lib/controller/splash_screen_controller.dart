@@ -3,8 +3,6 @@ import 'package:football_score/views/screens/intro/intro_screen.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../models/lineup_model.dart';
-
 class SplashScreenController extends GetxController {
   String first = '';
   @override
