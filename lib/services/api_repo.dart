@@ -4,6 +4,7 @@ import 'package:football_score/services/api_constant.dart';
 import 'package:football_score/services/api_utils.dart';
 import 'package:football_score/utils/custom_exception.dart';
 
+import '../models/lineup_model.dart';
 import '../models/match_detail_model.dart';
 import '../models/news_model.dart';
 
@@ -50,7 +51,7 @@ class ApiRepo {
     }
   }
 
-  Future<MatchDetailModel> getMatchDetail({required int matchId}) async {
+  Future<MatchDetailModel> getMatchDetail({required String matchId}) async {
     try {
       final response =
           await apiUtils.get(url: ApiConstant.matchDetailUrl, queryParameters: {
@@ -61,6 +62,21 @@ class ApiRepo {
       });
       final matches = response.data;
       return MatchDetailModel.fromJson(matches);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<LineupModel> getLineup({required String matchId}) async {
+    try {
+      final response = await apiUtils
+          .get(url: ApiConstant.lineUpUrl + matchId, queryParameters: {
+        "app": "af",
+        "version": 373,
+        "language": "en",
+      });
+      final lineups = response.data;
+      return LineupModel.fromJson(lineups);
     } catch (e) {
       throw CustomException(e.toString());
     }

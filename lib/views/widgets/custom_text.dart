@@ -26,7 +26,7 @@ class CustomText extends StatelessWidget {
         maxLines: maxLines ?? 1,
         style: TextStyle(
             fontFamily: fontFamily,
-            color: textColor ?? Colors.black,
+            color: textColor ?? Colors.white,
             fontSize: size ?? 15,
             overflow:
                 isEllip == false ? TextOverflow.visible : TextOverflow.ellipsis,

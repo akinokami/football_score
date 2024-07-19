@@ -95,11 +95,11 @@ class MatchScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              //
-                              Get.to(() => MatchDetailScreen(), arguments: {
-                                'matchId':
-                                    matchController.matchList[index].matchId,
-                              });
+                              Get.to(() => const MatchDetailScreen(),
+                                  arguments: {
+                                    'matchId': matchController
+                                        .matchList[index].matchId,
+                                  });
                             },
                             child: Card(
                               color: cardColor,
