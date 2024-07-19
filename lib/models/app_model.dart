@@ -152,7 +152,7 @@ class Menus {
 }
 
 class News {
-  String? id;
+  dynamic id;
   String? label;
   int? badge;
   bool? recommend;
