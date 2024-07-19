@@ -22,7 +22,7 @@ class MatchController extends GetxController {
             .appModel
             .value
             .menus
-            ?.matchTab?[4]
+            ?.matchTab?[0]
             .api ??
         '');
     selectedIndex.value = 0;
@@ -40,7 +40,6 @@ class MatchController extends GetxController {
       matchModel.value = result;
       matchList.value = result.list ?? [];
     } catch (e) {
-      isLoading.value = false;
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {

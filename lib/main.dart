@@ -4,6 +4,8 @@ import 'package:football_score/views/screens/splash_screen.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'utils/global.dart';
+
 void main() async {
   await GetStorage.init();
   // runApp(EasyLocalization(
@@ -36,12 +38,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final box = GetStorage();
-    String language = box.read('language') ?? "en";
+    Global.language = box.read('language') ?? "en";
     return GetMaterialApp(
       title: 'Football Score',
       theme: ThemeData(useMaterial3: true),
       translations: Languages(),
-      locale: language == 'zh'
+      locale: Global.language == 'zh'
           ? const Locale('zh', 'CN')
           : const Locale('en', 'US'),
       fallbackLocale: const Locale('en', 'US'),

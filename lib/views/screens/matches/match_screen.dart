@@ -36,7 +36,9 @@ class MatchScreen extends StatelessWidget {
                       child: ListView.builder(
                         shrinkWrap: true,
                         itemCount: (appConfigController
-                            .appModel.value.menus?.matchTab?.length??0)-5,
+                                    .appModel.value.menus?.matchTab?.length ??
+                                0) -
+                            5,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Obx(
@@ -45,7 +47,7 @@ class MatchScreen extends StatelessWidget {
                                 matchController.changeIndex(
                                     index,
                                     appConfigController.appModel.value.menus
-                                            ?.matchTab?[index+5].api ??
+                                            ?.matchTab?[index].api ??
                                         '');
                               },
                               child: Container(
@@ -65,7 +67,7 @@ class MatchScreen extends StatelessWidget {
                                 child: CustomText(
                                   size: 12,
                                   text: appConfigController.appModel.value.menus
-                                          ?.matchTab?[index+5].label ??
+                                          ?.matchTab?[index].label ??
                                       '',
                                   textColor:
                                       matchController.selectedIndex.value ==
@@ -95,8 +97,10 @@ class MatchScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              Get.to(() =>  MatchDetailScreen(match:matchController
-                                  .matchList[index] ,),
+                              Get.to(
+                                  () => MatchDetailScreen(
+                                        match: matchController.matchList[index],
+                                      ),
                                   arguments: {
                                     'matchId': matchController
                                         .matchList[index].matchId,

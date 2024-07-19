@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:football_score/controller/app_config_controller.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -10,6 +11,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appConfigController = Get.put(AppConfigController());
     final splashScreenController = Get.put(SplashScreenController());
     return Scaffold(
       body: Container(
