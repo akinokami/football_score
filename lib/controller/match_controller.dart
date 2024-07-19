@@ -22,7 +22,7 @@ class MatchController extends GetxController {
             .appModel
             .value
             .menus
-            ?.matchTab?[0]
+            ?.matchTab?[4]
             .api ??
         '');
     selectedIndex.value = 0;
