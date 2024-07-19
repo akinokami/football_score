@@ -92,7 +92,7 @@ class ApiRepo {
         "app": "af",
         "language": Global.language == "en" ? "en-US" : "zh-CN",
       });
-      final previews = response.data;
+      final previews = response.data['data'][0];
       return PreviewModel.fromJson(previews);
     } catch (e) {
       throw CustomException(e.toString());

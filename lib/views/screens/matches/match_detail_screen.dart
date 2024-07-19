@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:football_score/models/match_model.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
+import 'package:football_score/views/screens/matches/h_to_h_widget.dart';
 import 'package:football_score/views/screens/matches/lineup_widget.dart';
 import 'package:football_score/views/screens/matches/overall_widget.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
@@ -277,15 +278,14 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                         matchDetailController.lineupModel.value,
                                   ),
                           ),
-                          Obx(
-                            () => matchDetailController.isLoadingTab.value
-                                ? const Center(
-                                    child: CircularProgressIndicator(),
-                                  )
-                                : Column(
-                                    children: [CustomText(text: '')],
-                                  ),
-                          ),
+                          Obx(() => matchDetailController.isLoadingTab.value
+                              ? const Center(
+                                  child: CircularProgressIndicator(),
+                                )
+                              : HToHWidget(
+                                  previewModel:
+                                      matchDetailController.previewModel.value,
+                                )),
                         ],
                       ),
                     ),
