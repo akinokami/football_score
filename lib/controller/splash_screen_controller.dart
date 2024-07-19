@@ -1,12 +1,29 @@
+import 'package:football_score/views/screens/home._menu.dart';
 import 'package:football_score/views/screens/intro/intro_screen.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../models/lineup_model.dart';
 
 class SplashScreenController extends GetxController {
+  String first = '';
   @override
   void onInit() {
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const IntroScreen());
-    });
+    final box = GetStorage();
+    first = box.read('first') ?? '';
+
+      Future.delayed(const Duration(seconds: 2), () {
+        (first == '')?
+          Get.to(() => const IntroScreen()):
+
+
+          Get.to(() =>  HomeMenu());
+
+      });
+
+
+
+
     super.onInit();
   }
 

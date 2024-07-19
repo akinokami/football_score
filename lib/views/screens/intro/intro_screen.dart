@@ -198,7 +198,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   () => MaterialButton(
                     onPressed: () {
                       if (introController.selectedSportIndex.isNotEmpty) {
-                        Get.to(Home());
+                        Get.to(HomeMenu());
                       }
                     },
                     color: introController.selectedSportIndex.isNotEmpty

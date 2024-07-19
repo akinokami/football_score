@@ -469,13 +469,13 @@ class Events {
 
 class RedirectMiddle {
   String? scheme;
-  Text? text;
+  TextModel? text;
 
   RedirectMiddle({this.scheme, this.text});
 
   RedirectMiddle.fromJson(Map<String, dynamic> json) {
     scheme = json['scheme'];
-    text = json['text'] != null ? Text.fromJson(json['text']) : null;
+    text = json['text'] != null ? TextModel.fromJson(json['text']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -488,21 +488,21 @@ class RedirectMiddle {
   }
 }
 
-class Text {
+class TextModel {
   String? title;
   String? size;
   //Null? icon;
   String? normalColor;
   String? pressColor;
 
-  Text(
+  TextModel(
       {this.title,
       this.size,
       //this.icon,
       this.normalColor,
       this.pressColor});
 
-  Text.fromJson(Map<String, dynamic> json) {
+  TextModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     size = json['size'];
     // icon = json['icon'];

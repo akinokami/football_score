@@ -6,8 +6,8 @@ import 'package:football_score/controller/home_controller.dart';
 import 'package:football_score/views/screens/matches/match_screen.dart';
 import 'package:football_score/views/screens/news/news_screen.dart';
 
-class Home extends StatelessWidget {
-  Home({super.key});
+class HomeMenu extends StatelessWidget {
+  HomeMenu({super.key});
 
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),

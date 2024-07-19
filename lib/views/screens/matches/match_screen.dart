@@ -95,7 +95,8 @@ class MatchScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              Get.to(() => const MatchDetailScreen(),
+                              Get.to(() =>  MatchDetailScreen(match:matchController
+                                  .matchList[index] ,),
                                   arguments: {
                                     'matchId': matchController
                                         .matchList[index].matchId,
