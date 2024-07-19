@@ -62,7 +62,9 @@ class SettingsScreen extends StatelessWidget {
                             Text(
                                 languageController.language.value == "en"
                                     ? 'english'.tr
-                                    : 'chinese'.tr,
+                                    : languageController.language.value == "vi"
+                                        ? 'vietnam'.tr
+                                        : 'chinese'.tr,
                                 style: TextStyle(
                                     color: lightWhiteColor, fontSize: 14)),
                             Padding(

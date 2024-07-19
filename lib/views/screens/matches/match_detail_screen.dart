@@ -16,9 +16,9 @@ import '../../../controller/match_controller.dart';
 import '../../../controller/match_detail_controller.dart';
 
 class MatchDetailScreen extends StatefulWidget {
-  const MatchDetailScreen({super.key, required this.match, required this.tendencies});
+  const MatchDetailScreen({super.key, required this.match});
   final Matches match;
-  final List<Tendencies> tendencies;
+
   @override
   State<MatchDetailScreen> createState() => _MatchDetailScreenState();
 }
@@ -265,7 +265,13 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                     child: CircularProgressIndicator(),
                                   )
                                 : OverviewWidget(
-                              tendencies: widget.tendencies,
+                                    tendencies: matchDetailController
+                                            .overviewModel
+                                            .value
+                                            .oList?[0]
+                                            .oData
+                                            ?.tendencies ??
+                                        [],
                                     match: widget.match,
                                     matchDetailModel: matchDetailController
                                         .matchDetailModel.value,

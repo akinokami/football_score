@@ -17,7 +17,6 @@ class MatchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final appConfigController = Get.put(AppConfigController());
     final matchController = Get.put(MatchController());
-    final overViewController = Get.put(MatchDetailController());
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
@@ -99,7 +98,6 @@ class MatchScreen extends StatelessWidget {
                               Get.to(
                                   () => MatchDetailScreen(
                                         match: matchController.matchList[index],
-                                    tendencies: overViewController.overviewModel.value.oList?[0].oData?.tendencies??[],
                                       ),
                                   arguments: {
                                     'matchId': matchController
