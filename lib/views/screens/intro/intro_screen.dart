@@ -325,7 +325,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                                         },
                                                       ),
                                                       CustomText(
-                                                        text: 'I agreed to the Privacy Policy.',
+                                                        text: 'agree'.tr,
                                                         size: 12,
                                                         textColor: secondaryColor,
                                                       )
@@ -335,7 +335,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                                     disabledColor: secondaryColor.withOpacity(0.3),
                                                     color: isAccepted ? secondaryColor : greyColor,
                                                     child: CustomText(
-                                                      text: 'Accept',
+                                                      text: 'accept'.tr,
                                                       size: 14,
                                                       textColor: Colors.white,
                                                     ),
@@ -343,7 +343,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                                         ? () {
                                                       final box = GetStorage();
                                                       box.write('first', 'notfirst');
-                                                      Navigator.pop(context);
+                                                      Get.to(HomeMenu());
                                                     }
                                                         : null,
                                                   ),
