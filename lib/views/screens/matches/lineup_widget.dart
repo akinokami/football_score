@@ -106,7 +106,7 @@ class LineupWidget extends StatelessWidget {
             ],
           ),
           Divider(color: lightWhiteColor,),
-          CustomText(text: 'Substitutes'),
+          if((lineupModel?.lupList?[0].lupData?.home?.sub?.length??0)>0) const CustomText(text: 'Substitutes'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
