@@ -18,5 +18,8 @@ class ZhLanguage {
     'news_detail': '新闻详情',
     'agree': '我同意隐私政策。',
     'accept': '接受',
+    'starts': '開始',
+    'subtitutes': '替補',
+    'lineups': '陣容',
   };
 }

@@ -19,5 +19,8 @@ class EnLanguage {
     'news_detail': 'News Details',
     'agree': 'I agreed to the privacy policy.',
     'accept': 'Accept',
+    'starts': 'Starts',
+    'subtitutes': 'Subtitutes',
+    'lineups': 'Lineups',
   };
 }

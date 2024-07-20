@@ -236,11 +236,11 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         labelColor: Colors.white,
                         unselectedLabelColor: Colors.white,
                         dividerColor: Colors.transparent,
-                        tabs: const [
+                        tabs: [
                           Tab(
-                            text: 'Lineups',
+                            text: 'lineups'.tr,
                           ),
-                          Tab(
+                          const Tab(
                             text: 'H2H',
                           ),
                         ],

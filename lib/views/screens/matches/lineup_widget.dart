@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
+import 'package:get/get.dart';
 
 import '../../../models/lineup_model.dart';
 
@@ -20,7 +21,8 @@ class LineupWidget extends StatelessWidget {
       child: ListView(
         shrinkWrap: true,
         children: [
-          CustomText(text: 'Starts'),
+          if ((lineupModel?.lupList?[0].lupData?.home?.start?.length ?? 0) > 0)
+            CustomText(text: 'starts'.tr),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,8 +39,6 @@ class LineupWidget extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-
-
                           CustomText(
                             textAlign: TextAlign.end,
                             text: lineupModel?.lupList?[0].lupData!.home!
@@ -52,12 +52,12 @@ class LineupWidget extends StatelessWidget {
                             width: 30,
                             height: 30,
                             imageUrl: lineupModel?.lupList?[0].lupData!.home!
-                                .start![index].person?.logo ??
+                                    .start![index].person?.logo ??
                                 '',
-                            placeholder: (context, url) =>
-                            const Center(child: CircularProgressIndicator()),
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                           kSizedBoxW20,
                         ],
@@ -84,8 +84,8 @@ class LineupWidget extends StatelessWidget {
                             imageUrl: lineupModel?.lupList?[0].lupData?.away
                                     ?.start?[index].person?.logo ??
                                 '',
-                            placeholder: (context, url) =>
-                                const Center(child: CircularProgressIndicator()),
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) =>
                                 const Icon(Icons.error),
                           ),
@@ -105,8 +105,11 @@ class LineupWidget extends StatelessWidget {
               ),
             ],
           ),
-          Divider(color: lightWhiteColor,),
-          if((lineupModel?.lupList?[0].lupData?.home?.sub?.length??0)>0) const CustomText(text: 'Substitutes'),
+          Divider(
+            color: lightWhiteColor,
+          ),
+          if ((lineupModel?.lupList?[0].lupData?.home?.sub?.length ?? 0) > 0)
+            CustomText(text: 'substitutes'.tr),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +118,7 @@ class LineupWidget extends StatelessWidget {
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount:
-                  lineupModel?.lupList?[0].lupData?.home?.sub?.length,
+                      lineupModel?.lupList?[0].lupData?.home?.sub?.length,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Padding(
@@ -123,12 +126,10 @@ class LineupWidget extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-
-
                           CustomText(
                             textAlign: TextAlign.end,
                             text: lineupModel?.lupList?[0].lupData!.home!
-                                .sub![index].person?.name ??
+                                    .sub![index].person?.name ??
                                 '',
                             size: 10,
                             textColor: Colors.white,
@@ -138,12 +139,12 @@ class LineupWidget extends StatelessWidget {
                             width: 30,
                             height: 30,
                             imageUrl: lineupModel?.lupList?[0].lupData!.home!
-                                .sub![index].person?.logo ??
+                                    .sub![index].person?.logo ??
                                 '',
-                            placeholder: (context, url) =>
-                            const Center(child: CircularProgressIndicator()),
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                           kSizedBoxW20,
                         ],
@@ -156,7 +157,7 @@ class LineupWidget extends StatelessWidget {
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount:
-                  lineupModel?.lupList?[0].lupData?.away?.sub?.length,
+                      lineupModel?.lupList?[0].lupData?.away?.sub?.length,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Padding(
@@ -168,17 +169,17 @@ class LineupWidget extends StatelessWidget {
                             width: 30,
                             height: 30,
                             imageUrl: lineupModel?.lupList?[0].lupData?.away
-                                ?.sub?[index].person?.logo ??
+                                    ?.sub?[index].person?.logo ??
                                 '',
-                            placeholder: (context, url) =>
-                            const Center(child: CircularProgressIndicator()),
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                           kSizedBoxW10,
                           CustomText(
                             text: lineupModel?.lupList?[0].lupData?.away
-                                ?.sub![index].person?.name ??
+                                    ?.sub![index].person?.name ??
                                 '',
                             size: 10,
                             textColor: Colors.white,
