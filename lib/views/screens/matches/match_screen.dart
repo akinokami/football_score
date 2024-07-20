@@ -22,7 +22,7 @@ class MatchScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         toolbarHeight: 20,
       ),
-      body: Padding(
+      body:appConfigController.mTabList.isNotEmpty? Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
@@ -81,7 +81,7 @@ class MatchScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Expanded(
+            matchController.matchList.isNotEmpty? Expanded(
               child: Obx(
                 () => matchController.isLoading.value
                     ? const Center(
@@ -228,10 +228,16 @@ class MatchScreen extends StatelessWidget {
                         },
                       ),
               ),
+            ):const Center(
+              child: Text("No Data Found"),
             ),
           ],
         ),
-      ),
+      ): Center(
+        child: Text("No Data Found",style: TextStyle(
+          color: whiteColor
+        ),),
+      )
     );
   }
 }

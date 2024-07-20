@@ -12,7 +12,7 @@ class HToHWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return (previewModel?.preData?.matches?.isNotEmpty==true)? Padding(
       padding: const EdgeInsets.all(5),
       child: ListView.builder(
         shrinkWrap: true,
@@ -114,6 +114,10 @@ class HToHWidget extends StatelessWidget {
           );
         }),
       ),
+    ):Center(
+      child: Text("No Data Found",style: TextStyle(
+          color: whiteColor
+      ),),
     );
   }
 }

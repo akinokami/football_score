@@ -23,7 +23,8 @@ class NewsScreen extends StatelessWidget {
         toolbarHeight: 20,
         centerTitle: true,
       ),
-      body: Padding(
+      body:appConfigController.newsTabList.isNotEmpty?
+      Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
@@ -81,7 +82,7 @@ class NewsScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Expanded(
+            (newsController.articleList.isNotEmpty)? Expanded(
               child: Obx(
                 () => newsController.isLoading.value
                     ? const Center(
@@ -145,10 +146,18 @@ class NewsScreen extends StatelessWidget {
                         },
                       ),
               ),
-            ),
+            ):Center(
+              child: Text("No Data Found",style: TextStyle(
+                  color: whiteColor
+              ),),
+            )
           ],
         ),
-      ),
+      ):Center(
+        child: Text("No Data Found",style: TextStyle(
+            color: whiteColor
+        ),),
+      )
     );
   }
 }

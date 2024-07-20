@@ -20,7 +20,7 @@ class EnLanguage {
     'agree': 'I agreed to the privacy policy.',
     'accept': 'Accept',
     'starts': 'Starts',
-    'subtitutes': 'Subtitutes',
+    'subtitutes': 'Substitution',
     'lineups': 'Lineups',
   };
 }

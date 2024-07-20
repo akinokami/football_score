@@ -23,7 +23,7 @@ class LineupWidget extends StatelessWidget {
         children: [
           if ((lineupModel?.lupList?[0].lupData?.home?.start?.length ?? 0) > 0)
             CustomText(text: 'starts'.tr),
-          Row(
+          if ((lineupModel?.lupList?[0].lupData?.home?.start?.length ?? 0) > 0)  Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -66,7 +66,7 @@ class LineupWidget extends StatelessWidget {
                   },
                 ),
               ),
-              Expanded(
+              if ((lineupModel?.lupList?[0].lupData?.away?.start?.length ?? 0) > 0) Expanded(
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount:
@@ -109,8 +109,8 @@ class LineupWidget extends StatelessWidget {
             color: lightWhiteColor,
           ),
           if ((lineupModel?.lupList?[0].lupData?.home?.sub?.length ?? 0) > 0)
-            CustomText(text: 'substitutes'.tr),
-          Row(
+            CustomText(text: 'subtitutes'.tr),
+          if ((lineupModel?.lupList?[0].lupData?.home?.sub?.length ?? 0) > 0) Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -153,7 +153,7 @@ class LineupWidget extends StatelessWidget {
                   },
                 ),
               ),
-              Expanded(
+              if ((lineupModel?.lupList?[0].lupData?.away?.sub?.length ?? 0) > 0) Expanded(
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount:
