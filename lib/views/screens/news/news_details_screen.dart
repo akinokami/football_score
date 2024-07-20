@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:football_score/models/news_model.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
+import 'package:get/get.dart';
 import 'package:html/parser.dart' as html_parser;
 
 class NewsDetailsScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class NewsDetailsScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
-        title:  Text('News Details',style: TextStyle(color: Colors.white,fontSize: 20) ),
+        title:  Text('news_detail'.tr,style: TextStyle(color: Colors.white,fontSize: 20) ),
       ),
       body: Container(
         padding: const EdgeInsets.all(kPadding15),

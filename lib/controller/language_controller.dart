@@ -10,7 +10,7 @@ class LanguageController extends GetxController {
   final language = ''.obs;
   final matchController = Get.put(MatchController());
   final newsController = Get.put(NewsController());
-
+  final isLoading = false.obs;
   @override
   void onInit() {
     getLanguage();
@@ -18,6 +18,7 @@ class LanguageController extends GetxController {
   }
 
   void changeLanguage(String languageCode, String countryCode) {
+    isLoading.value = true;
     language.value = languageCode;
     Global.language = languageCode;
     Get.updateLocale(Locale(languageCode, countryCode));
@@ -28,6 +29,7 @@ class LanguageController extends GetxController {
     Future.delayed(const Duration(seconds: 2), () {
       matchController.startMatch();
       newsController.startNew();
+      isLoading.value = false;
     });
   }
 

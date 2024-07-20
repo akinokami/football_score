@@ -308,7 +308,7 @@ class _IntroScreenState extends State<IntroScreen> {
                       onPressed: () {
                         if (languageController.language.value.isNotEmpty &&
                             first != '') {
-                          Get.to(HomeMenu());
+                          Get.offAll(HomeMenu());
                         } else {
                           final languageController =
                               Get.put(LanguageController());
@@ -338,7 +338,9 @@ class _IntroScreenState extends State<IntroScreen> {
                                                             .language.value ==
                                                         "en"
                                                     ? Global.policyEn
-                                                    : Global.policyCn,
+                                                    :languageController
+                                                    .language.value ==
+                                                    "zh"? Global.policyCn:Global.policyViet,
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     color: primaryColor)),

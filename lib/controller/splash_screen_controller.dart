@@ -12,8 +12,8 @@ class SplashScreenController extends GetxController {
 
     Future.delayed(const Duration(seconds: 3), () {
       (first == '')
-          ? Get.to(() => const IntroScreen())
-          : Get.to(() => HomeMenu());
+          ? Get.offAll(() => const IntroScreen())
+          : Get.offAll(() => HomeMenu());
     });
 
     super.onInit();
