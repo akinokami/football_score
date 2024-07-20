@@ -25,7 +25,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(languageController.language.value=="en"?Global.policyEn:Global.policyCn, style: TextStyle(color: lightWhiteColor, fontSize: 14)),
+              child: Text(languageController.language.value=="en"?Global.policyEn:languageController.language.value=="zh"?Global.policyCn:Global.policyViet, style: TextStyle(color: lightWhiteColor, fontSize: 14)),
             )
           ],
         ),
