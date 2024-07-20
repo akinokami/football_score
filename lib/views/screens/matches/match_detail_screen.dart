@@ -2,17 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:football_score/models/match_model.dart';
-import 'package:football_score/models/overview_model.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/matches/h_to_h_widget.dart';
 import 'package:football_score/views/screens/matches/lineup_widget.dart';
-import 'package:football_score/views/screens/matches/overall_widget.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../../controller/match_controller.dart';
 import '../../../controller/match_detail_controller.dart';
 
 class MatchDetailScreen extends StatefulWidget {
@@ -42,7 +39,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
   @override
   Widget build(BuildContext context) {
     final matchDetailController = Get.put(MatchDetailController());
-    final matchController = Get.put(MatchController());
+
     return Scaffold(
         backgroundColor: primaryColor,
         appBar: AppBar(

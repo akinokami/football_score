@@ -8,8 +8,6 @@ import 'package:football_score/views/screens/matches/match_detail_screen.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/match_detail_controller.dart';
-
 class MatchScreen extends StatelessWidget {
   const MatchScreen({super.key});
 

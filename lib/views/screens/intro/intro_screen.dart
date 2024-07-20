@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:football_score/controller/app_config_controller.dart';
 import 'package:football_score/utils/dimen_const.dart';
-import 'package:football_score/views/screens/change_language.dart';
 import 'package:get/get.dart';
-
 import 'package:get_storage/get_storage.dart';
-import '../../../controller/intro_screen_controller.dart';
 import '../../../controller/language_controller.dart';
 import '../../../utils/app_theme.dart';
 import '../../../utils/global.dart';
@@ -25,7 +21,7 @@ class _IntroScreenState extends State<IntroScreen> {
   String first = '';
   @override
   void initState() {
-    // TODO: implement initState
+    //
     super.initState();
 //     final box = GetStorage();
 //     first = box.read('first') ?? '';
