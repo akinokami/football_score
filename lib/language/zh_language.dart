@@ -22,5 +22,7 @@ class ZhLanguage {
     'subtitutes': '替補',
     'lineups': '陣容',
     'search': '搜索',
+    'warning': '警告',
+    'please_enter_text': '請輸入文字',
   };
 }

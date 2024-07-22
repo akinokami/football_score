@@ -23,5 +23,7 @@ class ViLanguage {
     'subtitutes': 'Người thay thế',
     'lineups': 'Đội hình',
     'search': 'Tìm kiếm',
+    'warning': 'Cảnh báo',
+    'please_enter_text': 'Vui lòng nhập văn bản',
   };
 }

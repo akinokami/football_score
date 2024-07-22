@@ -10,11 +10,27 @@ class MatchController extends GetxController {
   final isLoading = false.obs;
   Rx<MatchModel> matchModel = MatchModel().obs;
   RxList<Matches> matchList = <Matches>[].obs;
+  RxList<Matches> matchSearchList = <Matches>[].obs;
+  TextEditingController searchController = TextEditingController();
 
   @override
   void onInit() {
     startMatch();
     super.onInit();
+  }
+
+  void searchMatches() {
+    if (searchController.text.isNotEmpty) {
+      matchSearchList.value = matchList
+          .where((element) =>
+              element.teamAName!
+                  .toLowerCase()
+                  .contains(searchController.text.toLowerCase()) ||
+              element.teamBName!
+                  .toLowerCase()
+                  .contains(searchController.text.toLowerCase()))
+          .toList();
+    }
   }
 
   void startMatch() {

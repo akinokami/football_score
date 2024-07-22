@@ -23,5 +23,7 @@ class EnLanguage {
     'subtitutes': 'Substitution',
     'lineups': 'Lineups',
     'search': 'Search',
+    'warning': 'Warning',
+    'please_enter_text': 'Please enter text',
   };
 }
