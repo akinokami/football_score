@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
@@ -17,7 +18,7 @@ class LineupWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding:  EdgeInsets.all(10.w),
       child: ListView(
         shrinkWrap: true,
         children: [
@@ -35,7 +36,7 @@ class LineupWidget extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.all(8.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -44,13 +45,13 @@ class LineupWidget extends StatelessWidget {
                             text: lineupModel?.lupList?[0].lupData!.home!
                                     .start![index].person?.name ??
                                 '',
-                            size: 10,
+                            size: 8.sp,
                             textColor: Colors.white,
                           ),
                           kSizedBoxW10,
                           CachedNetworkImage(
-                            width: 30,
-                            height: 30,
+                            width: 30.w,
+                            height: 30.h,
                             imageUrl: lineupModel?.lupList?[0].lupData!.home!
                                     .start![index].person?.logo ??
                                 '',
@@ -74,13 +75,13 @@ class LineupWidget extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.all(8.w),
                       child: Row(
                         children: [
                           kSizedBoxW20,
                           CachedNetworkImage(
-                            width: 30,
-                            height: 30,
+                            width: 30.w,
+                            height: 30.h,
                             imageUrl: lineupModel?.lupList?[0].lupData?.away
                                     ?.start?[index].person?.logo ??
                                 '',
@@ -94,7 +95,7 @@ class LineupWidget extends StatelessWidget {
                             text: lineupModel?.lupList?[0].lupData?.away
                                     ?.start![index].person?.name ??
                                 '',
-                            size: 10,
+                            size: 8.sp,
                             textColor: Colors.white,
                           ),
                         ],
@@ -122,7 +123,7 @@ class LineupWidget extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.all(8.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -131,13 +132,13 @@ class LineupWidget extends StatelessWidget {
                             text: lineupModel?.lupList?[0].lupData!.home!
                                     .sub![index].person?.name ??
                                 '',
-                            size: 10,
+                            size: 8.sp,
                             textColor: Colors.white,
                           ),
                           kSizedBoxW10,
                           CachedNetworkImage(
-                            width: 30,
-                            height: 30,
+                            width: 30.w,
+                            height: 30.h,
                             imageUrl: lineupModel?.lupList?[0].lupData!.home!
                                     .sub![index].person?.logo ??
                                 '',
@@ -161,13 +162,13 @@ class LineupWidget extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.all(8.w),
                       child: Row(
                         children: [
                           kSizedBoxW20,
                           CachedNetworkImage(
-                            width: 30,
-                            height: 30,
+                            width: 30.w,
+                            height: 30.h,
                             imageUrl: lineupModel?.lupList?[0].lupData?.away
                                     ?.sub?[index].person?.logo ??
                                 '',
@@ -181,7 +182,7 @@ class LineupWidget extends StatelessWidget {
                             text: lineupModel?.lupList?[0].lupData?.away
                                     ?.sub![index].person?.name ??
                                 '',
-                            size: 10,
+                            size: 8.sp,
                             textColor: Colors.white,
                           ),
                         ],

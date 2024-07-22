@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/privacy_policy_screen.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/language_controller.dart';
 import '../../../utils/app_theme.dart';
+import '../../widgets/custom_text.dart';
 import '../change_language.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -19,18 +21,15 @@ class SettingsScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           //iconTheme: IconThemeData(color: lightWhiteColor),
           backgroundColor: primaryColor,
-          title: Text('settings'.tr, style: TextStyle(color: lightWhiteColor)),
+          title: CustomText(text:'settings'.tr,size: 16.sp,fontWeight: FontWeight.bold,),
           centerTitle: true,
         ),
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding:  EdgeInsets.all(10.w),
           child: ListView(
             children: [
-              Text('general'.tr,
-                  style: TextStyle(
-                      color: lightWhiteColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold)),
+              CustomText(text:'general'.tr,
+                 size: 14.sp,),
 
               GestureDetector(
                 onTap: () {
@@ -47,32 +46,34 @@ class SettingsScreen extends StatelessWidget {
                             children: [
                               Image.asset(
                                 "assets/images/chnage_lan.webp",
-                                width: 20,
-                                height: 30,
+                                width: 20.w,
+                                height: 20.h,
                               ),
                               kSizedBoxW10,
-                              Text('language'.tr,
-                                  style: TextStyle(
-                                      color: lightWhiteColor, fontSize: 14)),
+                              CustomText(text:'language'.tr,
+                                fontWeight: FontWeight.w400,
+                                size: 12.sp,
+                                  ),
                             ],
                           ),
                         ),
                         Row(
                           children: [
-                            Text(
-                                languageController.language.value == "en"
+                            CustomText(
+                               text: languageController.language.value == "en"
                                     ? 'english'.tr
                                     : languageController.language.value == "vi"
                                         ? 'vietnam'.tr
                                         : 'chinese'.tr,
-                                style: TextStyle(
-                                    color: lightWhiteColor, fontSize: 14)),
+                              size: 12.sp,
+                              textColor: lightWhiteColor,
+                               ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding:  EdgeInsets.all(8.w),
                               child: Icon(
                                 Icons.arrow_forward_ios,
                                 color: lightWhiteColor,
-                                size: 20,
+                                size: 18.w,
                               ),
                             ),
                           ],
@@ -85,11 +86,8 @@ class SettingsScreen extends StatelessWidget {
               //   padding: const EdgeInsets.all(8.0),
               //   child: Divider(color: lightWhiteColor,),
               // ),
-              Text('other'.tr,
-                  style: TextStyle(
-                      color: lightWhiteColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold)),
+              CustomText(text:'other'.tr,
+                 size: 14.sp,),
               GestureDetector(
                 onTap: () {
                   Get.to(const PrivacyPolicyScreen());
@@ -100,18 +98,18 @@ class SettingsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(15.0),
+                          padding:  EdgeInsets.all(10.w),
                           child: Row(
                             children: [
                               Icon(
                                 Icons.privacy_tip_outlined,
                                 color: lightWhiteColor,
-                                size: 20,
+                                size: 18.w,
                               ),
                               kSizedBoxW10,
                               Text('policy'.tr,
                                   style: TextStyle(
-                                      color: lightWhiteColor, fontSize: 14)),
+                                      color: lightWhiteColor, fontSize: 12.sp)),
                             ],
                           ),
                         ),
@@ -120,7 +118,7 @@ class SettingsScreen extends StatelessWidget {
                           child: Icon(
                             Icons.arrow_forward_ios,
                             color: lightWhiteColor,
-                            size: 20,
+                            size: 20.w,
                           ),
                         ),
                       ],
@@ -133,18 +131,18 @@ class SettingsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding:  EdgeInsets.all(10.w),
                         child: Row(
                           children: [
                             Icon(
                               Icons.info_outlined,
                               color: lightWhiteColor,
-                              size: 20,
+                              size: 18.w,
                             ),
                             kSizedBoxW10,
                             Text('version'.tr,
                                 style: TextStyle(
-                                    color: lightWhiteColor, fontSize: 14)),
+                                    color: lightWhiteColor, fontSize: 12.sp)),
                           ],
                         ),
                       ),
@@ -153,7 +151,7 @@ class SettingsScreen extends StatelessWidget {
                             horizontal: 10.0, vertical: 15),
                         child: Text(appVersion,
                             style: TextStyle(
-                                color: lightWhiteColor, fontSize: 14)),
+                                color: lightWhiteColor, fontSize: 12.sp)),
                       ),
                     ],
                   )),

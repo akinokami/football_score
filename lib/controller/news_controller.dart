@@ -14,10 +14,21 @@ class NewsController extends GetxController {
 
   RxList<Articles> articleList = <Articles>[].obs;
 
+  TextEditingController searchController = TextEditingController();
+
   @override
   void onInit() {
     startNew();
     super.onInit();
+  }
+
+  void searchNews() {
+    if (searchController.text.isNotEmpty) {
+
+      if (Get.find<AppConfigController>().mTabList.isNotEmpty) {
+        getNews(Get.find<AppConfigController>().newsTabList[0].api ?? '');
+      }
+    }
   }
 
   void startNew() {

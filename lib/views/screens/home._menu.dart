@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/utils/app_theme.dart';
+import 'package:football_score/views/screens/search_screen.dart';
 import 'package:football_score/views/screens/settings/settings_screen.dart';
 import 'package:get/get.dart';
 import 'package:football_score/controller/home_controller.dart';
@@ -12,16 +14,16 @@ class HomeMenu extends StatelessWidget {
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
       fontWeight: FontWeight.w500,
-      fontSize: 12);
+      fontSize: 10.sp);
 
-  final TextStyle selectedLabelStyle = const TextStyle(
-      color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12);
+  final TextStyle selectedLabelStyle =  TextStyle(
+      color: Colors.white, fontWeight: FontWeight.w500, fontSize: 10.sp);
 
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         child: SizedBox(
-          height: 60,
+          height: 60.h,
           child: BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
@@ -35,10 +37,10 @@ class HomeMenu extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  margin:  EdgeInsets.only(bottom:5.h),
+                  child:  Icon(
                     Icons.sports_outlined,
-                    size: 20.0,
+                    size: 20.w,
                   ),
                 ),
                 label: 'matches'.tr,
@@ -46,10 +48,10 @@ class HomeMenu extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  margin:  EdgeInsets.only(bottom:5.h),
+                  child:  Icon(
                     Icons.menu_book,
-                    size: 20.0,
+                    size: 20.w,
                   ),
                 ),
                 label: 'news'.tr,
@@ -57,10 +59,21 @@ class HomeMenu extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  margin:  EdgeInsets.only(bottom:5.h),
+                  child:  Icon(
+                    Icons.search,
+                    size: 20.w,
+                  ),
+                ),
+                label: 'search'.tr,
+                backgroundColor: primaryColor,
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                  margin:  EdgeInsets.only(bottom:5.h),
+                  child:  Icon(
                     Icons.settings,
-                    size: 20.0,
+                    size: 20.w,
                   ),
                 ),
                 label: 'settings'.tr,
@@ -80,7 +93,7 @@ class HomeMenu extends StatelessWidget {
       bottomNavigationBar: buildBottomNavigationMenu(context, homeController),
       body: Obx(() => IndexedStack(
             index: homeController.tabIndex.value,
-            children: const [MatchScreen(), NewsScreen(), SettingsScreen()],
+            children: const [MatchScreen(), NewsScreen(),SearchScreen(), SettingsScreen()],
           )),
     ));
   }

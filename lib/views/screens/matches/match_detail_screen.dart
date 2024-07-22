@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/models/match_model.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
@@ -56,7 +57,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
               : Column(
                   children: [
                     Container(
-                      height: 200,
+                      height: 180.h,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage("assets/images/match_detail.webp"),
@@ -73,8 +74,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 CachedNetworkImage(
-                                  width: 50,
-                                  height: 50,
+                                  width: 50.w,
+                                  height: 50.h,
                                   imageUrl: matchDetailController
                                           .matchDetailModel
                                           .value
@@ -94,9 +95,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                             .matchSample?.teamAName ??
                                         '',
                                     textAlign: TextAlign.center,
-                                    style: const TextStyle(
+                                    style:  TextStyle(
                                       color: Colors.white,
-                                      fontSize: 12,
+                                      fontSize: 10.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -115,10 +116,10 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   child: Text(
                                     "${matchDetailController.matchDetailModel.value.matchSample?.fsA ?? ''}  -  ${matchDetailController.matchDetailModel.value.matchSample?.fsB ?? ''}",
                                     textAlign: TextAlign.center,
-                                    style: const TextStyle(
+                                    style:  TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 16,
+                                      fontSize: 12.sp,
                                     ),
                                   ),
                                 ),
@@ -150,9 +151,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                         ? "Full Time"
                                         : "Half Time"),
                                     textAlign: TextAlign.center,
-                                    style: const TextStyle(
+                                    style:  TextStyle(
                                       color: Colors.white,
-                                      fontSize: 12,
+                                      fontSize: 10.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -167,8 +168,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 CachedNetworkImage(
-                                  width: 50,
-                                  height: 50,
+                                  width: 50.w,
+                                  height: 50.h,
                                   imageUrl: matchDetailController
                                           .matchDetailModel
                                           .value
@@ -189,9 +190,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                             .matchSample?.teamBName ??
                                         '',
                                     textAlign: TextAlign.center,
-                                    style: const TextStyle(
+                                    style:  TextStyle(
                                       color: Colors.white,
-                                      fontSize: 12,
+                                      fontSize: 10.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -202,21 +203,19 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    kSizedBoxH20,
 
                     Container(
-                      height: 45,
+                      height: 40.h,
                       decoration: BoxDecoration(
                         color: greyColor,
                         borderRadius: BorderRadius.circular(
-                          25.0,
+                          25.r,
                         ),
                       ),
                       child: TabBar(
-                        labelPadding: const EdgeInsets.all(5.0),
-                        indicatorPadding: const EdgeInsets.all(0.0),
+
+
                         indicatorSize: TabBarIndicatorSize.tab,
                         controller: tabController,
                         onTap: (value) {
@@ -226,10 +225,10 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                             matchDetailController.getPreview();
                           }
                         },
-                        padding: const EdgeInsets.all(5.0),
+                        padding:  EdgeInsets.all(5.w),
                         indicator: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                            25.0,
+                            25.r,
                           ),
                           color: secondaryColor,
                         ),
@@ -251,16 +250,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                       child: TabBarView(
                         controller: tabController,
                         children: [
-                          // Obx(
-                          //   () => matchController.isLoading.value
-                          //       ? const Center(
-                          //           child: CircularProgressIndicator(),
-                          //         )
-                          //       : OverviewWidget(
-                          //           overviewModel: matchDetailController
-                          //               .overviewModel.value,
-                          //         ),
-                          // ),
+
                           Obx(
                             () => matchDetailController.isLoadingTab.value
                                 ? const Center(

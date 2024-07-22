@@ -99,4 +99,9 @@ Cookies 是包含少量数据的文件，通常用作匿名唯一标识符。这
 ''';
 
   static String language = 'en';
+
+  static double screenWidth = 0.0;
+  static double screenHeight = 0.0;
+  static double x = 0.0;
+  static double y = 0.0;
 }

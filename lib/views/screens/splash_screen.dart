@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/controller/app_config_controller.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -15,8 +16,8 @@ class SplashScreen extends StatelessWidget {
     final splashScreenController = Get.put(SplashScreenController());
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: 1.sh,
+        width: 1.sw,
         decoration: BoxDecoration(color: cardColor),
         child: Center(
           child: Lottie.asset('assets/images/score_wp.json'),

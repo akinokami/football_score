@@ -22,5 +22,6 @@ class ViLanguage {
     'starts': 'Bắt đầu',
     'subtitutes': 'Người thay thế',
     'lineups': 'Đội hình',
+    'search': 'Tìm kiếm',
   };
 }

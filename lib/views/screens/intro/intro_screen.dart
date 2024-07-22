@@ -111,23 +111,7 @@ class _IntroScreenState extends State<IntroScreen> {
           automaticallyImplyLeading: false,
           backgroundColor: primaryColor,
           iconTheme: IconThemeData(color: whiteColor),
-          // actions: [
-          //   GestureDetector(
-          //     onTap: () {
-          //       Get.to(() => const ChangeLanguageScreen());
-          //     },
-          //     child: Row(
-          //       children: [
-          //         CustomText(
-          //             text: 'language'.tr, size: 16, textColor: whiteColor),
-          //         Icon(
-          //           Icons.language,
-          //           color: whiteColor,
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ],
+
         ),
         body: Container(
           height: MediaQuery.of(context).size.height,
@@ -300,7 +284,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Obx(
                   () => SizedBox(
                     width: MediaQuery.of(context).size.width,
@@ -326,7 +310,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                         fontWeight: FontWeight.w500,
                                         textColor: secondaryColor,
                                       ),
-                                      content: Container(
+                                      content: SizedBox(
                                         height:
                                             MediaQuery.of(context).size.height *
                                                 0.70,
@@ -385,19 +369,19 @@ class _IntroScreenState extends State<IntroScreen> {
                                               color: isAccepted
                                                   ? secondaryColor
                                                   : greyColor,
-                                              child: CustomText(
-                                                text: 'accept'.tr,
-                                                size: 14,
-                                                textColor: Colors.white,
-                                              ),
                                               onPressed: isAccepted
                                                   ? () {
                                                       final box = GetStorage();
                                                       box.write(
                                                           'first', 'notfirst');
-                                                      Get.to(HomeMenu());
+                                                      Get.offAll(HomeMenu());
                                                     }
                                                   : null,
+                                              child: CustomText(
+                                                text: 'accept'.tr,
+                                                size: 14,
+                                                textColor: Colors.white,
+                                              ),
                                             ),
                                           ],
                                         )),

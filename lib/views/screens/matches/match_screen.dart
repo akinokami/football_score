@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/controller/app_config_controller.dart';
 import 'package:football_score/controller/match_controller.dart';
 import 'package:football_score/utils/app_theme.dart';
@@ -20,10 +21,10 @@ class MatchScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
-        toolbarHeight: 20,
+        toolbarHeight: 12.h,
       ),
-      body:appConfigController.mTabList.isNotEmpty? Padding(
-        padding: const EdgeInsets.all(10.0),
+      body: Padding(
+        padding:  EdgeInsets.all(6.h),
         child: Column(
           children: [
             Obx(
@@ -31,8 +32,8 @@ class MatchScreen extends StatelessWidget {
                   ? const Center(
                       child: CircularProgressIndicator(),
                     )
-                  : SizedBox(
-                      height: 35,
+                  :appConfigController.mTabList.isNotEmpty? SizedBox(
+                      height: 28.h,
                       child: ListView.builder(
                         shrinkWrap: true,
                         itemCount: appConfigController.mTabList.length,
@@ -48,9 +49,9 @@ class MatchScreen extends StatelessWidget {
                               },
                               child: Container(
                                 margin:
-                                    const EdgeInsets.symmetric(horizontal: 5),
+                                     EdgeInsets.symmetric(horizontal: 5.w),
                                 padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
+                                     EdgeInsets.only(left: 10.w, right: 10.w),
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     color:
@@ -61,7 +62,7 @@ class MatchScreen extends StatelessWidget {
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(20))),
                                 child: CustomText(
-                                  size: 12,
+                                  size: 10.sp,
                                   text: appConfigController
                                           .mTabList[index].label ??
                                       '',
@@ -76,18 +77,20 @@ class MatchScreen extends StatelessWidget {
                           );
                         },
                       ),
-                    ),
+                    ):const Center(
+                child: CustomText(text:"No Data Found",),
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
-            matchController.matchList.isNotEmpty? Expanded(
+            Expanded(
               child: Obx(
                 () => matchController.isLoading.value
                     ? const Center(
                         child: CircularProgressIndicator(),
                       )
-                    : ListView.builder(
+                    : matchController.matchList.isNotEmpty? ListView.builder(
                         shrinkWrap: true,
                         itemCount: matchController.matchList.length,
                         itemBuilder: (context, index) {
@@ -105,7 +108,7 @@ class MatchScreen extends StatelessWidget {
                             child: Card(
                               color: cardColor,
                               child: Padding(
-                                padding: const EdgeInsets.all(5.0),
+                                padding:  EdgeInsets.all(5.w),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
@@ -129,14 +132,14 @@ class MatchScreen extends StatelessWidget {
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 10,
+                                                fontSize: 9.sp,
                                               ),
                                             ),
                                           ),
                                           kSizedBoxW5,
                                           CachedNetworkImage(
-                                            width: 20,
-                                            height: 20,
+                                            width: 18.w,
+                                            height: 18.h,
                                             imageUrl: matchController
                                                     .matchList[index]
                                                     .teamALogo ??
@@ -161,20 +164,20 @@ class MatchScreen extends StatelessWidget {
                                             "${matchController.matchList[index].fsA ?? ''} - ${matchController.matchList[index].fsB ?? ''}",
                                             style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 10),
+                                                fontSize: 8.sp),
                                           ),
                                           Text(
                                             "  vs  ",
                                             style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 10),
+                                                fontSize: 8.sp),
                                           ),
                                           Text(
                                             "  ${matchController.matchList[index].dateUtc ?? ''}  ",
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 10),
+                                                fontSize: 8.sp),
                                           ),
                                         ],
                                       ),
@@ -187,8 +190,8 @@ class MatchScreen extends StatelessWidget {
                                             MainAxisAlignment.start,
                                         children: [
                                           CachedNetworkImage(
-                                            width: 20,
-                                            height: 20,
+                                            width: 18.w,
+                                            height: 18.h,
                                             imageUrl: matchController
                                                     .matchList[index]
                                                     .teamBLogo ??
@@ -213,7 +216,7 @@ class MatchScreen extends StatelessWidget {
                                                   '',
                                               style: TextStyle(
                                                 color: lightWhiteColor,
-                                                fontSize: 10,
+                                                fontSize: 8.sp,
                                               ),
                                             ),
                                           ),
@@ -226,17 +229,13 @@ class MatchScreen extends StatelessWidget {
                             ),
                           );
                         },
-                      ),
+                      ): const Center(
+                  child: CustomText(text:"No Data Found",),
+                ),
               ),
-            ):const Center(
-              child: Text("No Data Found"),
-            ),
+            )
           ],
         ),
-      ): Center(
-        child: Text("No Data Found",style: TextStyle(
-          color: whiteColor
-        ),),
       )
     );
   }

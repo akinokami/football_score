@@ -21,5 +21,6 @@ class ZhLanguage {
     'starts': '開始',
     'subtitutes': '替補',
     'lineups': '陣容',
+    'search': '搜索',
   };
 }

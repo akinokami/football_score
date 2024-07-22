@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/models/news_model.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:get/get.dart';
 import 'package:html/parser.dart' as html_parser;
+
+import '../../widgets/custom_text.dart';
 
 class NewsDetailsScreen extends StatelessWidget {
   const NewsDetailsScreen({super.key, this.articles, this.imageUrl});
@@ -21,7 +24,7 @@ class NewsDetailsScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
-        title:  Text('news_detail'.tr,style: TextStyle(color: Colors.white,fontSize: 20) ),
+        title:  CustomText(text:'news_detail'.tr,size: 16.sp,fontWeight: FontWeight.bold,),
       ),
       body: Container(
         padding: const EdgeInsets.all(kPadding15),
@@ -32,15 +35,15 @@ class NewsDetailsScreen extends StatelessWidget {
         ),
         child:  ListView(
           children: [
-            Text(articles?.title??"",
-                style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold)),
-            Text(articles?.time??"",
-                style: TextStyle(color: greyColor, fontSize: 15)),
+            CustomText(text:articles?.title??"",fontWeight: FontWeight.bold,size: 14.sp,textColor: Colors.white,),
+
+            CustomText(text:articles?.time??"",
+               ),
             kSizedBoxH10,
-            Image.network(imageUrl??"",height: 200,fit: BoxFit.cover,),
+            Image.network(imageUrl??"",height: 180.h,fit: BoxFit.cover,),
             kSizedBoxH10,
-            Text(removeHtmlTags(articles?.body??""),
-                style: TextStyle(color: Colors.white, fontSize: 15)),
+            Text(removeHtmlTags(articles?.body??""),style:  TextStyle(color: Colors.white,fontSize: 12.sp)),
+
 
           ],
         ),

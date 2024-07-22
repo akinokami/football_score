@@ -22,5 +22,6 @@ class EnLanguage {
     'starts': 'Starts',
     'subtitutes': 'Substitution',
     'lineups': 'Lineups',
+    'search': 'Search',
   };
 }
