@@ -13,6 +13,7 @@ class NewsController extends GetxController {
   Rx<NewsModel> newsModel = NewsModel().obs;
 
   RxList<Articles> articleList = <Articles>[].obs;
+  RxList<Articles> searchArticleList = <Articles>[].obs;
 
   TextEditingController searchController = TextEditingController();
 
@@ -24,10 +25,11 @@ class NewsController extends GetxController {
 
   void searchNews() {
     if (searchController.text.isNotEmpty) {
-
-      if (Get.find<AppConfigController>().mTabList.isNotEmpty) {
-        getNews(Get.find<AppConfigController>().newsTabList[0].api ?? '');
-      }
+      searchArticleList.value = articleList
+          .where((element) => element.title!
+              .toLowerCase()
+              .contains(searchController.text.toLowerCase()))
+          .toList();
     }
   }
 
