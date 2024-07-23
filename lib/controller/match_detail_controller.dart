@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:football_score/models/lineup_model.dart';
 import 'package:football_score/models/overview_model.dart';
@@ -15,7 +17,7 @@ class MatchDetailController extends GetxController {
   Rx<MatchDetailModel> matchDetailModel = MatchDetailModel().obs;
   Rx<LineupModel> lineupModel = LineupModel().obs;
   Rx<PreviewModel> previewModel = PreviewModel().obs;
-  Rx<OverviewModel> overviewModel = OverviewModel().obs;
+  Map<String, dynamic> overviewModel = <String, dynamic>{}.obs;
 
   @override
   void onInit() {
@@ -68,7 +70,8 @@ class MatchDetailController extends GetxController {
     isLoadingTab.value = true;
     try {
       final result = await ApiRepo().getOverview(matchId: matchId.value);
-      overviewModel.value = result;
+      overviewModel = result;
+      print("overviewModel>>>>$overviewModel");
     } catch (e) {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
