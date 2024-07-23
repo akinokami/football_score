@@ -7,6 +7,7 @@ import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/matches/h_to_h_widget.dart';
 import 'package:football_score/views/screens/matches/lineup_widget.dart';
+import 'package:football_score/views/screens/matches/standings_widget.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -277,7 +278,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                         matchDetailController.lineupModel.value,
                                   ),
                           ),
-                          CustomText(text: 'standing'),
+                          StandingsWidget(),
                           Obx(() => matchDetailController.isLoadingTab.value
                               ? const Center(
                                   child: CircularProgressIndicator(),
