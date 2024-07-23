@@ -27,7 +27,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
 
   @override
   void initState() {
-    tabController = TabController(length: 2, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
     super.initState();
   }
 
@@ -95,7 +95,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                             .matchSample?.teamAName ??
                                         '',
                                     textAlign: TextAlign.center,
-                                    style:  TextStyle(
+                                    style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.bold,
@@ -116,7 +116,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   child: Text(
                                     "${matchDetailController.matchDetailModel.value.matchSample?.fsA ?? ''}  -  ${matchDetailController.matchDetailModel.value.matchSample?.fsB ?? ''}",
                                     textAlign: TextAlign.center,
-                                    style:  TextStyle(
+                                    style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 12.sp,
@@ -151,7 +151,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                         ? "Full Time"
                                         : "Half Time"),
                                     textAlign: TextAlign.center,
-                                    style:  TextStyle(
+                                    style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.bold,
@@ -190,7 +190,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                             .matchSample?.teamBName ??
                                         '',
                                     textAlign: TextAlign.center,
-                                    style:  TextStyle(
+                                    style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.bold,
@@ -214,8 +214,6 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         ),
                       ),
                       child: TabBar(
-
-
                         indicatorSize: TabBarIndicatorSize.tab,
                         controller: tabController,
                         onTap: (value) {
@@ -225,7 +223,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                             matchDetailController.getPreview();
                           }
                         },
-                        padding:  EdgeInsets.all(5.w),
+                        padding: EdgeInsets.all(5.w),
                         indicator: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                             25.r,
@@ -237,7 +235,13 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         dividerColor: Colors.transparent,
                         tabs: [
                           Tab(
+                            text: 'overAll'.tr,
+                          ),
+                          Tab(
                             text: 'lineups'.tr,
+                          ),
+                          Tab(
+                            text: 'standing'.tr,
                           ),
                           const Tab(
                             text: 'H2H',
@@ -250,7 +254,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                       child: TabBarView(
                         controller: tabController,
                         children: [
-
+                          CustomText(text: 'over all'),
                           Obx(
                             () => matchDetailController.isLoadingTab.value
                                 ? const Center(
@@ -261,6 +265,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                         matchDetailController.lineupModel.value,
                                   ),
                           ),
+                          CustomText(text: 'standing'),
                           Obx(() => matchDetailController.isLoadingTab.value
                               ? const Center(
                                   child: CircularProgressIndicator(),
