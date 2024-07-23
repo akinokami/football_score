@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../controller/match_detail_controller.dart';
+import 'over_view_widget.dart';
 
 class MatchDetailScreen extends StatefulWidget {
   const MatchDetailScreen({super.key, required this.match});
@@ -254,7 +255,16 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                       child: TabBarView(
                         controller: tabController,
                         children: [
-                          CustomText(text: 'over all'),
+                          Obx(
+                                () => matchDetailController.isLoadingTab.value
+                                ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                                : OverviewWidget(
+                              overviewModel:
+                              matchDetailController.overviewModel.value,
+                            ),
+                          ),
                           Obx(
                             () => matchDetailController.isLoadingTab.value
                                 ? const Center(
