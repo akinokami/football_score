@@ -241,25 +241,38 @@ class OverviewWidget extends StatelessWidget {
                                                                           ['home']
                                                                       [homeIndex]
                                                                   ['code'] ==
-                                                              "YC")
+                                                              "YC"||eventModel['data']['events'][index]
+                                                      ['home']
+                                                      [homeIndex]
+                                                      ['code'] ==
+                                                          "RC")
                                                           ? Container(
                                                               width: 4.w,
                                                               height: 6.h,
-                                                              color:
-                                                                  Colors.yellow,
+                                                              color:eventModel['data']['events'][index]
+                                                              ['home']
+                                                              [homeIndex]
+                                                              ['code'] ==
+                                                                  "YC"?
+                                                                  Colors.yellow:Colors.red,
                                                             )
                                                           : (eventModel['data']['events'][index]['home'][homeIndex]['code'] ==
                                                                       "G" ||
                                                                   eventModel['data']['events'][index]['home'][homeIndex][
                                                                           'code'] ==
-                                                                      "OG")
+                                                                      "OG"||eventModel['data']['events'][index]['home'][homeIndex][
+                                                      'code'] ==
+                                                          "PG")
                                                               ? Icon(
                                                                   Icons
                                                                       .sports_soccer,
                                                                   color: eventModel['data']['events'][index]['home'][homeIndex]
                                                                               [
                                                                               'code'] ==
-                                                                          "G"
+                                                                          "G"||eventModel['data']['events'][index]['home'][homeIndex]
+                                                                  [
+                                                                  'code'] ==
+                                                                      "PG"
                                                                       ? Colors
                                                                           .green
                                                                       : Colors
@@ -268,34 +281,45 @@ class OverviewWidget extends StatelessWidget {
                                                                 )
                                                               : (eventModel['data']['events'][index]['home'][homeIndex]
                                                                           ['code'] ==
-                                                                      "SO")
-                                                                  ? const Icon(
-                                                                      Icons
-                                                                          .arrow_forward,
-                                                                      color: Colors
-                                                                          .red,
+                                                                      "SO"||eventModel['data']['events'][index]['home'][homeIndex]
+                                                      ['code'] ==
+                                                          "SI")
+                                                                  ?  Icon(
+                                                        eventModel['data']['events'][index]['home'][homeIndex]
+                                                        ['code'] ==
+                                                            "SO" ?Icons
+                                                                          .arrow_forward:Icons.arrow_back,
+                                                                      color:eventModel['data']['events'][index]['home'][homeIndex]
+                                                                      ['code'] ==
+                                                                          "SO"? Colors
+                                                                          .red:Colors.green,
                                                                       size: 10,
                                                                     )
-                                                                  : const Icon(
-                                                                      Icons
-                                                                          .arrow_back,
-                                                                      color: Colors
-                                                                          .green,
-                                                                      size: 10,
-                                                                    ),
+                                                                  : eventModel['data']['events'][index]['home'][homeIndex]
+                                                      ['code'] ==
+                                                          "VAR"?const Text("VAR",
+                                                                      style: TextStyle(
+                                                                          color: Colors
+                                                                              .red,
+                                                                          fontSize:
+                                                                              8)):Image.asset("assets/images/assist.webp",width: 15,height: 15,),
                                                       kSizedBoxW10,
-                                                      CustomText(
-                                                          //textColor: Colors.green,
-                                                          size: 8.sp,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          text: eventModel['data']
-                                                                          [
-                                                                          'events']
-                                                                      [index][
-                                                                  'home'][homeIndex]
-                                                              [
-                                                              'person']['name']),
+                                                      SizedBox(
+                                                        width: 70.w,
+                                                        child: CustomText(
+                                                            //textColor: Colors.green,
+                                                            maxLines: 2,
+                                                            size: 8.sp,
+                                                            textAlign:
+                                                                TextAlign.left,
+                                                            text: eventModel['data']
+                                                                            [
+                                                                            'events']
+                                                                        [index][
+                                                                    'home'][homeIndex]
+                                                                [
+                                                                'person']['name']),
+                                                      ),
                                                     ],
                                                   ),
                                                 );
@@ -398,31 +422,68 @@ class OverviewWidget extends StatelessWidget {
                                                                             [index]
                                                                         ['away'][awayIndex]
                                                                     ['code'] ==
-                                                                "YC")
+                                                                "YC"||eventModel['data']['events'][index]
+                                                        ['away']
+                                                            [awayIndex]
+                                                            ['code'] ==
+                                                            "RC")
                                                             ? Container(
                                                                 width: 4.w,
                                                                 height: 6.h,
-                                                                color: Colors
-                                                                    .yellow,
+                                                                color:eventModel['data']['events']
+                                                                [index]
+                                                                ['away'][awayIndex]
+                                                                ['code'] ==
+                                                                    "YC"? Colors
+                                                                    .yellow:Colors.red,
                                                               )
-                                                            : (eventModel['data']['events'][index]['away']
-                                                                            [awayIndex]
-                                                                        ['code'] ==
-                                                                    "SO")
-                                                                ? const Icon(
-                                                                    Icons
-                                                                        .arrow_forward,
-                                                                    color: Colors
-                                                                        .red,
-                                                                    size: 10,
-                                                                  )
-                                                                : const Icon(
-                                                                    Icons
-                                                                        .arrow_back,
-                                                                    color: Colors
-                                                                        .green,
-                                                                    size: 10,
-                                                                  ),
+                                                            :(eventModel['data']['events'][index]['away'][awayIndex]['code'] ==
+                                                            "G" ||
+                                                            eventModel['data']['events'][index]['away'][awayIndex][
+                                                            'code'] ==
+                                                                "OG"||eventModel['data']['events'][index]['away'][awayIndex][
+                                                        'code'] ==
+                                                            "PG")
+                                                            ? Icon(
+                                                          Icons
+                                                              .sports_soccer,
+                                                          color: eventModel['data']['events'][index]['away'][awayIndex]
+                                                          [
+                                                          'code'] ==
+                                                              "G" ||eventModel['data']['events'][index]['away'][awayIndex]
+                                                          [
+                                                          'code'] ==
+                                                              "PG"
+
+                                                              ? Colors
+                                                              .green
+                                                              : Colors
+                                                              .red,
+                                                          size: 12,
+                                                        ): (eventModel['data']['events'][index]['away'][awayIndex]
+                                                    ['code'] ==
+                                                    "SO"||eventModel['data']['events'][index]['away'][awayIndex]
+                                                    ['code'] ==
+                                                    "SI")
+                                                    ?  Icon(
+                                                    eventModel['data']['events'][index]['away'][awayIndex]
+                                                    ['code'] ==
+                                                    "SO" ?Icons
+                                                        .arrow_forward:Icons.arrow_back,
+                                                    color:eventModel['data']['events'][index]['away'][awayIndex]
+                                                    ['code'] ==
+                                                    "SO"? Colors
+                                                        .red:Colors.green,
+                                                    size: 10,
+                                                    )
+                                                        : eventModel['data']['events'][index]['away'][awayIndex]
+                                                    ['code'] ==
+                                                    "VAR"?const Text("VAR",
+                                                    style: TextStyle(
+                                                    color: Colors
+                                                        .red,
+                                                    fontSize:
+                                                    8)):Image.asset("assets/images/assist.webp",width: 15,height: 15,),
                                                       if (eventModel['data']['events']
                                                                           [
                                                                           index]
@@ -438,16 +499,20 @@ class OverviewWidget extends StatelessWidget {
                                                                   [awayIndex][
                                                               'minute_extra'] !=
                                                           "45")
-                                                        CustomText(
-                                                            //textColor: Colors.green,
-                                                            size: 8.sp,
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            text: eventModel['data']
-                                                                            ['events']
-                                                                        [index]['away']
-                                                                    [awayIndex][
-                                                                'person']['name']),
+                                                        SizedBox(
+                                                          width: 70.w,
+                                                          child: CustomText(
+                                                              //textColor: Colors.green,
+                                                            maxLines: 2,
+                                                              size: 8.sp,
+                                                              textAlign: TextAlign
+                                                                  .right,
+                                                              text: eventModel['data']
+                                                                              ['events']
+                                                                          [index]['away']
+                                                                      [awayIndex][
+                                                                  'person']['name']),
+                                                        ),
                                                     ],
                                                   ),
                                                 );
