@@ -18,6 +18,7 @@ class MatchDetailController extends GetxController {
   Rx<LineupModel> lineupModel = LineupModel().obs;
   Rx<PreviewModel> previewModel = PreviewModel().obs;
   Map<String, dynamic> overviewModel = <String, dynamic>{}.obs;
+  Map<String, dynamic> rankingModel = <String, dynamic>{}.obs;
 
   @override
   void onInit() {
@@ -71,6 +72,13 @@ class MatchDetailController extends GetxController {
     try {
       final result = await ApiRepo().getOverview(matchId: matchId.value);
       overviewModel = result;
+      if (overviewModel['data'].length > 0) {
+        rankingModel = overviewModel['data']
+            .where((element) => element['template'] == 'match_ranking_group')
+            .toList()
+            .first;
+        print("rankingModel>>>>$rankingModel");
+      }
       print("overviewModel>>>>$overviewModel");
     } catch (e) {
       constants.showSnackBar(

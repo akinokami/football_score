@@ -48,6 +48,7 @@ dependencies:
   lottie: ^2.7.0
   html: ^0.15.4
   flutter_screenutil: ^5.9.3
+  date_picker_timeline:
 
 dev_dependencies:
   flutter_test:

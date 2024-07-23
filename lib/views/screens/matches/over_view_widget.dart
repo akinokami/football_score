@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:football_score/models/overview_model.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 

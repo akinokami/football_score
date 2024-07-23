@@ -219,7 +219,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         indicatorSize: TabBarIndicatorSize.tab,
                         controller: tabController,
                         onTap: (value) {
-                          if (value == 0) {
+                          if (value == 0 || value == 2) {
                             matchDetailController.getOverview();
                           } else if (value == 1) {
                             matchDetailController.getLineUp();
@@ -278,7 +278,22 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                         matchDetailController.lineupModel.value,
                                   ),
                           ),
-                          StandingsWidget(),
+                          Obx(
+                            () => matchDetailController.isLoadingTab.value
+                                ? const Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : matchDetailController.rankingModel.isEmpty
+                                    ? const Center(
+                                        child: CustomText(
+                                          text: 'No Data Found',
+                                        ),
+                                      )
+                                    : StandingsWidget(
+                                        rankingModel:
+                                            matchDetailController.rankingModel,
+                                      ),
+                          ),
                           Obx(() => matchDetailController.isLoadingTab.value
                               ? const Center(
                                   child: CircularProgressIndicator(),

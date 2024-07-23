@@ -4,6 +4,7 @@ import 'package:football_score/models/match_model.dart';
 import 'package:football_score/services/api_repo.dart';
 import 'package:football_score/utils/constants.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class MatchController extends GetxController {
   final selectedIndex = 0.obs;
@@ -12,6 +13,8 @@ class MatchController extends GetxController {
   RxList<Matches> matchList = <Matches>[].obs;
   RxList<Matches> matchSearchList = <Matches>[].obs;
   TextEditingController searchController = TextEditingController();
+  var selectedDate = DateTime.now().obs;
+  var selectedUrl = ''.obs;
 
   @override
   void onInit() {
@@ -48,9 +51,18 @@ class MatchController extends GetxController {
   Future<void> getMatches(String url) async {
     isLoading.value = true;
     try {
-      final result = await ApiRepo().getMatches(url: url);
+      selectedUrl.value = url;
+      final result = await ApiRepo()
+          .getMatches(url: url, date: selectedDate.value.toString());
       matchModel.value = result;
-      matchList.value = result.list ?? [];
+
+      if (matchModel.value.list != null) {
+        matchList.value = matchModel.value.list!;
+        // .where((element) =>
+        //     element.dateUtc ==
+        //     DateFormat('yyyy-MM-dd').format(selectedDate.value))
+        // .toList();
+      }
     } catch (e) {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);

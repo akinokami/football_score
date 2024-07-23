@@ -1,87 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/utils/app_theme.dart';
-class StandingModel{
-  final String? teamName;
-  final int? played;
-  final int? won;
-  final int? draw;
-  final int? lost;
-  final int? goalDifference;
-  final int? goalFor;
-  final int? goalAgainst;
-  final int? points;
 
-  StandingModel({
-    this.teamName,
-    this.played,
-    this.won,
-    this.draw,
-    this.lost,
-    this.goalDifference,
-    this.goalFor,
-    this.goalAgainst,
-    this.points,
-  });
-
-}
 class StandingsWidget extends StatelessWidget {
-  const StandingsWidget({super.key});
+  final Map<String, dynamic> rankingModel;
+  const StandingsWidget({super.key, required this.rankingModel});
 
   @override
   Widget build(BuildContext context) {
-    List<StandingModel> standingList=[
-      StandingModel(
-        teamName: 'Chelsea',
-        played: 10,
-        won: 5,
-        draw: 3,
-        lost: 2,
-        goalDifference: 10,
-        goalFor: 20,
-        goalAgainst: 10,
-        points: 18,
-      ),
-      StandingModel(
-        teamName: 'Arsenal',
-        played: 10,
-        won: 5,
-        draw: 3,
-        lost: 2,
-        goalDifference: 10,
-        goalFor: 20,
-        goalAgainst: 10,
-        points: 18,
-      ),
-      StandingModel(
-        teamName: 'Manchester City',
-        played: 10,
-        won: 5,
-        draw: 3,
-        lost: 2,
-        goalDifference: 10,
-        goalFor: 20,
-        goalAgainst: 10,
-        points: 18,
-      ),
-
-    ];
     return Container(
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.all(10.w),
+      padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
         color: greyColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         children: [
-          SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Table(
             //border: TableBorder.all(color: Colors.white),
             children: const [
               TableRow(children: [
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
                     child: Center(
                       child: Text(
                         'Team',
@@ -96,7 +39,7 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
                     child: Center(
                       child: Text(
                         'P',
@@ -111,7 +54,7 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
                     child: Center(
                       child: Text(
                         'W',
@@ -126,7 +69,7 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
                     child: Center(
                       child: Text(
                         'D',
@@ -141,7 +84,7 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
                     child: Center(
                       child: Text(
                         'L',
@@ -156,7 +99,7 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
                     child: Center(
                       child: Text(
                         '+/-',
@@ -171,7 +114,7 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
                     child: Center(
                       child: Text(
                         'GD',
@@ -186,7 +129,7 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
                     child: Center(
                       child: Text(
                         'Pts',
@@ -199,150 +142,158 @@ class StandingsWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-
               ]),
-
             ],
           ),
           Divider(
             color: cardColor,
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height *.2,
+            height: MediaQuery.of(context).size.height * .2,
             child: ListView.builder(
-
-              scrollDirection: Axis.vertical,
-                itemCount: standingList.length,
-                itemBuilder: (context,index){
-                print("${standingList[index].teamName}");
-              return Table(
-                //border: TableBorder.all(color: Colors.white),
-                children:  [
-                  TableRow(children: [
-                    TableCell(
-                      child: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Text(
-                          standingList[index].teamName??"",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 8,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Center(
-                          child: Text(
-                            "${standingList[index].played}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                scrollDirection: Axis.vertical,
+                itemCount: rankingModel['data']['rankings'].length,
+                itemBuilder: (context, index) {
+                  return Table(
+                    children: [
+                      TableRow(children: [
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    rankingModel['data']['rankings'][index]
+                                            ['rank'] +
+                                        '.  ' +
+                                        rankingModel['data']['rankings'][index]
+                                            ['team']['name'],
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 8,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Center(
-                          child: Text(
-                            "${standingList[index].won}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Center(
+                              child: Text(
+                                rankingModel['data']['rankings'][index]
+                                    ['matches_total'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Center(
-                          child: Text(
-                            "${standingList[index].draw}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Center(
+                              child: Text(
+                                rankingModel['data']['rankings'][index]
+                                    ['matches_won'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Center(
-                          child: Text(
-                            "${standingList[index].lost}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Center(
+                              child: Text(
+                                rankingModel['data']['rankings'][index]
+                                    ['matches_draw'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Center(
-                          child: Text(
-                            "${standingList[index].goalFor}-${standingList[index].goalAgainst}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Center(
+                              child: Text(
+                                rankingModel['data']['rankings'][index]
+                                    ['matches_lost'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Center(
-                          child: Text(
-                            "${standingList[index].goalDifference}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Center(
+                              child: Text(
+                                "${rankingModel['data']['rankings'][index]['goals_pro']}-${rankingModel['data']['rankings'][index]['goals_against']}",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Center(
-                          child: Text(
-                            "${standingList[index].points}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Center(
+                              child: Text(
+                                "${int.parse(rankingModel['data']['rankings'][index]['goals_pro']) - int.parse(rankingModel['data']['rankings'][index]['goals_against'])}",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-
-                  ]),
-
-                ],
-              );
-            }),
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Center(
+                              child: Text(
+                                rankingModel['data']['rankings'][index]
+                                    ['points'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ]),
+                    ],
+                  );
+                }),
           )
         ],
       ),

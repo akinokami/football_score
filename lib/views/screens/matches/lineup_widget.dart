@@ -17,184 +17,231 @@ class LineupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.all(10.w),
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          if ((lineupModel?.lupList?[0].lupData?.home?.start?.length ?? 0) > 0)
-            CustomText(text: 'starts'.tr),
-          if ((lineupModel?.lupList?[0].lupData?.home?.start?.length ?? 0) > 0)  Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount:
-                      lineupModel?.lupList?[0].lupData?.home?.start?.length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding:  EdgeInsets.all(8.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CustomText(
-                            textAlign: TextAlign.end,
-                            text: lineupModel?.lupList?[0].lupData!.home!
-                                    .start![index].person?.name ??
-                                '',
-                            size: 8.sp,
-                            textColor: Colors.white,
-                          ),
-                          kSizedBoxW10,
-                          CachedNetworkImage(
-                            width: 30.w,
-                            height: 30.h,
-                            imageUrl: lineupModel?.lupList?[0].lupData!.home!
-                                    .start![index].person?.logo ??
-                                '',
-                            placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                          ),
-                          kSizedBoxW20,
-                        ],
+    // ignore: prefer_is_empty
+    return lineupModel?.lupList?.length != 0
+        ? const Center(
+            child: CustomText(
+              text: "No Data Found",
+            ),
+          )
+        : Padding(
+            padding: EdgeInsets.all(10.w),
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                if ((lineupModel?.lupList?[0].lupData?.home?.start?.length ??
+                        0) >
+                    0)
+                  CustomText(text: 'starts'.tr),
+                if ((lineupModel?.lupList?[0].lupData?.home?.start?.length ??
+                        0) >
+                    0)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: lineupModel
+                              ?.lupList?[0].lupData?.home?.start?.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.all(8.w),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  CustomText(
+                                    textAlign: TextAlign.end,
+                                    text: lineupModel?.lupList?[0].lupData!
+                                            .home!.start![index].person?.name ??
+                                        '',
+                                    size: 8.sp,
+                                    textColor: Colors.white,
+                                  ),
+                                  kSizedBoxW10,
+                                  CachedNetworkImage(
+                                    width: 30.w,
+                                    height: 30.h,
+                                    imageUrl: lineupModel?.lupList?[0].lupData!
+                                            .home!.start![index].person?.logo ??
+                                        '',
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ),
+                                  kSizedBoxW20,
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                    );
-                  },
+                      if ((lineupModel
+                                  ?.lupList?[0].lupData?.away?.start?.length ??
+                              0) >
+                          0)
+                        Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: lineupModel
+                                ?.lupList?[0].lupData?.away?.start?.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.all(8.w),
+                                child: Row(
+                                  children: [
+                                    kSizedBoxW20,
+                                    CachedNetworkImage(
+                                      width: 30.w,
+                                      height: 30.h,
+                                      imageUrl: lineupModel
+                                              ?.lupList?[0]
+                                              .lupData
+                                              ?.away
+                                              ?.start?[index]
+                                              .person
+                                              ?.logo ??
+                                          '',
+                                      placeholder: (context, url) =>
+                                          const Center(
+                                              child:
+                                                  CircularProgressIndicator()),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                    ),
+                                    kSizedBoxW10,
+                                    CustomText(
+                                      text: lineupModel
+                                              ?.lupList?[0]
+                                              .lupData
+                                              ?.away
+                                              ?.start![index]
+                                              .person
+                                              ?.name ??
+                                          '',
+                                      size: 8.sp,
+                                      textColor: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                    ],
+                  ),
+                Divider(
+                  color: lightWhiteColor,
                 ),
-              ),
-              if ((lineupModel?.lupList?[0].lupData?.away?.start?.length ?? 0) > 0) Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount:
-                      lineupModel?.lupList?[0].lupData?.away?.start?.length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding:  EdgeInsets.all(8.w),
-                      child: Row(
-                        children: [
-                          kSizedBoxW20,
-                          CachedNetworkImage(
-                            width: 30.w,
-                            height: 30.h,
-                            imageUrl: lineupModel?.lupList?[0].lupData?.away
-                                    ?.start?[index].person?.logo ??
-                                '',
-                            placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                          ),
-                          kSizedBoxW10,
-                          CustomText(
-                            text: lineupModel?.lupList?[0].lupData?.away
-                                    ?.start![index].person?.name ??
-                                '',
-                            size: 8.sp,
-                            textColor: Colors.white,
-                          ),
-                        ],
+                if ((lineupModel?.lupList?[0].lupData?.home?.sub?.length ?? 0) >
+                    0)
+                  CustomText(text: 'subtitutes'.tr),
+                if ((lineupModel?.lupList?[0].lupData?.home?.sub?.length ?? 0) >
+                    0)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: lineupModel
+                              ?.lupList?[0].lupData?.home?.sub?.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.all(8.w),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  CustomText(
+                                    textAlign: TextAlign.end,
+                                    text: lineupModel?.lupList?[0].lupData!
+                                            .home!.sub![index].person?.name ??
+                                        '',
+                                    size: 8.sp,
+                                    textColor: Colors.white,
+                                  ),
+                                  kSizedBoxW10,
+                                  CachedNetworkImage(
+                                    width: 30.w,
+                                    height: 30.h,
+                                    imageUrl: lineupModel?.lupList?[0].lupData!
+                                            .home!.sub![index].person?.logo ??
+                                        '',
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ),
+                                  kSizedBoxW20,
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            color: lightWhiteColor,
-          ),
-          if ((lineupModel?.lupList?[0].lupData?.home?.sub?.length ?? 0) > 0)
-            CustomText(text: 'subtitutes'.tr),
-          if ((lineupModel?.lupList?[0].lupData?.home?.sub?.length ?? 0) > 0) Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount:
-                      lineupModel?.lupList?[0].lupData?.home?.sub?.length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding:  EdgeInsets.all(8.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CustomText(
-                            textAlign: TextAlign.end,
-                            text: lineupModel?.lupList?[0].lupData!.home!
-                                    .sub![index].person?.name ??
-                                '',
-                            size: 8.sp,
-                            textColor: Colors.white,
+                      if ((lineupModel
+                                  ?.lupList?[0].lupData?.away?.sub?.length ??
+                              0) >
+                          0)
+                        Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: lineupModel
+                                ?.lupList?[0].lupData?.away?.sub?.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.all(8.w),
+                                child: Row(
+                                  children: [
+                                    kSizedBoxW20,
+                                    CachedNetworkImage(
+                                      width: 30.w,
+                                      height: 30.h,
+                                      imageUrl: lineupModel
+                                              ?.lupList?[0]
+                                              .lupData
+                                              ?.away
+                                              ?.sub?[index]
+                                              .person
+                                              ?.logo ??
+                                          '',
+                                      placeholder: (context, url) =>
+                                          const Center(
+                                              child:
+                                                  CircularProgressIndicator()),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                    ),
+                                    kSizedBoxW10,
+                                    CustomText(
+                                      text: lineupModel
+                                              ?.lupList?[0]
+                                              .lupData
+                                              ?.away
+                                              ?.sub![index]
+                                              .person
+                                              ?.name ??
+                                          '',
+                                      size: 8.sp,
+                                      textColor: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
-                          kSizedBoxW10,
-                          CachedNetworkImage(
-                            width: 30.w,
-                            height: 30.h,
-                            imageUrl: lineupModel?.lupList?[0].lupData!.home!
-                                    .sub![index].person?.logo ??
-                                '',
-                            placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                          ),
-                          kSizedBoxW20,
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-              if ((lineupModel?.lupList?[0].lupData?.away?.sub?.length ?? 0) > 0) Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount:
-                      lineupModel?.lupList?[0].lupData?.away?.sub?.length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding:  EdgeInsets.all(8.w),
-                      child: Row(
-                        children: [
-                          kSizedBoxW20,
-                          CachedNetworkImage(
-                            width: 30.w,
-                            height: 30.h,
-                            imageUrl: lineupModel?.lupList?[0].lupData?.away
-                                    ?.sub?[index].person?.logo ??
-                                '',
-                            placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                          ),
-                          kSizedBoxW10,
-                          CustomText(
-                            text: lineupModel?.lupList?[0].lupData?.away
-                                    ?.sub![index].person?.name ??
-                                '',
-                            size: 8.sp,
-                            textColor: Colors.white,
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+                        ),
+                    ],
+                  ),
+              ],
+            ),
+          );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:football_score/models/app_model.dart';
 import 'package:football_score/models/match_model.dart';
-import 'package:football_score/models/overview_model.dart';
 import 'package:football_score/models/preview_model.dart';
 import 'package:football_score/services/api_constant.dart';
 import 'package:football_score/services/api_utils.dart';
@@ -50,10 +49,11 @@ class ApiRepo {
     }
   }
 
-  Future<MatchModel> getMatches({required String url}) async {
+  Future<MatchModel> getMatches({required String url, String? date}) async {
     try {
       final response = await apiUtils.get(
         url: url,
+        queryParameters: {'start': date},
       );
       final matches = response.data;
       return MatchModel.fromJson(matches);
