@@ -239,7 +239,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         dividerColor: Colors.transparent,
                         tabs: [
                           Tab(
-                            text: 'overAll'.tr,
+                            text: 'overall'.tr,
                           ),
                           Tab(
                             text: 'lineups'.tr,

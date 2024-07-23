@@ -24,5 +24,9 @@ class ZhLanguage {
     'search': '搜索',
     'warning': '警告',
     'please_enter_text': '請輸入文字',
+    'overall': '全面的',
+    'standing': '常設',
+    'statistics': '統計數據',
+    'events': '活動',
   };
 }
