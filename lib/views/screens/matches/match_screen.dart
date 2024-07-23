@@ -33,9 +33,9 @@ class MatchScreen extends StatelessWidget {
                 initialSelectedDate: DateTime.now(),
                 selectionColor: secondaryColor,
                 deactivatedColor: Colors.red,
-                dateTextStyle: const TextStyle(color: Colors.white),
-                monthTextStyle: const TextStyle(color: Colors.white),
-                dayTextStyle: const TextStyle(color: Colors.white),
+                dateTextStyle:  TextStyle(color: Colors.white,fontSize: 10.sp),
+                monthTextStyle:  TextStyle(color: Colors.white, fontSize: 10.sp),
+                dayTextStyle:  TextStyle(color: Colors.white, fontSize: 10.sp),
                 width: 60.w,
                 height: 70.h,
                 onDateChange: (date) {
