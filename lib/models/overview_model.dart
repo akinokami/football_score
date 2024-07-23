@@ -1,15 +1,38 @@
 class OverviewModel {
-  String? template;
-  String? title;
-  Overviews? overviews;
-  String? scheme;
+  List<OverviewData>? ovList;
 
-  OverviewModel({this.template, this.title, this.overviews, this.scheme});
+  OverviewModel({this.ovList});
 
   OverviewModel.fromJson(Map<String, dynamic> json) {
+    if (json['data'] != null) {
+      ovList = <OverviewData>[];
+      json['data'].forEach((v) {
+        ovList!.add(OverviewData.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (ovList != null) {
+      data['data'] = ovList!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class OverviewData {
+  String? template;
+  String? title;
+  OvData? ovData;
+  String? scheme;
+
+  OverviewData({this.template, this.title, this.ovData, this.scheme});
+
+  OverviewData.fromJson(Map<String, dynamic> json) {
     template = json['template'];
     title = json['title'];
-    overviews = json['data'] != null ? Overviews.fromJson(json['data']) : null;
+    ovData = json['data'] != null ? OvData.fromJson(json['data']) : null;
     scheme = json['scheme'];
   }
 
@@ -17,29 +40,37 @@ class OverviewModel {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['template'] = template;
     data['title'] = title;
-    if (overviews != null) {
-      data['data'] = overviews!.toJson();
+    if (ovData != null) {
+      data['data'] = ovData!.toJson();
     }
     data['scheme'] = scheme;
     return data;
   }
 }
 
-class Overviews {
+class OvData {
   List<Tendencies>? tendencies;
   String? teamALogo;
   String? teamBLogo;
   int? teamAScore;
   int? teamBScore;
+  List<Statistics>? statistics;
+  List<Events>? events;
+  List<Rankings>? rankings;
+  String? url;
 
-  Overviews(
+  OvData(
       {this.tendencies,
       this.teamALogo,
       this.teamBLogo,
       this.teamAScore,
-      this.teamBScore});
+      this.teamBScore,
+      this.statistics,
+      this.events,
+      this.rankings,
+      this.url});
 
-  Overviews.fromJson(Map<String, dynamic> json) {
+  OvData.fromJson(Map<String, dynamic> json) {
     if (json['tendencies'] != null) {
       tendencies = <Tendencies>[];
       json['tendencies'].forEach((v) {
@@ -50,6 +81,25 @@ class Overviews {
     teamBLogo = json['team_b_logo'];
     teamAScore = json['team_a_score'];
     teamBScore = json['team_b_score'];
+    if (json['statistics'] != null) {
+      statistics = <Statistics>[];
+      json['statistics'].forEach((v) {
+        statistics!.add(Statistics.fromJson(v));
+      });
+    }
+    if (json['events'] != null) {
+      events = <Events>[];
+      json['events'].forEach((v) {
+        events!.add(Events.fromJson(v));
+      });
+    }
+    if (json['rankings'] != null) {
+      rankings = <Rankings>[];
+      json['rankings'].forEach((v) {
+        rankings!.add(Rankings.fromJson(v));
+      });
+    }
+    url = json['url'];
   }
 
   Map<String, dynamic> toJson() {
@@ -61,6 +111,16 @@ class Overviews {
     data['team_b_logo'] = teamBLogo;
     data['team_a_score'] = teamAScore;
     data['team_b_score'] = teamBScore;
+    if (statistics != null) {
+      data['statistics'] = statistics!.map((v) => v.toJson()).toList();
+    }
+    if (events != null) {
+      data['events'] = events!.map((v) => v.toJson()).toList();
+    }
+    if (rankings != null) {
+      data['rankings'] = rankings!.map((v) => v.toJson()).toList();
+    }
+    data['url'] = url;
     return data;
   }
 }
@@ -92,7 +152,6 @@ class Tendencies {
         teamAGoal!.add(TeamAGoal.fromJson(v));
       });
     }
-
     if (json['team_b_goal'] != null) {
       teamBGoal = <TeamAGoal>[];
       json['team_b_goal'].forEach((v) {
@@ -255,6 +314,287 @@ class Person {
     return data;
   }
 }
+
+class Statistics {
+  String? name;
+  String? homeTeamValue;
+  String? awayTeamValue;
+  String? eventImg;
+  String? totalValue;
+
+  Statistics(
+      {this.name,
+      this.homeTeamValue,
+      this.awayTeamValue,
+      this.eventImg,
+      this.totalValue});
+
+  Statistics.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    homeTeamValue = json['home_team_value'];
+    awayTeamValue = json['away_team_value'];
+    eventImg = json['event_img'];
+    totalValue = json['total_value'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['home_team_value'] = homeTeamValue;
+    data['away_team_value'] = awayTeamValue;
+    data['event_img'] = eventImg;
+    data['total_value'] = totalValue;
+    return data;
+  }
+}
+
+class Events {
+  String? minute;
+  String? minuteExtra;
+  List<Home>? home;
+  List<Home>? away;
+  //Null? neutral;
+  String? period;
+
+  Events(
+      {this.minute,
+      this.minuteExtra,
+      this.home,
+      this.away,
+      // this.neutral,
+      this.period});
+
+  Events.fromJson(Map<String, dynamic> json) {
+    minute = json['minute'];
+    minuteExtra = json['minute_extra'];
+    if (json['home'] != null) {
+      home = <Home>[];
+      json['home'].forEach((v) {
+        home!.add(Home.fromJson(v));
+      });
+    }
+    if (json['away'] != null) {
+      away = <Home>[];
+      json['away'].forEach((v) {
+        away!.add(Home.fromJson(v));
+      });
+    }
+    // neutral = json['neutral'];
+    period = json['period'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['minute'] = minute;
+    data['minute_extra'] = minuteExtra;
+    if (home != null) {
+      data['home'] = home!.map((v) => v.toJson()).toList();
+    }
+    if (away != null) {
+      data['away'] = away!.map((v) => v.toJson()).toList();
+    }
+    //  data['neutral'] = neutral;
+    data['period'] = period;
+    return data;
+  }
+}
+
+class Home {
+  String? id;
+  PersonHome? person;
+  String? code;
+  String? name;
+  String? logo;
+  String? minute;
+  String? minuteExtra;
+  //List<Null>? images;
+  String? scheme;
+  String? score;
+  String? eventName;
+  String? eventDetail;
+
+  Home(
+      {this.id,
+      this.person,
+      this.code,
+      this.name,
+      this.logo,
+      this.minute,
+      this.minuteExtra,
+      //this.images,
+      this.scheme,
+      this.score,
+      this.eventName,
+      this.eventDetail});
+
+  Home.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    person =
+        json['person'] != null ? PersonHome.fromJson(json['person']) : null;
+    code = json['code'];
+    name = json['name'];
+    logo = json['logo'];
+    minute = json['minute'];
+    minuteExtra = json['minute_extra'];
+    // if (json['images'] != null) {
+    //   images = <Null>[];
+    //   json['images'].forEach((v) {
+    //     images!.add(Null.fromJson(v));
+    //   });
+    // }
+    scheme = json['scheme'];
+    score = json['score'];
+    eventName = json['event_name'];
+    eventDetail = json['event_detail'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    if (person != null) {
+      data['person'] = person!.toJson();
+    }
+    data['code'] = code;
+    data['name'] = name;
+    data['logo'] = logo;
+    data['minute'] = minute;
+    data['minute_extra'] = minuteExtra;
+    // if (images != null) {
+    //   data['images'] = images!.map((v) => v.toJson()).toList();
+    // }
+    data['scheme'] = scheme;
+    data['score'] = score;
+    data['event_name'] = eventName;
+    data['event_detail'] = eventDetail;
+    return data;
+  }
+}
+
+class PersonHome {
+  String? id;
+  String? name;
+  String? logo;
+  String? scheme;
+
+  PersonHome({this.id, this.name, this.logo, this.scheme});
+
+  PersonHome.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    logo = json['logo'];
+    scheme = json['scheme'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['logo'] = logo;
+    data['scheme'] = scheme;
+    return data;
+  }
+}
+
+class Rankings {
+  TeamRank? teamRank;
+  String? rank;
+  String? lastRank;
+  String? matchesTotal;
+  String? matchesWon;
+  String? matchesDraw;
+  String? matchesLost;
+  String? goalsPro;
+  String? goalsAgainst;
+  String? points;
+  int? curTeam;
+
+  Rankings(
+      {this.teamRank,
+      this.rank,
+      this.lastRank,
+      this.matchesTotal,
+      this.matchesWon,
+      this.matchesDraw,
+      this.matchesLost,
+      this.goalsPro,
+      this.goalsAgainst,
+      this.points,
+      this.curTeam});
+
+  Rankings.fromJson(Map<String, dynamic> json) {
+    teamRank = json['team'] != null ? TeamRank.fromJson(json['team']) : null;
+    rank = json['rank'];
+    lastRank = json['last_rank'];
+    matchesTotal = json['matches_total'];
+    matchesWon = json['matches_won'];
+    matchesDraw = json['matches_draw'];
+    matchesLost = json['matches_lost'];
+    goalsPro = json['goals_pro'];
+    goalsAgainst = json['goals_against'];
+    points = json['points'];
+    curTeam = json['cur_team'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (teamRank != null) {
+      data['team'] = teamRank!.toJson();
+    }
+    data['rank'] = rank;
+    data['last_rank'] = lastRank;
+    data['matches_total'] = matchesTotal;
+    data['matches_won'] = matchesWon;
+    data['matches_draw'] = matchesDraw;
+    data['matches_lost'] = matchesLost;
+    data['goals_pro'] = goalsPro;
+    data['goals_against'] = goalsAgainst;
+    data['points'] = points;
+    data['cur_team'] = curTeam;
+    return data;
+  }
+}
+
+class TeamRank {
+  String? id;
+  String? name;
+  String? shortName;
+  String? logo;
+  String? scheme;
+  String? teamAge;
+  String? teamMarketValue;
+
+  TeamRank(
+      {this.id,
+      this.name,
+      this.shortName,
+      this.logo,
+      this.scheme,
+      this.teamAge,
+      this.teamMarketValue});
+
+  TeamRank.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    shortName = json['short_name'];
+    logo = json['logo'];
+    scheme = json['scheme'];
+    teamAge = json['team_age'];
+    teamMarketValue = json['team_market_value'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['short_name'] = shortName;
+    data['logo'] = logo;
+    data['scheme'] = scheme;
+    data['team_age'] = teamAge;
+    data['team_market_value'] = teamMarketValue;
+    return data;
+  }
+}
+
 
 
 

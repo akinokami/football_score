@@ -119,7 +119,7 @@ class ApiRepo {
     }
   }
 
-  Future<OverviewModel> getOverview({required String matchId}) async {
+  Future<dynamic> getOverview({required String matchId}) async {
     try {
       final response = await apiUtils
           .get(url: ApiConstant.overviewUrl + matchId, queryParameters: {
@@ -132,8 +132,9 @@ class ApiRepo {
                 ? "vi-VN"
                 : "en-US",
       });
-      final overviews = response.data['data'][0];
-      return OverviewModel.fromJson(overviews);
+      // final overviews = response.data['data'][0];
+      // return OverviewModel.fromJson(overviews);
+      return response.data;
     } catch (e) {
       throw CustomException(e.toString());
     }

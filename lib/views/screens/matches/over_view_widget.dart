@@ -4,105 +4,56 @@ import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 
 class OverviewWidget extends StatelessWidget {
-  final OverviewModel overviewModel;
+  final Map<String, dynamic> overviewModel;
   const OverviewWidget({super.key, required this.overviewModel});
 
   @override
   Widget build(BuildContext context) {
-    print("overview>>> ${overviewModel.overviews?.tendencies?.length}");
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: ListView(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: overviewModel.overviews?.tendencies?.length,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                if (overviewModel.overviews?.tendencies?[index]
-                                    .teamAGoal !=
-                                    null)
-                                  CustomText(
-                                    text: overviewModel
-                                        .overviews
-                                        ?.tendencies?[index]
-                                        .teamAGoal?[index]
-                                        .minute ??
-                                        '',
-                                    size: 12,
-                                    textColor: Colors.white,
-                                  ),
-                                kSizedBoxW10,
-                                if (overviewModel.overviews?.tendencies?[index]
-                                    .teamAGoal !=
-                                    null)
-                                  CustomText(
-                                    text: overviewModel
-                                        .overviews
-                                        ?.tendencies?[index]
-                                        .teamAGoal?[index]
-                                        .person
-                                        ?.name ??
-                                        '',
-                                    size: 12,
-                                    textColor: Colors.white,
-                                  ),
-                              ],
-                            ),
-                          ],
-                        );
-                      })),
-              kSizedBoxW30,
-              // Expanded(
-              //     child: ListView.builder(
-              //         shrinkWrap: true,
-              //         itemCount: tendencies.length,
-              //         itemBuilder: (context, index) {
-              //           return Column(
-              //             mainAxisAlignment: MainAxisAlignment.start,
-              //             crossAxisAlignment: CrossAxisAlignment.start,
-              //             children: [
-              //               Row(
-              //                 mainAxisAlignment: MainAxisAlignment.start,
-              //                 children: [
-              //                   if (tendencies[index].teamBGoal != null)
-              //                     CustomText(
-              //                       text: tendencies[index]
-              //                               .teamBGoal?[index]
-              //                               .minute ??
-              //                           '',
-              //                       size: 12,
-              //                       textColor: Colors.white,
-              //                     ),
-              //                   kSizedBoxW10,
-              //                   if (tendencies[index].teamBGoal != null)
-              //                     CustomText(
-              //                       text: tendencies[index]
-              //                               .teamBGoal?[index]
-              //                               .person
-              //                               ?.name ??
-              //                           '',
-              //                       size: 12,
-              //                       textColor: Colors.white,
-              //                     ),
-              //                 ],
-              //               ),
-              //             ],
-              //           );
-              //         })),
-            ],
-          ),
+          CustomText(text: 'statistics'),
+          Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount:
+                      overviewModel['data'][1]['data']['statistics'].length,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CustomText(
+                            text: overviewModel['data'][1]['data']['statistics']
+                                [index]['home_team_value']),
+                        CustomText(
+                            text: overviewModel['data'][1]['data']['statistics']
+                                [index]['away_team_value']),
+                      ],
+                    );
+                  })),
+          kSizedBoxW30,
+          CustomText(text: 'events'),
+          Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: overviewModel['data'][2]['data']['events'].length,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CustomText(
+                            text: overviewModel['data'][2]['data']['events']
+                                [index]['minute']),
+                        CustomText(
+                            text: overviewModel['data'][2]['data']['events']
+                                [index]['minute']),
+                        CustomText(
+                            text: overviewModel['data'][2]['data']['events']
+                                [index]['minute']),
+                      ],
+                    );
+                  })),
         ],
       ),
     );
