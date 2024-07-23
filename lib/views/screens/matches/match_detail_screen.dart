@@ -219,6 +219,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         controller: tabController,
                         onTap: (value) {
                           if (value == 0) {
+                            matchDetailController.getOverview();
+                          } else if (value == 1) {
                             matchDetailController.getLineUp();
                           } else {
                             matchDetailController.getPreview();
@@ -256,14 +258,14 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         controller: tabController,
                         children: [
                           Obx(
-                                () => matchDetailController.isLoadingTab.value
+                            () => matchDetailController.isLoadingTab.value
                                 ? const Center(
-                              child: CircularProgressIndicator(),
-                            )
+                                    child: CircularProgressIndicator(),
+                                  )
                                 : OverviewWidget(
-                              overviewModel:
-                              matchDetailController.overviewModel.value,
-                            ),
+                                    overviewModel: matchDetailController
+                                        .overviewModel.value,
+                                  ),
                           ),
                           Obx(
                             () => matchDetailController.isLoadingTab.value
