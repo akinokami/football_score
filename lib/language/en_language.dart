@@ -25,5 +25,9 @@ class EnLanguage {
     'search': 'Search',
     'warning': 'Warning',
     'please_enter_text': 'Please enter text',
+    'overall': 'Overall',
+    'standing': 'Standing',
+    'statistics': 'Statistics',
+    'events': 'Events',
   };
 }
