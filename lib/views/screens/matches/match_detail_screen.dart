@@ -264,8 +264,10 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                     child: CircularProgressIndicator(),
                                   )
                                 : OverviewWidget(
-                                    overviewModel:
-                                        matchDetailController.overviewModel,
+                                    statisticModel:
+                                        matchDetailController.statisticModel,
+                                    eventModel:
+                                        matchDetailController.eventModel,
                                   ),
                           ),
                           Obx(
