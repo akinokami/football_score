@@ -5,6 +5,7 @@ import 'package:football_score/models/match_model.dart';
 import 'package:football_score/services/api_repo.dart';
 import 'package:football_score/utils/constants.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class MatchController extends GetxController {
   final selectedIndex = 0.obs;
@@ -61,11 +62,11 @@ class MatchController extends GetxController {
       matchModel.value = result;
 
       if (matchModel.value.list != null) {
-        matchList.value = matchModel.value.list!;
-        // .where((element) =>
-        //     element.dateUtc ==
-        //     DateFormat('yyyy-MM-dd').format(selectedDate.value))
-        // .toList();
+        matchList.value = matchModel.value.list!
+            .where((element) =>
+                element.dateUtc ==
+                DateFormat('yyyy-MM-dd').format(selectedDate.value))
+            .toList();
       }
     } catch (e) {
       constants.showSnackBar(

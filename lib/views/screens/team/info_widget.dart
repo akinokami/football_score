@@ -59,11 +59,16 @@ class InfoWidget extends StatelessWidget {
                   padding: EdgeInsets.all(8.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Opacity(opacity: 0.5, child: CustomText(text: 'home'.tr)),
-                      CustomText(
+                      Expanded(
+                        child: CustomText(
                           text:
-                              "${teamInfoModel?.baseInfo?.venueName ?? ''}, Capacity ${teamInfoModel?.baseInfo?.venueCapacity ?? ''}"),
+                              "${teamInfoModel?.baseInfo?.venueName ?? ''}, Capacity ${teamInfoModel?.baseInfo?.venueCapacity ?? ''}",
+                          maxLines: 2,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -108,10 +113,16 @@ class InfoWidget extends StatelessWidget {
                   padding: EdgeInsets.all(8.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Opacity(
                           opacity: 0.5, child: CustomText(text: 'address'.tr)),
-                      CustomText(text: teamInfoModel?.baseInfo?.address ?? ''),
+                      Expanded(
+                        child: CustomText(
+                          text: teamInfoModel?.baseInfo?.address ?? '',
+                          maxLines: 2,
+                        ),
+                      ),
                     ],
                   ),
                 ),
