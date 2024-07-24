@@ -17,9 +17,10 @@ class LineupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_is_empty
-    return (lineupModel?.lupList?.length??0) > 0
-        ? Padding(
+    return (lineupModel?.lupList?.length ?? 0) > 0
+        ?  (lineupModel
+                              ?.lupList?[0].lupData?.home?.start?.length??0)>0?
+        Padding(
             padding: EdgeInsets.all(10.w),
             child: ListView(
               shrinkWrap: true,
@@ -237,11 +238,15 @@ class LineupWidget extends StatelessWidget {
                   ),
               ],
             ),
-          ):const Center(
-      child: CustomText(
-        text: "No Data Found",
-      ),
-    )
-    ;
+          )
+        : const Center(
+            child: CustomText(
+              text: "No Data Found",
+            ),
+          ) : const Center(
+            child: CustomText(
+              text: "No Data Found",
+            ),
+          );
   }
 }
