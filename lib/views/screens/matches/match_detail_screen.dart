@@ -153,10 +153,17 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                       MediaQuery.of(context).size.width * .25,
                                   child: Text(
                                     (matchDetailController.matchDetailModel
-                                                .value.matchSample?.fsA !=
-                                            ""
+                                                .value.matchSample?.status ==
+                                            "Played"
                                         ? "Full Time"
-                                        : "Half Time"),
+                                        : matchDetailController
+                                                    .matchDetailModel
+                                                    .value
+                                                    .matchSample
+                                                    ?.minute ==
+                                                "45"
+                                            ? "Half Time"
+                                            : ""),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.white,
