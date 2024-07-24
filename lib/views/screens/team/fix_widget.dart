@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/controller/team_detail_controller.dart';
 import 'package:football_score/models/team_fix_model.dart';
+import 'package:football_score/utils/app_theme.dart';
+import 'package:football_score/utils/dimen_const.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -16,45 +18,59 @@ class FixWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final teamDetailController = Get.put(TeamDetailController());
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           if (teamDetailController.seasonList.isNotEmpty)
-            Container(
-              width: double.infinity,
-              height: 40.h,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(5.r)),
-              ),
-              child: DropdownButtonHideUnderline(
-                child: Obx(() => DropdownButton<SeasonList>(
-                      padding: const EdgeInsets.only(left: 8),
-                      value: teamDetailController.selectedSeason.value,
-                      hint: const CustomText(
-                        text: 'Select Season',
-                        textColor: Colors.white,
-                      ),
-                      style: const TextStyle(color: Colors.white),
-                      items: teamDetailController.seasonList
-                          .map<DropdownMenuItem<SeasonList>>(
-                              (SeasonList? value) {
-                        return DropdownMenuItem<SeasonList>(
-                          value: value,
-                          child: CustomText(
-                            text: value?.name,
-                            textColor: Colors.black,
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (SeasonList? newValue) {
-                        teamDetailController.selectedSeason.value = newValue;
-                        teamDetailController.getTeamFixYear(
-                            newValue?.url ?? '', newValue!);
-                      },
-                    )),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Container(
+                width: MediaQuery.of(context).size.width*.4,
+                height: 40.h,
+                decoration: BoxDecoration(
+                  color: greyColor.withOpacity(0.6),
+                  borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: Obx(() => DropdownButton<SeasonList>(
+                        dropdownColor: greyColor,
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(5.r)),
+                        iconEnabledColor: Colors.white,
+                        icon: Icon(Icons.arrow_drop_down_circle),
+                        padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                        value: teamDetailController.selectedSeason.value,
+                        hint: const CustomText(
+                          text: 'Select Season',
+                          textColor: Colors.white,
+                        ),
+                       alignment: AlignmentDirectional.centerStart,
+                        style: const TextStyle(color: Colors.white,),
+                        items: teamDetailController.seasonList
+                            .map<DropdownMenuItem<SeasonList>>(
+                                (SeasonList? value) {
+                          return DropdownMenuItem<SeasonList>(
+                            value: value,
+                            child: Center(
+                              child: CustomText(
+                                textAlign: TextAlign.center,
+                                text: value?.name,
+                                //textColor: blackTextColor,
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (SeasonList? newValue) {
+                          teamDetailController.selectedSeason.value =
+                              newValue;
+                          teamDetailController.getTeamFixYear(
+                              newValue?.url ?? '', newValue!);
+                        },
+                      )),
+                ),
               ),
             ),
+          kSizedBoxH10,
           Obx(
             () => Expanded(
               child: teamDetailController.isLoadingFix.value
@@ -67,109 +83,141 @@ class FixWidget extends StatelessWidget {
                             text: 'No Data Found',
                           ),
                         )
-                      : ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: teamFixModel?.matchList?.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(bottom: 10.h),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                      : Container(
+                          padding: EdgeInsets.all(5.w),
+                          decoration: BoxDecoration(
+                            color: greyColor,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: teamFixModel?.matchList?.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.only(bottom: 10.h),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      CustomText(
-                                        text: DateFormat('dd-MMM-yyyy, hh:mm a')
-                                            .format(DateTime.parse(teamFixModel
-                                                    ?.matchList?[index]
-                                                    .startPlay ??
-                                                '')),
-                                        size: 10.sp,
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          CustomText(
+                                            text: DateFormat(
+                                                    'dd-MMM-yyyy, hh:mm a')
+                                                .format(DateTime.parse(
+                                                    teamFixModel
+                                                            ?.matchList?[index]
+                                                            .startPlay ??
+                                                        '')),
+                                            size: 10.sp,
+                                          ),
+                                          Opacity(
+                                            opacity: 0.5,
+                                            child: CustomText(
+                                              text: teamFixModel
+                                                      ?.matchList?[index]
+                                                      .competitionName ??
+                                                  '',
+                                              size: 9.sp,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      CustomText(
-                                        text: teamFixModel?.matchList?[index]
-                                                .competitionName ??
-                                            '',
-                                        size: 10.sp,
+                                      SizedBox(width: 30.w),
+                                      Column(
+
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment
+                                                    .spaceBetween,
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .center,
+                                            children: [
+                                              SizedBox(
+                                                width: 45.w,
+                                                child: CustomText(
+                                                  textAlign: TextAlign.left,
+                                                  text: teamFixModel
+                                                          ?.matchList?[index]
+                                                          .teamAName ??
+                                                      '',
+                                                  size: 8.sp,
+                                                  maxLines: 2,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 20.w,
+                                                child: CachedNetworkImage(
+                                                  width: 20.w,
+                                                  height: 20.h,
+                                                  imageUrl: teamFixModel
+                                                          ?.matchList?[index]
+                                                          .teamALogo ??
+                                                      '',
+                                                  placeholder: (context,
+                                                          url) =>
+                                                      const Center(
+                                                          child:
+                                                              CircularProgressIndicator()),
+                                                  errorWidget: (context, url,
+                                                          error) =>
+                                                      const Icon(Icons.error),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 25.w,
+                                                child: CustomText(
+                                                  textAlign: TextAlign.center,
+                                                  size: 9.sp,
+                                                  text:
+                                                      "${teamFixModel?.matchList?[index].fsA ?? ''} - ${teamFixModel?.matchList?[index].fsB ?? ''}",
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 20.w,
+                                                child: CachedNetworkImage(
+                                                  width: 20.w,
+                                                  height: 20.h,
+                                                  imageUrl: teamFixModel
+                                                          ?.matchList?[index]
+                                                          .teamBLogo ??
+                                                      '',
+                                                  placeholder: (context,
+                                                          url) =>
+                                                      const Center(
+                                                          child:
+                                                              CircularProgressIndicator()),
+                                                  errorWidget: (context, url,
+                                                          error) =>
+                                                      const Icon(Icons.error),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 45.w,
+                                                child: CustomText(
+                                                  textAlign: TextAlign.right,
+                                                  text: teamFixModel
+                                                          ?.matchList?[index]
+                                                          .teamBName ??
+                                                      '',
+                                                  size: 8.sp,
+                                                  maxLines: 2,
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                        ],
                                       ),
                                     ],
                                   ),
-                                  SizedBox(width: 30.w),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            SizedBox(
-                                              width: 45.w,
-                                              child: CustomText(
-                                                text: teamFixModel
-                                                        ?.matchList?[index]
-                                                        .teamAName ??
-                                                    '',
-                                                size: 10.sp,
-                                                maxLines: 2,
-                                              ),
-                                            ),
-                                            CachedNetworkImage(
-                                              width: 20.w,
-                                              height: 20.h,
-                                              imageUrl: teamFixModel
-                                                      ?.matchList?[index]
-                                                      .teamALogo ??
-                                                  '',
-                                              placeholder: (context, url) =>
-                                                  const Center(
-                                                      child:
-                                                          CircularProgressIndicator()),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                                      const Icon(Icons.error),
-                                            ),
-                                            CustomText(
-                                              text:
-                                                  "${teamFixModel?.matchList?[index].fsA ?? ''} - ${teamFixModel?.matchList?[index].fsB ?? ''}",
-                                            ),
-                                            CachedNetworkImage(
-                                              width: 20.w,
-                                              height: 20.h,
-                                              imageUrl: teamFixModel
-                                                      ?.matchList?[index]
-                                                      .teamBLogo ??
-                                                  '',
-                                              placeholder: (context, url) =>
-                                                  const Center(
-                                                      child:
-                                                          CircularProgressIndicator()),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                                      const Icon(Icons.error),
-                                            ),
-                                            SizedBox(
-                                              width: 45.w,
-                                              child: CustomText(
-                                                text: teamFixModel
-                                                        ?.matchList?[index]
-                                                        .teamBName ??
-                                                    '',
-                                                size: 10.sp,
-                                                maxLines: 2,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }),
+                                );
+                              }),
+                        ),
             ),
           )
         ],
