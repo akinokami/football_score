@@ -12,6 +12,7 @@ import '../models/lineup_model.dart';
 import '../models/match_detail_model.dart';
 import '../models/news_model.dart';
 import '../models/team_detail_model.dart';
+import '../models/team_fix_model.dart';
 import '../models/team_info_model.dart';
 
 class ApiRepo {
@@ -211,6 +212,25 @@ class ApiRepo {
       });
       final players = response.data;
       return TeamStatsModel.fromJson(players);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<TeamFixModel> getTeamFix({required String teamId}) async {
+    try {
+      final response = await apiUtils
+          .get(url: "${ApiConstant.teamFixUrl}$teamId", queryParameters: {
+        "version": 373,
+        "app": "af",
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
+      });
+      final fixs = response.data;
+      return TeamFixModel.fromJson(fixs);
     } catch (e) {
       throw CustomException(e.toString());
     }

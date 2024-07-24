@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:football_score/views/screens/team/fix_widget.dart';
 import 'package:football_score/views/screens/team/info_widget.dart';
 import 'package:football_score/views/screens/team/player_widget.dart';
 import 'package:football_score/views/screens/team/stats_widget.dart';
@@ -92,7 +93,7 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                       controller: tabController,
                       onTap: (value) {
                         if (value == 0) {
-                          //matchDetailController.getOverview();
+                          teamDetailController.getTeamFix();
                         } else if (value == 1) {
                           teamDetailController.getTeamStats();
                         } else if (value == 2) {
@@ -129,8 +130,15 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                   ),
                   Expanded(
                       child: TabBarView(controller: tabController, children: [
-                    Center(
-                      child: CustomText(text: 'Fixture'),
+                    Obx(
+                      () => teamDetailController.isLoadingTab.value
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : FixWidget(
+                              teamFixModel:
+                                  teamDetailController.teamFixModel.value,
+                            ),
                     ),
                     Obx(
                       () => teamDetailController.isLoadingTab.value

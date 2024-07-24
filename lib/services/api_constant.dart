@@ -25,4 +25,7 @@ class ApiConstant {
 
   static String teamStatsUrl =
       'https://sport-data.allfootballapp.com/soccer/biz/af/team/statistic/';
+
+  static String teamFixUrl =
+      'https://sportdata-v2.allfootballapp.com/soccer/biz/af/team/schedule/';
 }

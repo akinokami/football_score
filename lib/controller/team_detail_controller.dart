@@ -4,6 +4,7 @@ import 'package:football_score/models/team_member_model.dart';
 import 'package:football_score/services/api_repo.dart';
 import 'package:get/get.dart';
 
+import '../models/team_fix_model.dart';
 import '../models/team_info_model.dart';
 import '../models/team_stats_model.dart';
 import '../utils/constants.dart';
@@ -16,6 +17,11 @@ class TeamDetailController extends GetxController {
   Rx<TeamInfoModel> teamInfoModel = TeamInfoModel().obs;
   Rx<TeamMemberModel> teamMemberModel = TeamMemberModel().obs;
   Rx<TeamStatsModel> teamStatsModel = TeamStatsModel().obs;
+  Rx<TeamFixModel> teamFixModel = TeamFixModel().obs;
+
+  SeasonList? selectedRegion;
+
+  get selectedSeason => null;
 
   @override
   void onInit() {
@@ -68,6 +74,19 @@ class TeamDetailController extends GetxController {
     try {
       final result = await ApiRepo().getTeamStats(teamId: teamId.value);
       teamStatsModel.value = result;
+    } catch (e) {
+      constants.showSnackBar(
+          title: 'Error', msg: e.toString(), textColor: Colors.red);
+    } finally {
+      isLoadingTab.value = false;
+    }
+  }
+
+  Future<void> getTeamFix() async {
+    isLoadingTab.value = true;
+    try {
+      final result = await ApiRepo().getTeamFix(teamId: teamId.value);
+      teamFixModel.value = result;
     } catch (e) {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
