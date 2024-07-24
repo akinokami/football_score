@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/views/screens/team/info_widget.dart';
+import 'package:football_score/views/screens/team/player_widget.dart';
+import 'package:football_score/views/screens/team/stats_widget.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
@@ -92,9 +94,9 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                         if (value == 0) {
                           //matchDetailController.getOverview();
                         } else if (value == 1) {
-                          // matchDetailController.getLineUp();
+                          teamDetailController.getTeamStats();
                         } else if (value == 2) {
-                          // matchDetailController.getLineUp();
+                          teamDetailController.getTeamPlayer();
                         } else {
                           teamDetailController.getTeamInfo();
                         }
@@ -130,11 +132,24 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                     Center(
                       child: CustomText(text: 'Fixture'),
                     ),
-                    Center(
-                      child: CustomText(text: 'Fixture'),
+                    Obx(
+                      () => teamDetailController.isLoadingTab.value
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : StatsWidget(
+                              teamStatsModel:
+                                  teamDetailController.teamStatsModel.value),
                     ),
-                    Center(
-                      child: CustomText(text: 'Fixture'),
+                    Obx(
+                      () => teamDetailController.isLoadingTab.value
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : PlayerWidget(
+                              teamMemberModel:
+                                  teamDetailController.teamMemberModel.value,
+                            ),
                     ),
                     Obx(
                       () => teamDetailController.isLoadingTab.value

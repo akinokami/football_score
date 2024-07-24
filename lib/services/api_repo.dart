@@ -1,6 +1,8 @@
 import 'package:football_score/models/app_model.dart';
 import 'package:football_score/models/match_model.dart';
 import 'package:football_score/models/preview_model.dart';
+import 'package:football_score/models/team_member_model.dart';
+import 'package:football_score/models/team_stats_model.dart';
 import 'package:football_score/services/api_constant.dart';
 import 'package:football_score/services/api_utils.dart';
 import 'package:football_score/utils/custom_exception.dart';
@@ -145,7 +147,7 @@ class ApiRepo {
   Future<TeamDetailModel> getTeamDetail({required String teamId}) async {
     try {
       final response = await apiUtils
-          .get(url: "${ApiConstant.teamDetailUrl}/$teamId", queryParameters: {
+          .get(url: "${ApiConstant.teamDetailUrl}$teamId", queryParameters: {
         "language": Global.language == "zh"
             ? "zh-CN"
             : Global.language == "vi"
@@ -163,7 +165,7 @@ class ApiRepo {
   Future<TeamInfoModel> getTeamInfo({required String teamId}) async {
     try {
       final response = await apiUtils
-          .get(url: "${ApiConstant.teamInfoUrl}/$teamId", queryParameters: {
+          .get(url: "${ApiConstant.teamInfoUrl}$teamId", queryParameters: {
         "language": Global.language == "zh"
             ? "zh-CN"
             : Global.language == "vi"
@@ -173,6 +175,42 @@ class ApiRepo {
       });
       final info = response.data;
       return TeamInfoModel.fromJson(info);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<TeamMemberModel> getTeamPlayer({required String teamId}) async {
+    try {
+      final response = await apiUtils
+          .get(url: "${ApiConstant.teamMemberUrl}$teamId", queryParameters: {
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
+        "app": "af",
+      });
+      final players = response.data['data'];
+      return TeamMemberModel.fromJson(players);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<TeamStatsModel> getTeamStats({required String teamId}) async {
+    try {
+      final response = await apiUtils
+          .get(url: "${ApiConstant.teamStatsUrl}$teamId", queryParameters: {
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
+        "app": "af",
+      });
+      final players = response.data;
+      return TeamStatsModel.fromJson(players);
     } catch (e) {
       throw CustomException(e.toString());
     }
