@@ -134,15 +134,16 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   width:
                                       MediaQuery.of(context).size.width * .25,
                                   child: Text(
-                                    DateFormat('d MMM, h:mm a').format(
-                                      DateTime.parse(
-                                        "${matchDetailController.matchDetailModel.value.matchSample?.dateUtc ?? ''} ${matchDetailController.matchDetailModel.value.matchSample?.timeUtc ?? ''}",
-                                      ),
-                                    ),
+                                    "${DateFormat('d MMM, h:mm a').format(DateTime.parse(matchDetailController.matchDetailModel.value.matchSample?.startPlay ?? '').add(const Duration(hours: 8)))}",
+                                    // DateFormat('d MMM, h:mm a').format(
+                                    //   DateTime.parse(
+                                    //     "${matchDetailController.matchDetailModel.value.matchSample?.dateUtc ?? ''} ${matchDetailController.matchDetailModel.value.matchSample?.timeUtc ?? ''}",
+                                    //   ),
+                                    // ),
                                     textAlign: TextAlign.center,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 12,
+                                      fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

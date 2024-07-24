@@ -9,6 +9,7 @@ import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/matches/match_detail_screen.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class MatchScreen extends StatelessWidget {
   const MatchScreen({super.key});
@@ -206,7 +207,7 @@ class MatchScreen extends StatelessWidget {
                                                       fontSize: 8.sp),
                                                 ),
                                                 Text(
-                                                  "  ${matchController.matchList[index].dateUtc ?? ''}  ",
+                                                  "${DateFormat('yyyy-MM-dd').format(DateTime.parse(matchController.matchList[index].startPlay ?? '').add(const Duration(hours: 8)))}",
                                                   textAlign: TextAlign.left,
                                                   style: TextStyle(
                                                       color: lightWhiteColor,

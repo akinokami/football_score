@@ -15,7 +15,7 @@ class MatchController extends GetxController {
   RxList<Matches> matchList = <Matches>[].obs;
   RxList<Matches> matchSearchList = <Matches>[].obs;
   TextEditingController searchController = TextEditingController();
-  var selectedDate = DateTime.now().toUtc().obs;
+  var selectedDate = DateTime.now().obs;
   DatePickerController datePickerController = DatePickerController();
   var selectedUrl = ''.obs;
 
@@ -27,6 +27,7 @@ class MatchController extends GetxController {
     startMatch();
     // print("date>>>>>>${DateTime.now()}");
     // print("date utc>>>>>>${DateTime.now().toUtc()}");
+
     super.onInit();
   }
 
@@ -66,7 +67,9 @@ class MatchController extends GetxController {
 
       if (matchModel.value.list != null) {
         matchList.value = matchModel.value.list!.where((element) {
-          return element.dateUtc ==
+          return DateFormat('yyyy-MM-dd').format(
+                  DateTime.parse(element.startPlay ?? '')
+                      .add(const Duration(hours: 8))) ==
               DateFormat('yyyy-MM-dd').format(selectedDate.value);
         }).toList();
       }
