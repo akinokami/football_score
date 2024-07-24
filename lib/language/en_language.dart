@@ -29,5 +29,9 @@ class EnLanguage {
     'standing': 'Standing',
     'statistics': 'Statistics',
     'events': 'Events',
+    'fixtures': 'Fixtures',
+    'stats': 'Stats',
+    'player': 'Player',
+    'info': 'Info',
   };
 }

@@ -28,5 +28,9 @@ class ZhLanguage {
     'standing': '常設',
     'statistics': '統計數據',
     'events': '活動',
+    'fixtures': '固定装置',
+    'stats': '统计数据',
+    'player': '玩家',
+    'info': '信息',
   };
 }

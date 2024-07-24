@@ -29,5 +29,9 @@ class ViLanguage {
     'standing': 'Đứng',
     'statistics': 'Số liệu thống kê',
     'events': 'Sự kiện',
+    'fixtures': 'Lịch thi đấu',
+    'stats': 'Thống kê',
+    'player': 'Người chơi',
+    'info': 'Thông tin',
   };
 }

@@ -122,7 +122,8 @@ class InfoWidget extends StatelessWidget {
           SizedBox(
             height: 15.h,
           ),
-          Container(
+          if((teamInfoModel?.teamRecord?.length ?? 0) > 0 &&
+              teamInfoModel?.teamRecord?[0].type == "Goals")Container(
               color: greyColor.withOpacity(0.6),
               padding: EdgeInsets.all(5.w),
               width: MediaQuery.of(context).size.width,
@@ -239,7 +240,7 @@ class InfoWidget extends StatelessWidget {
                               "${teamInfoModel?.trophyInfo?[index].competitionName ?? ''} x ${teamInfoModel?.trophyInfo?[index].lists?.length ?? ''}"),
                     ),
                     SizedBox(
-                      height: 60.h,
+                      height: 65.h,
                       child: ListView.builder(
                           shrinkWrap: true,
                           itemCount:

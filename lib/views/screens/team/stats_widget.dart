@@ -7,45 +7,55 @@ import 'package:football_score/views/widgets/custom_text.dart';
 
 class StatsWidget extends StatelessWidget {
   final TeamStatsModel teamStatsModel;
-  const StatsWidget({super.key, required this.teamStatsModel});
+  final String teamName;
+  const StatsWidget({super.key, required this.teamStatsModel, required this.teamName});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                CustomText(text: "${teamStatsModel.season?.rank ?? ''}"),
-                CustomText(text: teamStatsModel.season?.name ?? '')
-              ],
-            ),
-            Column(
-              children: [
-                CustomText(
-                    text:
-                        "${teamStatsModel.season?.matches?.win ?? ''}W ${teamStatsModel.season?.matches?.draw ?? ''}D ${teamStatsModel.season?.matches?.lose ?? ''}L"),
-                CustomText(text: teamStatsModel.season?.matches?.name ?? '')
-              ],
-            ),
-            Column(
-              children: [
-                CustomText(
-                    text:
-                        "${teamStatsModel.season?.fiveMatches?.win ?? ''}W ${teamStatsModel.season?.fiveMatches?.draw ?? ''}D ${teamStatsModel.season?.fiveMatches?.lose ?? ''}L"),
-                CustomText(text: teamStatsModel.season?.fiveMatches?.name ?? '')
-              ],
-            )
-          ],
+        Container(
+         decoration: BoxDecoration(
+            color: greyColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(2.r),
+          ),
+          margin: EdgeInsets.all(10.w),
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(10.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  CustomText(size:10.sp,text: "${teamStatsModel.season?.rank ?? ''}"),
+                  CustomText(size:10.sp,text: teamStatsModel.season?.name ?? '')
+                ],
+              ),
+              Column(
+                children: [
+                  CustomText(size:10.sp,
+                      text:
+                          "${teamStatsModel.season?.matches?.win ?? ''}W ${teamStatsModel.season?.matches?.draw ?? ''}D ${teamStatsModel.season?.matches?.lose ?? ''}L"),
+                  CustomText(size:10.sp,text: teamStatsModel.season?.matches?.name ?? '')
+                ],
+              ),
+              Column(
+                children: [
+                  CustomText(size:10.sp,
+                      text:
+                          "${teamStatsModel.season?.fiveMatches?.win ?? ''}W ${teamStatsModel.season?.fiveMatches?.draw ?? ''}D ${teamStatsModel.season?.fiveMatches?.lose ?? ''}L"),
+                  CustomText(size:10.sp,text: teamStatsModel.season?.fiveMatches?.name ?? '')
+                ],
+              )
+            ],
+          ),
         ),
         Container(
           margin: EdgeInsets.all(10.w),
           padding: EdgeInsets.all(10.w),
           decoration: BoxDecoration(
-            color: greyColor,
-            borderRadius: BorderRadius.circular(10),
+            color: greyColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(3.r),
           ),
           child: Column(
             children: [
@@ -228,7 +238,8 @@ class StatsWidget extends StatelessWidget {
                                             .scoreBoard?.teams?[index].rank ??
                                         '',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color:teamName== teamStatsModel
+                                          .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
                                       fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -256,8 +267,9 @@ class StatsWidget extends StatelessWidget {
                                           .scoreBoard?.teams?[index].clubName ??
                                       '',
                                   style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 8.sp,
+                                    color:teamName== teamStatsModel
+                                        .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
+                                    fontSize: 7.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -272,7 +284,8 @@ class StatsWidget extends StatelessWidget {
                                             .matchesTotal ??
                                         '',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color:teamName== teamStatsModel
+                                          .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
                                       fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -289,7 +302,8 @@ class StatsWidget extends StatelessWidget {
                                             .matchesWon ??
                                         '',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color:teamName== teamStatsModel
+                                          .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
                                       fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -306,7 +320,8 @@ class StatsWidget extends StatelessWidget {
                                             .matchesDraw ??
                                         '',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color:teamName== teamStatsModel
+                                          .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
                                       fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -323,7 +338,8 @@ class StatsWidget extends StatelessWidget {
                                             .matchesLost ??
                                         '',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color:teamName== teamStatsModel
+                                          .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
                                       fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -338,7 +354,8 @@ class StatsWidget extends StatelessWidget {
                                   child: Text(
                                     "${teamStatsModel.scoreBoard?.teams?[index].goalsPro ?? ''}-${teamStatsModel.scoreBoard?.teams?[index].goalsAgainst ?? ''}",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color:teamName== teamStatsModel
+                                          .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
                                       fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -359,7 +376,8 @@ class StatsWidget extends StatelessWidget {
                                               '',
                                         )}",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color:teamName== teamStatsModel
+                                          .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
                                       fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -376,7 +394,8 @@ class StatsWidget extends StatelessWidget {
                                             .scoreBoard?.teams?[index].points ??
                                         '',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color:teamName== teamStatsModel
+                                          .scoreBoard?.teams?[index].clubName?secondaryColor: Colors.white,
                                       fontSize: 8.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
