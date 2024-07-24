@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/models/team_info_model.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/app_theme.dart';
 import '../../widgets/custom_text.dart';
@@ -24,7 +25,7 @@ class InfoWidget extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.all(5.w),
               color: greyColor.withOpacity(0.6),
-              child: const CustomText(text: 'Info')),
+              child: CustomText(text: 'info'.tr)),
           Container(
             color: greyColor,
             child: Column(
@@ -34,9 +35,9 @@ class InfoWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Opacity(
+                      Opacity(
                           opacity: 0.5,
-                          child: CustomText(text: 'Founded in : ')),
+                          child: CustomText(text: 'founded_in'.tr)),
                       CustomText(text: teamInfoModel?.baseInfo?.founded ?? ''),
                     ],
                   ),
@@ -46,8 +47,8 @@ class InfoWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Opacity(
-                          opacity: 0.5, child: CustomText(text: 'Location : ')),
+                      Opacity(
+                          opacity: 0.5, child: CustomText(text: 'location'.tr)),
                       CustomText(
                           text:
                               "${teamInfoModel?.baseInfo?.country ?? ''}, ${teamInfoModel?.baseInfo?.city ?? ''}"),
@@ -59,8 +60,7 @@ class InfoWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Opacity(
-                          opacity: 0.5, child: CustomText(text: 'Home : ')),
+                      Opacity(opacity: 0.5, child: CustomText(text: 'home'.tr)),
                       CustomText(
                           text:
                               "${teamInfoModel?.baseInfo?.venueName ?? ''}, Capacity ${teamInfoModel?.baseInfo?.venueCapacity ?? ''}"),
@@ -77,7 +77,7 @@ class InfoWidget extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               color: greyColor.withOpacity(0.6),
               padding: EdgeInsets.all(5.w),
-              child: const CustomText(text: 'Contact Information')),
+              child: CustomText(text: 'contact_information'.tr)),
           Container(
             color: greyColor,
             child: Column(
@@ -87,8 +87,7 @@ class InfoWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Opacity(
-                          opacity: 0.5, child: CustomText(text: 'Tel : ')),
+                      Opacity(opacity: 0.5, child: CustomText(text: 'tel'.tr)),
                       CustomText(
                           text: teamInfoModel?.baseInfo?.telephone ?? ''),
                     ],
@@ -99,8 +98,8 @@ class InfoWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Opacity(
-                          opacity: 0.5, child: CustomText(text: 'Email : ')),
+                      Opacity(
+                          opacity: 0.5, child: CustomText(text: 'email'.tr)),
                       CustomText(text: teamInfoModel?.baseInfo?.email ?? ''),
                     ],
                   ),
@@ -110,8 +109,8 @@ class InfoWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Opacity(
-                          opacity: 0.5, child: CustomText(text: 'Address : ')),
+                      Opacity(
+                          opacity: 0.5, child: CustomText(text: 'address'.tr)),
                       CustomText(text: teamInfoModel?.baseInfo?.address ?? ''),
                     ],
                   ),
@@ -122,18 +121,19 @@ class InfoWidget extends StatelessWidget {
           SizedBox(
             height: 15.h,
           ),
-          if((teamInfoModel?.teamRecord?.length ?? 0) > 0 &&
-              teamInfoModel?.teamRecord?[0].type == "Goals")Container(
-              color: greyColor.withOpacity(0.6),
-              padding: EdgeInsets.all(5.w),
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                   CustomText(text: 'Club Records'),
-                   CustomText(text: 'Goals'),
-                ],
-              )),
+          if ((teamInfoModel?.teamRecord?.length ?? 0) > 0 &&
+              teamInfoModel?.teamRecord?[0].type == "Goals")
+            Container(
+                color: greyColor.withOpacity(0.6),
+                padding: EdgeInsets.all(5.w),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(text: 'club_records'.tr),
+                    CustomText(text: 'goals'.tr),
+                  ],
+                )),
           ((teamInfoModel?.teamRecord?.length ?? 0) > 0 &&
                   teamInfoModel?.teamRecord?[0].type == "Goals")
               ? Container(
@@ -148,7 +148,8 @@ class InfoWidget extends StatelessWidget {
                         color: index % 2 != 0
                             ? greyColor.withOpacity(0.6)
                             : whiteColor.withOpacity(0.6),
-                        padding: const EdgeInsets.only(top: 8.0,right: 8.0,bottom: 8.0),
+                        padding: const EdgeInsets.only(
+                            top: 8.0, right: 8.0, bottom: 8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -158,7 +159,9 @@ class InfoWidget extends StatelessWidget {
                                 SizedBox(
                                   width: 15.w,
                                   child: CustomText(
-                                    textColor: index % 2 != 0? lightWhiteColor: cardColor,
+                                      textColor: index % 2 != 0
+                                          ? lightWhiteColor
+                                          : cardColor,
                                       textAlign: TextAlign.right,
                                       text: "${index + 1}"),
                                 ),
@@ -183,17 +186,25 @@ class InfoWidget extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     CustomText(
-                                        textColor: index % 2 != 0? Colors.white: Colors.black,
-                                        text: teamInfoModel?.teamRecord?[0]
-                                                .trophyData?[index].personName ??
+                                        textColor: index % 2 != 0
+                                            ? Colors.white
+                                            : Colors.black,
+                                        text: teamInfoModel
+                                                ?.teamRecord?[0]
+                                                .trophyData?[index]
+                                                .personName ??
                                             ''),
                                     Opacity(
                                       opacity: 0.6,
                                       child: CustomText(
-                                          textColor: index % 2 != 0? Colors.white: Colors.black,
-                                        size: 10.sp,
-                                          text: teamInfoModel?.teamRecord?[0]
-                                                  .trophyData?[index].birthDate ??
+                                          textColor: index % 2 != 0
+                                              ? Colors.white
+                                              : Colors.black,
+                                          size: 10.sp,
+                                          text: teamInfoModel
+                                                  ?.teamRecord?[0]
+                                                  .trophyData?[index]
+                                                  .birthDate ??
                                               ''),
                                     )
                                   ],
@@ -201,11 +212,13 @@ class InfoWidget extends StatelessWidget {
                               ],
                             ),
                             CustomText(
-                                textColor: index % 2 != 0? Colors.white: Colors.black,
+                                textColor: index % 2 != 0
+                                    ? Colors.white
+                                    : Colors.black,
                                 fontWeight: FontWeight.bold,
                                 text: teamInfoModel?.teamRecord?[0]
-                                    .trophyData?[index].statisticV1?[0] ??
-                                '')
+                                        .trophyData?[index].statisticV1?[0] ??
+                                    '')
                           ],
                         ),
                       );
@@ -220,7 +233,7 @@ class InfoWidget extends StatelessWidget {
               color: greyColor.withOpacity(0.6),
               padding: EdgeInsets.all(5.w),
               width: MediaQuery.of(context).size.width,
-              child: const CustomText(text: 'Trophies')),
+              child: CustomText(text: 'trophies'.tr)),
           Container(
             color: greyColor,
             child: ListView.builder(

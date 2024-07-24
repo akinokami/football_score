@@ -5,6 +5,7 @@ import 'package:football_score/models/team_member_model.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
+import 'package:get/get.dart';
 
 class PlayerWidget extends StatelessWidget {
   final TeamMemberModel? teamMemberModel;
@@ -30,51 +31,51 @@ class PlayerWidget extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(5.w),
                     //margin: EdgeInsets.only(bottom: 5.h),
-                    width:MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width,
                     color: greyColor.withOpacity(0.6),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomText(
                             text: index == 0
-                                ? 'Coach'
+                                ? 'coach'.tr
                                 : index == 1
-                                    ? 'Attacker'
+                                    ? 'attacker'.tr
                                     : index == 2
-                                        ? 'Midfielder'
+                                        ? 'midfielder'.tr
                                         : index == 3
-                                            ? 'Defender'
+                                            ? 'defender'.tr
                                             : index == 4
-                                                ? 'Goalkeeper'
+                                                ? 'goalkeeper'.tr
                                                 : 'Player'),
-                       if(index != 0
-                           ) Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(right: 8.w),
-                              child: CustomText(
-                                text: 'Apps',
+                        if (index != 0)
+                          Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.w),
+                                child: CustomText(
+                                  text: 'apps'.tr,
+                                  size: 10.sp,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.w),
+                                child: CustomText(
+                                  text: 'goals'.tr,
+                                  size: 10.sp,
+                                ),
+                              ),
+                              CustomText(
+                                text: 'asists'.tr,
                                 size: 10.sp,
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 8.w),
-                              child: CustomText(
-                                text: 'Goals',
-                                size: 10.sp,
-                              ),
-                            ),
-                            CustomText(
-                              text: 'Asists',
-                              size: 10.sp,
-                            ),
-                          ],
-                        )
+                            ],
+                          )
                       ],
                     ),
                   ),
                   Container(
-                    width:MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.all(5.w),
                     color: greyColor,
                     child: ListView.builder(
