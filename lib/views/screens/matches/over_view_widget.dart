@@ -5,6 +5,8 @@ import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
+import '../../../utils/animation_progress_indicator.dart';
+
 class OverviewWidget extends StatelessWidget {
   final Map<String, dynamic> statisticModel;
   final Map<String, dynamic> eventModel;
@@ -56,30 +58,44 @@ class OverviewWidget extends StatelessWidget {
                                                   ['statistics'][index]
                                               ['home_team_value']),
                                     ),
-                                    SizedBox(
-                                      width: 80.w,
-                                      height: 10.h,
-                                      child: LinearProgressIndicator(
-                                        backgroundColor: Colors.white,
-                                        valueColor:
-                                            const AlwaysStoppedAnimation<Color>(
-                                                Colors.green),
-                                        value: (statisticModel['data']
-                                                            ['statistics']
-                                                        [index]['name'] ==
-                                                    'Attacks' ||
-                                                statisticModel['data']
-                                                            ['statistics']
-                                                        [index]['name'] ==
-                                                    'Dangerous Attacks')
-                                            ? double.parse(statisticModel['data']['statistics'][index]['home_team_value']) /
-                                                200
-                                            : double.parse(statisticModel['data']
-                                                        ['statistics'][index]
-                                                    ['home_team_value']) /
-                                                100,
-                                      ),
-                                    ),
+                                    AnimatedProgressIndicator(value: (statisticModel['data']
+                                    ['statistics']
+                                    [index]['name'] ==
+                                        'Attacks' ||
+                                        statisticModel['data']
+                                        ['statistics']
+                                        [index]['name'] ==
+                                            'Dangerous Attacks')
+                                        ? double.parse(statisticModel['data']['statistics'][index]['home_team_value']) /
+                                        200
+                                        : double.parse(statisticModel['data']
+                                    ['statistics'][index]
+                                    ['home_team_value']) /
+                                        100),
+                                    // SizedBox(
+                                    //   width: 80.w,
+                                    //   height: 10.h,
+                                    //   child: LinearProgressIndicator(
+                                    //     backgroundColor: Colors.white,
+                                    //     valueColor:
+                                    //         const AlwaysStoppedAnimation<Color>(
+                                    //             Colors.green),
+                                    //     value: (statisticModel['data']
+                                    //                         ['statistics']
+                                    //                     [index]['name'] ==
+                                    //                 'Attacks' ||
+                                    //             statisticModel['data']
+                                    //                         ['statistics']
+                                    //                     [index]['name'] ==
+                                    //                 'Dangerous Attacks')
+                                    //         ? double.parse(statisticModel['data']['statistics'][index]['home_team_value']) /
+                                    //             200
+                                    //         : double.parse(statisticModel['data']
+                                    //                     ['statistics'][index]
+                                    //                 ['home_team_value']) /
+                                    //             100,
+                                    //   ),
+                                    // ),
                                     SizedBox(
                                       width: 100.w,
                                       child: CustomText(
@@ -89,30 +105,44 @@ class OverviewWidget extends StatelessWidget {
                                           text: statisticModel['data']
                                               ['statistics'][index]['name']),
                                     ),
-                                    SizedBox(
-                                      width: 80.w,
-                                      height: 10.h,
-                                      child: LinearProgressIndicator(
-                                        backgroundColor: Colors.white,
-                                        valueColor:
-                                            const AlwaysStoppedAnimation<Color>(
-                                                Colors.green),
-                                        value: (statisticModel['data']
-                                                            ['statistics']
-                                                        [index]['name'] ==
-                                                    'Attacks' ||
-                                                statisticModel['data']
-                                                            ['statistics']
-                                                        [index]['name'] ==
-                                                    'Dangerous Attacks')
-                                            ? double.parse(statisticModel['data']['statistics'][index]['away_team_value']) /
-                                                200
-                                            : double.parse(statisticModel['data']
-                                                        ['statistics'][index]
-                                                    ['away_team_value']) /
-                                                100,
-                                      ),
-                                    ),
+                                    AnimatedProgressIndicator(value: (statisticModel['data']
+                                    ['statistics']
+                                    [index]['name'] ==
+                                        'Attacks' ||
+                                        statisticModel['data']
+                                        ['statistics']
+                                        [index]['name'] ==
+                                            'Dangerous Attacks')
+                                        ? double.parse(statisticModel['data']['statistics'][index]['away_team_value']) /
+                                        200
+                                        : double.parse(statisticModel['data']
+                                    ['statistics'][index]
+                                    ['away_team_value']) /
+                                        100),
+                                    // SizedBox(
+                                    //   width: 80.w,
+                                    //   height: 10.h,
+                                    //   child: LinearProgressIndicator(
+                                    //     backgroundColor: Colors.white,
+                                    //     valueColor:
+                                    //         const AlwaysStoppedAnimation<Color>(
+                                    //             Colors.green),
+                                    //     value: (statisticModel['data']
+                                    //                         ['statistics']
+                                    //                     [index]['name'] ==
+                                    //                 'Attacks' ||
+                                    //             statisticModel['data']
+                                    //                         ['statistics']
+                                    //                     [index]['name'] ==
+                                    //                 'Dangerous Attacks')
+                                    //         ? double.parse(statisticModel['data']['statistics'][index]['away_team_value']) /
+                                    //             200
+                                    //         : double.parse(statisticModel['data']
+                                    //                     ['statistics'][index]
+                                    //                 ['away_team_value']) /
+                                    //             100,
+                                    //   ),
+                                    // ),
                                     SizedBox(
                                       width: 20.w,
                                       child: CustomText(
@@ -164,14 +194,28 @@ class OverviewWidget extends StatelessWidget {
                                               ['home'] !=
                                           [])
                                         SizedBox(
-                                          height: eventModel['data']['events']
+                                          height:eventModel['data']['events']
+                                          [index]['home']
+                                              .length >
+                                              10
+                                              ? MediaQuery.of(context)
+                                              .size
+                                              .height *
+                                              .3: eventModel['data']['events']
+                                          [index]['home']
+                                              .length >
+                                              18
+                                              ? MediaQuery.of(context)
+                                              .size
+                                              .height *
+                                              .4:eventModel['data']['events']
                                                           [index]['home']
                                                       .length >
                                                   2
                                               ? MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  .12
+                                                  .15
                                               : eventModel['data']['events']
                                                               [index]['home']
                                                           .length ==
@@ -329,14 +373,28 @@ class OverviewWidget extends StatelessWidget {
                                               ['away'] !=
                                           [])
                                         SizedBox(
-                                          height: eventModel['data']['events']
+                                          height:eventModel['data']['events']
+                                          [index]['away']
+                                              .length >
+                                              10
+                                              ? MediaQuery.of(context)
+                                              .size
+                                              .height *
+                                              .3: eventModel['data']['events']
+                                          [index]['away']
+                                              .length >
+                                              18
+                                              ? MediaQuery.of(context)
+                                              .size
+                                              .height *
+                                              .4: eventModel['data']['events']
                                                           [index]['away']
                                                       .length >
                                                   2
                                               ? MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  .12
+                                                  .15
                                               : eventModel['data']['events']
                                                               [index]['away']
                                                           .length ==
