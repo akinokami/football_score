@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:date_picker_timeline/date_picker_widget.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/controller/app_config_controller.dart';
@@ -29,18 +29,19 @@ class MatchScreen extends StatelessWidget {
           child: Column(
             children: [
               DatePicker(
-                DateTime.now(),
-                initialSelectedDate: DateTime.now(),
+                DateTime.now().subtract(const Duration(days: 100)),
+                controller: matchController.datePickerController,
+                initialSelectedDate: matchController.selectedDate.value,
                 selectionColor: secondaryColor,
                 deactivatedColor: Colors.red,
-                dateTextStyle:  TextStyle(color: Colors.white,fontSize: 10.sp),
-                monthTextStyle:  TextStyle(color: Colors.white, fontSize: 10.sp),
-                dayTextStyle:  TextStyle(color: Colors.white, fontSize: 10.sp),
+                dateTextStyle: TextStyle(color: Colors.white, fontSize: 10.sp),
+                monthTextStyle: TextStyle(color: Colors.white, fontSize: 10.sp),
+                dayTextStyle: TextStyle(color: Colors.white, fontSize: 10.sp),
                 width: 60.w,
                 height: 70.h,
                 onDateChange: (date) {
-                  print(date);
                   matchController.selectedDate.value = date;
+                  matchController.scrollToSelectedDate();
                   matchController.getMatches(matchController.selectedUrl.value);
                 },
               ),

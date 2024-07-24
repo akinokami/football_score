@@ -1,3 +1,4 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:football_score/controller/app_config_controller.dart';
 import 'package:football_score/models/match_model.dart';
@@ -13,10 +14,14 @@ class MatchController extends GetxController {
   RxList<Matches> matchSearchList = <Matches>[].obs;
   TextEditingController searchController = TextEditingController();
   var selectedDate = DateTime.now().obs;
+  DatePickerController datePickerController = DatePickerController();
   var selectedUrl = ''.obs;
 
   @override
   void onInit() {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      scrollToSelectedDate();
+    });
     startMatch();
     super.onInit();
   }
@@ -68,5 +73,9 @@ class MatchController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  void scrollToSelectedDate() {
+    datePickerController.animateToDate(selectedDate.value);
   }
 }
