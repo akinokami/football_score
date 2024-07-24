@@ -71,7 +71,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           GestureDetector(
-                            onTap: () => Get.to(() => TeamDetailScreen()),
+                            onTap: () => Get.to(() => const TeamDetailScreen(),
+                                arguments: {'teamId': widget.match.teamAId}),
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width * .3,
                               child: Column(
@@ -168,7 +169,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                             ),
                           ),
                           GestureDetector(
-                            onTap: () => Get.to(() => TeamDetailScreen()),
+                            onTap: () => Get.to(() => const TeamDetailScreen(),
+                                arguments: {'teamId': widget.match.teamBId}),
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width * .3,
                               child: Column(

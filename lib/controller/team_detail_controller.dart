@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:football_score/models/team_detail_model.dart';
+import 'package:football_score/services/api_repo.dart';
+import 'package:get/get.dart';
+
+import '../models/team_info_model.dart';
+import '../utils/constants.dart';
+
+class TeamDetailController extends GetxController {
+  final teamId = ''.obs;
+  final isLoading = false.obs;
+  final isLoadingTab = false.obs;
+  Rx<TeamDetailModel> teamDetailModel = TeamDetailModel().obs;
+  Rx<TeamInfoModel> teamInfoModel = TeamInfoModel().obs;
+
+  @override
+  void onInit() {
+    teamId.value = Get.arguments['teamId'];
+    getTeamDetail();
+    super.onInit();
+  }
+
+  Future<void> getTeamDetail() async {
+    isLoading.value = true;
+    try {
+      final result = await ApiRepo().getTeamDetail(teamId: teamId.value);
+      teamDetailModel.value = result;
+    } catch (e) {
+      constants.showSnackBar(
+          title: 'Error', msg: e.toString(), textColor: Colors.red);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> getTeamInfo() async {
+    isLoadingTab.value = true;
+    try {
+      final result = await ApiRepo().getTeamInfo(teamId: teamId.value);
+      teamInfoModel.value = result;
+    } catch (e) {
+      constants.showSnackBar(
+          title: 'Error', msg: e.toString(), textColor: Colors.red);
+    } finally {
+      isLoadingTab.value = false;
+    }
+  }
+}

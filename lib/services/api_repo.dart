@@ -9,6 +9,8 @@ import 'package:football_score/utils/global.dart';
 import '../models/lineup_model.dart';
 import '../models/match_detail_model.dart';
 import '../models/news_model.dart';
+import '../models/team_detail_model.dart';
+import '../models/team_info_model.dart';
 
 class ApiRepo {
   final ApiUtils apiUtils = ApiUtils();
@@ -135,6 +137,42 @@ class ApiRepo {
       // final overviews = response.data['data'][0];
       // return OverviewModel.fromJson(overviews);
       return response.data;
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<TeamDetailModel> getTeamDetail({required String teamId}) async {
+    try {
+      final response = await apiUtils
+          .get(url: "${ApiConstant.teamDetailUrl}/$teamId", queryParameters: {
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
+        "app": "af",
+      });
+      final teams = response.data;
+      return TeamDetailModel.fromJson(teams);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<TeamInfoModel> getTeamInfo({required String teamId}) async {
+    try {
+      final response = await apiUtils
+          .get(url: "${ApiConstant.teamInfoUrl}/$teamId", queryParameters: {
+        "language": Global.language == "zh"
+            ? "zh-CN"
+            : Global.language == "vi"
+                ? "vi-VN"
+                : "en-US",
+        "app": "af",
+      });
+      final info = response.data;
+      return TeamInfoModel.fromJson(info);
     } catch (e) {
       throw CustomException(e.toString());
     }

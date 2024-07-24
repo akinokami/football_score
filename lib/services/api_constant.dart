@@ -13,4 +13,10 @@ class ApiConstant {
 
   static String overviewUrl =
       'https://sport-data.allfootballapp.com/soccer/biz/match/overview/';
+
+  static String teamDetailUrl =
+      'https://sportdata-v2.allfootballapp.com/soccer/biz/af/team/sample/';
+
+  static String teamInfoUrl =
+      'https://api.allfootballapp.com/data/detail/team/';
 }

@@ -4,7 +4,6 @@ import 'package:football_score/models/match_model.dart';
 import 'package:football_score/services/api_repo.dart';
 import 'package:football_score/utils/constants.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class MatchController extends GetxController {
   final selectedIndex = 0.obs;
