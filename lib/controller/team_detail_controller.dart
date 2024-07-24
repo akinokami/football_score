@@ -18,10 +18,10 @@ class TeamDetailController extends GetxController {
   Rx<TeamMemberModel> teamMemberModel = TeamMemberModel().obs;
   Rx<TeamStatsModel> teamStatsModel = TeamStatsModel().obs;
   Rx<TeamFixModel> teamFixModel = TeamFixModel().obs;
+  Rx<SeasonList?> selectedSeason = Rx<SeasonList?>(null);
+  //SeasonList? selectedRegion;
 
-  SeasonList? selectedRegion;
-
-  get selectedSeason => null;
+  //get selectedSeason => null;
 
   @override
   void onInit() {

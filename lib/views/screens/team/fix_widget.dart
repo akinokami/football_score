@@ -32,9 +32,9 @@ class _FixWidgetState extends State<FixWidget> {
               borderRadius: BorderRadius.all(Radius.circular(5.r)),
             ),
             child: DropdownButtonHideUnderline(
-              child: DropdownButton<SeasonList>(
+              child: Obx(() => DropdownButton<SeasonList>(
                 padding: const EdgeInsets.only(left: 8),
-                value: teamDetailController.selectedSeason,
+                value: teamDetailController.selectedSeason.value,
                 hint: const CustomText(
                   text: 'Select Season',
                   textColor: Colors.white,
@@ -51,10 +51,9 @@ class _FixWidgetState extends State<FixWidget> {
                   );
                 }).toList(),
                 onChanged: (SeasonList? newValue) {
-                  teamDetailController.selectedRegion = newValue;
-                  setState(() {});
+                  teamDetailController.selectedSeason.value = newValue;
                 },
-              ),
+              )),
             ),
           ),
           Expanded(
