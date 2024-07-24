@@ -6,6 +6,7 @@ import 'package:football_score/services/api_repo.dart';
 import 'package:football_score/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 class MatchController extends GetxController {
   final selectedIndex = 0.obs;
@@ -14,7 +15,7 @@ class MatchController extends GetxController {
   RxList<Matches> matchList = <Matches>[].obs;
   RxList<Matches> matchSearchList = <Matches>[].obs;
   TextEditingController searchController = TextEditingController();
-  var selectedDate = DateTime.now().obs;
+  var selectedDate = DateTime.now().toUtc().obs;
   DatePickerController datePickerController = DatePickerController();
   var selectedUrl = ''.obs;
 
@@ -24,6 +25,8 @@ class MatchController extends GetxController {
       scrollToSelectedDate();
     });
     startMatch();
+    // print("date>>>>>>${DateTime.now()}");
+    // print("date utc>>>>>>${DateTime.now().toUtc()}");
     super.onInit();
   }
 
@@ -62,11 +65,10 @@ class MatchController extends GetxController {
       matchModel.value = result;
 
       if (matchModel.value.list != null) {
-        matchList.value = matchModel.value.list!
-            .where((element) =>
-                element.dateUtc ==
-                DateFormat('yyyy-MM-dd').format(selectedDate.value))
-            .toList();
+        matchList.value = matchModel.value.list!.where((element) {
+          return element.dateUtc ==
+              DateFormat('yyyy-MM-dd').format(selectedDate.value);
+        }).toList();
       }
     } catch (e) {
       constants.showSnackBar(
@@ -78,5 +80,22 @@ class MatchController extends GetxController {
 
   void scrollToSelectedDate() {
     datePickerController.animateToDate(selectedDate.value);
+  }
+
+  String convertUtcToLocal(String utcTimeString) {
+    // Parse UTC time string into DateTime object
+    DateTime utcTime = DateTime.parse(utcTimeString).toUtc();
+
+    String localTimeZone = tz.local.name;
+    // Get local time zone
+    tz.Location? location = tz.getLocation(localTimeZone);
+
+    // Convert UTC time to local time
+    tz.TZDateTime localTime = tz.TZDateTime.from(utcTime, location);
+
+    // Format local time as a string (adjust format as needed)
+    String formattedLocalTime = localTime.toString();
+
+    return formattedLocalTime;
   }
 }

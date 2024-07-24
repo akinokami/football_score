@@ -147,7 +147,9 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                               child: CircularProgressIndicator(),
                             )
                           : StatsWidget(
-                        teamName: teamDetailController.teamDetailModel.value.teamName ?? '',
+                              teamName: teamDetailController
+                                      .teamDetailModel.value.teamName ??
+                                  '',
                               teamStatsModel:
                                   teamDetailController.teamStatsModel.value),
                     ),
@@ -156,10 +158,18 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                           ? const Center(
                               child: CircularProgressIndicator(),
                             )
-                          : PlayerWidget(
-                              teamMemberModel:
-                                  teamDetailController.teamMemberModel.value,
-                            ),
+                          : teamDetailController
+                                      .teamMemberModel.value.memberList ==
+                                  null
+                              ? const Center(
+                                  child: CustomText(
+                                    text: 'No Data Found',
+                                  ),
+                                )
+                              : PlayerWidget(
+                                  teamMemberModel: teamDetailController
+                                      .teamMemberModel.value,
+                                ),
                     ),
                     Obx(
                       () => teamDetailController.isLoadingTab.value

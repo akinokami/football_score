@@ -49,6 +49,7 @@ dependencies:
   html: ^0.15.4
   flutter_screenutil: ^5.9.3
   date_picker_timeline:
+  timezone: ^0.9.4
 
 dev_dependencies:
   flutter_test:
