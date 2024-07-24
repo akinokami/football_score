@@ -23,7 +23,7 @@ class OverviewWidget extends StatelessWidget {
             kSizedBoxH10,
             Container(
                 padding: const EdgeInsets.all(5),
-                color: secondaryColor,
+                color: greyColor.withOpacity(0.6),
                 child: CustomText(text: 'statistics'.tr)),
             kSizedBoxH10,
             statisticModel.isEmpty
@@ -163,6 +163,8 @@ class OverviewWidget extends StatelessWidget {
                           )),
             kSizedBoxW30,
             Container(
+                padding: const EdgeInsets.all(5),
+                color: greyColor.withOpacity(0.6),
 
                 child: CustomText(text: 'events'.tr)),
             // if (eventModel['data']['events'] != null ||
