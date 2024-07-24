@@ -164,12 +164,15 @@ class InfoWidget extends StatelessWidget {
                                 SizedBox(
                                   width: 15.w,
                                 ),
-                                CachedNetworkImage(
-                                  imageUrl: teamInfoModel?.teamRecord?[0]
-                                          .trophyData?[index].personLogo ??
-                                      '',
-                                  width: 20.w,
-                                  height: 20.h,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(50.r),
+                                  child: CachedNetworkImage(
+                                    imageUrl: teamInfoModel?.teamRecord?[0]
+                                            .trophyData?[index].personLogo ??
+                                        '',
+                                    width: 20.w,
+                                    height: 20.h,
+                                  ),
                                 ),
                                 SizedBox(
                                   width: 10.w,
