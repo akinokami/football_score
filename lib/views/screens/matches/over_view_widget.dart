@@ -178,7 +178,7 @@ class OverviewWidget extends StatelessWidget {
                       ),
                     ))
                 : SizedBox(
-                    height: MediaQuery.of(context).size.height*1.5,
+                    height: MediaQuery.of(context).size.height*2,
                     child: eventModel['data']['events'] != []
                         ? ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
@@ -195,43 +195,18 @@ class OverviewWidget extends StatelessWidget {
                                               ['home'] !=
                                           [])
                                         SizedBox(
-                                          height:eventModel['data']['events']
-                                          [index]['home']
-                                              .length >
-                                              10
-                                              ? MediaQuery.of(context)
-                                              .size
-                                              .height *
-                                              .3: eventModel['data']['events']
-                                          [index]['home']
-                                              .length >
-                                              18
-                                              ? MediaQuery.of(context)
-                                              .size
-                                              .height *
-                                              .4:(eventModel['data']['events']
-                                                          [index]['home']
-                                                      .length >
-                                                  2 &&eventModel['data']['events']
-                                          [index]['home']
-                                              .length <
-                                              6)
-                                              ? MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  .18
-                                              : (eventModel['data']['events']
-                                                              [index]['home']
-                                                          .length ==1
-                                                     )
-                                                  ? MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      .09
-                                                  : MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      .02,
+                                          height:(eventModel['data']['events'][index]['home'].length <2)?
+                                          MediaQuery.of(context).size.height *.05:
+                                          (eventModel['data']['events'][index]['home'].length ==2)?
+                                          MediaQuery.of(context).size.height *.06:
+                                          (eventModel['data']['events'][index]['home'].length >2
+                                              &&eventModel['data']['events'][index]['home'].length <6)
+                                              ? MediaQuery.of(context).size.height *.2:
+                                          (eventModel['data']['events'][index]['home'].length >=6&&eventModel['data']['events'][index]['away'].length <18)
+                                              ? MediaQuery.of(context).size.height *.25:
+                                          (eventModel['data']['events'][index]['home'].length >=18)
+                                              ? MediaQuery.of(context).size.height *.65
+                                              : MediaQuery.of(context).size.height *.02,
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width *
@@ -377,47 +352,19 @@ class OverviewWidget extends StatelessWidget {
                                               ['away'] !=
                                           [])
                                         SizedBox(
-                                          height:eventModel['data']['events']
-                                          [index]['away']
-                                              .length >
-                                              10
-                                              ? MediaQuery.of(context)
-                                              .size
-                                              .height *
-                                              .3: eventModel['data']['events']
-                                          [index]['away']
-                                              .length >
-                                              18
-                                              ? MediaQuery.of(context)
-                                              .size
-                                              .height *
-                                              .4: (eventModel['data']['events']
-                                                          [index]['away']
-                                                      .length >
-                                                  2&&eventModel['data']['events']
-                                          [index]['away']
-                                              .length <
-                                              6)
-                                              ? MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  .18
-                                              : eventModel['data']['events']
-                                                              [index]['away']
-                                                          .length ==
-                                                      2
-                                                  ? MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      .09
-                                                  : MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      .02,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .40,
+                                          height:(eventModel['data']['events'][index]['away'].length <2)?
+                                          MediaQuery.of(context).size.height *.09:
+                                          (eventModel['data']['events'][index]['away'].length ==2)?
+                                          MediaQuery.of(context).size.height *.08:
+                              (eventModel['data']['events'][index]['away'].length >2
+                              &&eventModel['data']['events'][index]['away'].length <6)
+                              ? MediaQuery.of(context).size.height *.2:
+                              (eventModel['data']['events'][index]['away'].length >=6&&eventModel['data']['events'][index]['away'].length <18)
+                                  ? MediaQuery.of(context).size.height *.30:
+                              (eventModel['data']['events'][index]['away'].length >=18)
+                                  ? MediaQuery.of(context).size.height *.65
+                                  : MediaQuery.of(context).size.height *.02,
+                                          width: MediaQuery.of(context).size.width *.40,
                                           child: ListView.builder(
                                               physics:
                                                   const NeverScrollableScrollPhysics(),
