@@ -8,6 +8,7 @@ import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/matches/h_to_h_widget.dart';
 import 'package:football_score/views/screens/matches/lineup_widget.dart';
 import 'package:football_score/views/screens/matches/standings_widget.dart';
+import 'package:football_score/views/screens/team/team_detail_screen.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -69,42 +70,45 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * .3,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                CachedNetworkImage(
-                                  width: 50.w,
-                                  height: 50.h,
-                                  imageUrl: matchDetailController
-                                          .matchDetailModel
-                                          .value
-                                          .matchSample
-                                          ?.teamALogo ??
-                                      '',
-                                  placeholder: (context, url) => const Center(
-                                      child: CircularProgressIndicator()),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * .15,
-                                  child: Text(
-                                    matchDetailController.matchDetailModel.value
-                                            .matchSample?.teamAName ??
+                          GestureDetector(
+                            onTap: () => Get.to(() => TeamDetailScreen()),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * .3,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  CachedNetworkImage(
+                                    width: 50.w,
+                                    height: 50.h,
+                                    imageUrl: matchDetailController
+                                            .matchDetailModel
+                                            .value
+                                            .matchSample
+                                            ?.teamALogo ??
                                         '',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.bold,
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * .15,
+                                    child: Text(
+                                      matchDetailController.matchDetailModel
+                                              .value.matchSample?.teamAName ??
+                                          '',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -163,43 +167,46 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                               ],
                             ),
                           ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * .3,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                CachedNetworkImage(
-                                  width: 50.w,
-                                  height: 50.h,
-                                  imageUrl: matchDetailController
-                                          .matchDetailModel
-                                          .value
-                                          .matchSample
-                                          ?.teamBLogo ??
-                                      '',
-                                  placeholder: (context, url) => const Center(
-                                      child: CircularProgressIndicator()),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                ),
-                                kSizedBoxW5,
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * .15,
-                                  child: Text(
-                                    matchDetailController.matchDetailModel.value
-                                            .matchSample?.teamBName ??
+                          GestureDetector(
+                            onTap: () => Get.to(() => TeamDetailScreen()),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * .3,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  CachedNetworkImage(
+                                    width: 50.w,
+                                    height: 50.h,
+                                    imageUrl: matchDetailController
+                                            .matchDetailModel
+                                            .value
+                                            .matchSample
+                                            ?.teamBLogo ??
                                         '',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.bold,
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ),
+                                  kSizedBoxW5,
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * .15,
+                                    child: Text(
+                                      matchDetailController.matchDetailModel
+                                              .value.matchSample?.teamBName ??
+                                          '',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ],
