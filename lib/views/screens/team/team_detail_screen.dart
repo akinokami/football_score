@@ -82,6 +82,7 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                   ),
                   Container(
                     height: 40.h,
+                    margin: EdgeInsets.symmetric(horizontal: 8.w),
                     decoration: BoxDecoration(
                       color: greyColor,
                       borderRadius: BorderRadius.circular(
@@ -146,6 +147,7 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                               child: CircularProgressIndicator(),
                             )
                           : StatsWidget(
+                        teamName: teamDetailController.teamDetailModel.value.teamName ?? '',
                               teamStatsModel:
                                   teamDetailController.teamStatsModel.value),
                     ),

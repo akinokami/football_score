@@ -163,8 +163,7 @@ class OverviewWidget extends StatelessWidget {
                           )),
             kSizedBoxW30,
             Container(
-                padding: const EdgeInsets.all(5),
-                color: secondaryColor,
+
                 child: CustomText(text: 'events'.tr)),
             // if (eventModel['data']['events'] != null ||
             //     eventModel['data']['events'] != [])
@@ -177,7 +176,7 @@ class OverviewWidget extends StatelessWidget {
                       ),
                     ))
                 : SizedBox(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height*1.5,
                     child: eventModel['data']['events'] != []
                         ? ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
@@ -208,22 +207,25 @@ class OverviewWidget extends StatelessWidget {
                                               ? MediaQuery.of(context)
                                               .size
                                               .height *
-                                              .4:eventModel['data']['events']
+                                              .4:(eventModel['data']['events']
                                                           [index]['home']
                                                       .length >
-                                                  2
+                                                  2 &&eventModel['data']['events']
+                                          [index]['home']
+                                              .length <
+                                              6)
                                               ? MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  .15
-                                              : eventModel['data']['events']
+                                                  .18
+                                              : (eventModel['data']['events']
                                                               [index]['home']
-                                                          .length ==
-                                                      2
+                                                          .length ==1
+                                                     )
                                                   ? MediaQuery.of(context)
                                                           .size
                                                           .height *
-                                                      .08
+                                                      .09
                                                   : MediaQuery.of(context)
                                                           .size
                                                           .height *
@@ -387,14 +389,17 @@ class OverviewWidget extends StatelessWidget {
                                               ? MediaQuery.of(context)
                                               .size
                                               .height *
-                                              .4: eventModel['data']['events']
+                                              .4: (eventModel['data']['events']
                                                           [index]['away']
                                                       .length >
-                                                  2
+                                                  2&&eventModel['data']['events']
+                                          [index]['away']
+                                              .length <
+                                              6)
                                               ? MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  .15
+                                                  .18
                                               : eventModel['data']['events']
                                                               [index]['away']
                                                           .length ==
@@ -402,7 +407,7 @@ class OverviewWidget extends StatelessWidget {
                                                   ? MediaQuery.of(context)
                                                           .size
                                                           .height *
-                                                      .08
+                                                      .09
                                                   : MediaQuery.of(context)
                                                           .size
                                                           .height *
