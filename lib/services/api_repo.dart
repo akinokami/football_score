@@ -235,4 +235,14 @@ class ApiRepo {
       throw CustomException(e.toString());
     }
   }
+
+  Future<TeamFixModel> getTeamFixYear({required String url}) async {
+    try {
+      final response = await apiUtils.get(url: url);
+      final fixs = response.data;
+      return TeamFixModel.fromJson(fixs);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
 }

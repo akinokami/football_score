@@ -13,20 +13,20 @@ class TeamDetailController extends GetxController {
   final teamId = ''.obs;
   final isLoading = false.obs;
   final isLoadingTab = false.obs;
+  final isLoadingFix = false.obs;
   Rx<TeamDetailModel> teamDetailModel = TeamDetailModel().obs;
   Rx<TeamInfoModel> teamInfoModel = TeamInfoModel().obs;
   Rx<TeamMemberModel> teamMemberModel = TeamMemberModel().obs;
   Rx<TeamStatsModel> teamStatsModel = TeamStatsModel().obs;
   Rx<TeamFixModel> teamFixModel = TeamFixModel().obs;
   Rx<SeasonList?> selectedSeason = Rx<SeasonList?>(null);
-  //SeasonList? selectedRegion;
-
-  //get selectedSeason => null;
+  RxList<SeasonList> seasonList = <SeasonList>[].obs;
 
   @override
   void onInit() {
     teamId.value = Get.arguments['teamId'];
     getTeamDetail();
+    getTeamFix();
     super.onInit();
   }
 
@@ -87,11 +87,31 @@ class TeamDetailController extends GetxController {
     try {
       final result = await ApiRepo().getTeamFix(teamId: teamId.value);
       teamFixModel.value = result;
+      seasonList.addAll(teamFixModel.value.seasonList ?? []);
+      if (seasonList.isNotEmpty) {
+        selectedSeason.value = seasonList.first;
+      }
     } catch (e) {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {
       isLoadingTab.value = false;
+    }
+  }
+
+  Future<void> getTeamFixYear(String url, SeasonList season) async {
+    isLoadingFix.value = true;
+    try {
+      final result = await ApiRepo().getTeamFixYear(url: url);
+      teamFixModel.value = result;
+      if (teamFixModel.value.seasonList!.isNotEmpty) {
+        selectedSeason.value = season;
+      }
+    } catch (e) {
+      constants.showSnackBar(
+          title: 'Error', msg: e.toString(), textColor: Colors.red);
+    } finally {
+      isLoadingFix.value = false;
     }
   }
 }
