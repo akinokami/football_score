@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,18 +58,16 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                     fit: BoxFit.contain,
                     url: teamDetailController.teamDetailModel.value.teamImg ??
                         "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
-                    fadeInDuration:
-                    const Duration(seconds: 1),
-                    errorBuilder: (context, exception,
-                        stacktrace) {
+                    fadeInDuration: const Duration(seconds: 1),
+                    errorBuilder: (context, exception, stacktrace) {
                       return Image.asset(
                         "assets/images/football_news.webp",
                         fit: BoxFit.contain,
                         width: 40.w,
-                        height: 40.h,);
+                        height: 40.h,
+                      );
                     },
-                    loadingBuilder:
-                        (context, progress) {
+                    loadingBuilder: (context, progress) {
                       debugPrint(
                           'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
                       return Container(
@@ -80,26 +77,19 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                         child: Stack(
                           alignment: Alignment.center,
                           children: [
-                            if (progress
-                                .isDownloading &&
-                                progress.totalBytes !=
-                                    null)
+                            if (progress.isDownloading &&
+                                progress.totalBytes != null)
                               Text(
                                   '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
-                                  style:
-                                  const TextStyle(
-                                      color: Colors
-                                          .red)),
+                                  style: const TextStyle(color: Colors.red)),
                             Center(
                               child: SizedBox(
                                   width: 10,
                                   height: 10,
                                   child: CircularProgressIndicator(
-                                      color: Colors
-                                          .white,
-                                      value: progress
-                                          .progressPercentage
-                                          .value)),
+                                      color: Colors.white,
+                                      value:
+                                          progress.progressPercentage.value)),
                             ),
                           ],
                         ),
@@ -109,7 +99,6 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                       // );
                     },
                   ),
-
                   SizedBox(
                     height: 5.h,
                   ),

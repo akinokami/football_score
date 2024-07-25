@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -276,7 +275,6 @@ class MatchScreen extends StatelessWidget {
                                                         .teamBLogo,
                                                     width: 18,
                                                     height: 18),
-
                                                 kSizedBoxW5,
                                                 SizedBox(
                                                   width: MediaQuery.of(context)

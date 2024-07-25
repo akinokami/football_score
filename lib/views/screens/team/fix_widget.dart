@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +25,7 @@ class FixWidget extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Container(
-                width: MediaQuery.of(context).size.width*.4,
+                width: MediaQuery.of(context).size.width * .4,
                 height: 40.h,
                 decoration: BoxDecoration(
                   color: greyColor.withOpacity(0.6),
@@ -35,8 +34,7 @@ class FixWidget extends StatelessWidget {
                 child: DropdownButtonHideUnderline(
                   child: Obx(() => DropdownButton<SeasonList>(
                         dropdownColor: greyColor,
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(5.r)),
+                        borderRadius: BorderRadius.all(Radius.circular(5.r)),
                         iconEnabledColor: Colors.white,
                         icon: Icon(Icons.arrow_drop_down_circle),
                         padding: EdgeInsets.only(left: 8.w, right: 8.w),
@@ -45,8 +43,10 @@ class FixWidget extends StatelessWidget {
                           text: 'Select Season',
                           textColor: Colors.white,
                         ),
-                       alignment: AlignmentDirectional.centerStart,
-                        style: const TextStyle(color: Colors.white,),
+                        alignment: AlignmentDirectional.centerStart,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
                         items: teamDetailController.seasonList
                             .map<DropdownMenuItem<SeasonList>>(
                                 (SeasonList? value) {
@@ -62,8 +62,7 @@ class FixWidget extends StatelessWidget {
                           );
                         }).toList(),
                         onChanged: (SeasonList? newValue) {
-                          teamDetailController.selectedSeason.value =
-                              newValue;
+                          teamDetailController.selectedSeason.value = newValue;
                           teamDetailController.getTeamFixYear(
                               newValue?.url ?? '', newValue!);
                         },
@@ -128,16 +127,14 @@ class FixWidget extends StatelessWidget {
                                       ),
                                       SizedBox(width: 30.w),
                                       Column(
-
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center,
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               SizedBox(
                                                 width: 45.w,
@@ -153,24 +150,25 @@ class FixWidget extends StatelessWidget {
                                               ),
                                               SizedBox(
                                                 width: 20.w,
-                                                child:
-                                                FastCachedImage(
+                                                child: FastCachedImage(
                                                   width: 20.w,
                                                   height: 20.h,
                                                   fit: BoxFit.contain,
-                                                  url:teamFixModel
-                                                      ?.matchList?[index]
-                                                      .teamALogo ??
+                                                  url: teamFixModel
+                                                          ?.matchList?[index]
+                                                          .teamALogo ??
                                                       "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
                                                   fadeInDuration:
-                                                  const Duration(seconds: 1),
-                                                  errorBuilder: (context, exception,
-                                                      stacktrace) {
+                                                      const Duration(
+                                                          seconds: 1),
+                                                  errorBuilder: (context,
+                                                      exception, stacktrace) {
                                                     return Image.asset(
-                                                        "assets/images/football_news.webp",
+                                                      "assets/images/football_news.webp",
                                                       fit: BoxFit.contain,
                                                       width: 20.w,
-                                                      height: 20.h,);
+                                                      height: 20.h,
+                                                    );
                                                   },
                                                   loadingBuilder:
                                                       (context, progress) {
@@ -181,16 +179,16 @@ class FixWidget extends StatelessWidget {
                                                       height: 20.h,
                                                       color: secondaryColor,
                                                       child: Stack(
-                                                        alignment: Alignment.center,
+                                                        alignment:
+                                                            Alignment.center,
                                                         children: [
                                                           if (progress
-                                                              .isDownloading &&
+                                                                  .isDownloading &&
                                                               progress.totalBytes !=
                                                                   null)
                                                             Text(
                                                                 '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
-                                                                style:
-                                                                const TextStyle(
+                                                                style: const TextStyle(
                                                                     color: Colors
                                                                         .red)),
                                                           Center(
@@ -212,7 +210,6 @@ class FixWidget extends StatelessWidget {
                                                     // );
                                                   },
                                                 ),
-
                                               ),
                                               SizedBox(
                                                 width: 25.w,
@@ -225,24 +222,25 @@ class FixWidget extends StatelessWidget {
                                               ),
                                               SizedBox(
                                                 width: 20.w,
-                                                child:
-                                                FastCachedImage(
+                                                child: FastCachedImage(
                                                   width: 20.w,
                                                   height: 20.h,
                                                   fit: BoxFit.contain,
-                                                  url:teamFixModel
-                                                      ?.matchList?[index]
-                                                      .teamBLogo ??
+                                                  url: teamFixModel
+                                                          ?.matchList?[index]
+                                                          .teamBLogo ??
                                                       "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
                                                   fadeInDuration:
-                                                  const Duration(seconds: 1),
-                                                  errorBuilder: (context, exception,
-                                                      stacktrace) {
+                                                      const Duration(
+                                                          seconds: 1),
+                                                  errorBuilder: (context,
+                                                      exception, stacktrace) {
                                                     return Image.asset(
                                                       "assets/images/football_news.webp",
                                                       fit: BoxFit.contain,
                                                       width: 20.w,
-                                                      height: 20.h,);
+                                                      height: 20.h,
+                                                    );
                                                   },
                                                   loadingBuilder:
                                                       (context, progress) {
@@ -253,16 +251,16 @@ class FixWidget extends StatelessWidget {
                                                       height: 20.h,
                                                       color: secondaryColor,
                                                       child: Stack(
-                                                        alignment: Alignment.center,
+                                                        alignment:
+                                                            Alignment.center,
                                                         children: [
                                                           if (progress
-                                                              .isDownloading &&
+                                                                  .isDownloading &&
                                                               progress.totalBytes !=
                                                                   null)
                                                             Text(
                                                                 '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
-                                                                style:
-                                                                const TextStyle(
+                                                                style: const TextStyle(
                                                                     color: Colors
                                                                         .red)),
                                                           Center(
