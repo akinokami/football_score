@@ -343,7 +343,7 @@ class InfoWidget extends StatelessWidget {
                                       return Container(
                                         width: 35.w,
                                         height: 35.h,
-                                        color: secondaryColor,
+                                        //color: secondaryColor,
                                         child: Stack(
                                           alignment: Alignment.center,
                                           children: [
