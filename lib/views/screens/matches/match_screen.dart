@@ -28,7 +28,7 @@ class MatchScreen extends StatelessWidget {
       );
       if (picked != null) {
         matchController.selectedDate.value = picked;
-        matchController.scrollToSelectedDate();
+        matchController.datePickerController.setDateAndAnimate(picked);
         matchController.getMatches(matchController.selectedUrl.value);
       }
     }
