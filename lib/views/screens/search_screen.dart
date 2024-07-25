@@ -54,7 +54,7 @@ class _SearchScreenState extends State<SearchScreen>
                 decoration: BoxDecoration(
                   color: greyColor,
                   borderRadius: BorderRadius.circular(
-                    25.0,
+                    25.r,
                   ),
                 ),
                 child: TabBar(
@@ -67,11 +67,11 @@ class _SearchScreenState extends State<SearchScreen>
                     color: secondaryColor,
                   ),
                   labelColor: Colors.white,
-                  unselectedLabelColor: Colors.black,
                   labelStyle: TextStyle(
                     fontSize: 12.sp,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.bold,
                   ),
+                  unselectedLabelColor: Colors.white,
                   dividerColor: Colors.transparent,
                   tabs: [
                     Tab(

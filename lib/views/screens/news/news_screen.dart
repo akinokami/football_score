@@ -69,11 +69,7 @@ class NewsScreen extends StatelessWidget {
                                         text: appConfigController
                                                 .newsTabList[index].label ??
                                             '',
-                                        textColor: newsController
-                                                    .selectedIndex.value ==
-                                                index
-                                            ? whiteColor
-                                            : blackTextColor,
+                                        textColor: whiteColor,
                                       ),
                                     ),
                                   ),
@@ -125,8 +121,7 @@ class NewsScreen extends StatelessWidget {
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(10.r),
-                                            child:
-                                            FastCachedImage(
+                                            child: FastCachedImage(
                                               width: 70.w,
                                               height: 70.h,
                                               fit: BoxFit.cover,
