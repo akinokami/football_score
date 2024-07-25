@@ -69,22 +69,21 @@ class HToHWidget extends StatelessWidget {
                                   FastCachedImage(
                                     width: 20.w,
                                     height: 20.h,
-                                    fit: BoxFit.cover,
-                                    url:previewModel?.preData
-                                        ?.matches?[index].homeTeam?.logo  ??
+                                    fit: BoxFit.contain,
+                                    url: previewModel?.preData?.matches?[index]
+                                            .homeTeam?.logo ??
                                         "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
-                                    fadeInDuration:
-                                    const Duration(seconds: 1),
-                                    errorBuilder: (context, exception,
-                                        stacktrace) {
+                                    fadeInDuration: const Duration(seconds: 1),
+                                    errorBuilder:
+                                        (context, exception, stacktrace) {
                                       return Image.asset(
                                         "assets/images/football_news.webp",
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.contain,
                                         width: 20.w,
-                                        height: 20.h,);
+                                        height: 20.h,
+                                      );
                                     },
-                                    loadingBuilder:
-                                        (context, progress) {
+                                    loadingBuilder: (context, progress) {
                                       debugPrint(
                                           'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
                                       return Container(
@@ -94,26 +93,22 @@ class HToHWidget extends StatelessWidget {
                                         child: Stack(
                                           alignment: Alignment.center,
                                           children: [
-                                            if (progress
-                                                .isDownloading &&
-                                                progress.totalBytes !=
-                                                    null)
+                                            if (progress.isDownloading &&
+                                                progress.totalBytes != null)
                                               Text(
                                                   '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
-                                                  style:
-                                                  const TextStyle(
-                                                      color: Colors
-                                                          .red)),
+                                                  style: const TextStyle(
+                                                      color: Colors.red)),
                                             Center(
                                               child: SizedBox(
                                                   width: 10,
                                                   height: 10,
-                                                  child: CircularProgressIndicator(
-                                                      color: Colors
-                                                          .white,
-                                                      value: progress
-                                                          .progressPercentage
-                                                          .value)),
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                          color: Colors.white,
+                                                          value: progress
+                                                              .progressPercentage
+                                                              .value)),
                                             ),
                                           ],
                                         ),
@@ -123,7 +118,6 @@ class HToHWidget extends StatelessWidget {
                                       // );
                                     },
                                   ),
-
                                 ],
                               ),
                             ),
@@ -138,22 +132,21 @@ class HToHWidget extends StatelessWidget {
                                   FastCachedImage(
                                     width: 20.w,
                                     height: 20.h,
-                                    fit: BoxFit.cover,
-                                    url:previewModel?.preData
-                                        ?.matches?[index].awayTeam?.logo  ??
+                                    fit: BoxFit.contain,
+                                    url: previewModel?.preData?.matches?[index]
+                                            .awayTeam?.logo ??
                                         "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
-                                    fadeInDuration:
-                                    const Duration(seconds: 1),
-                                    errorBuilder: (context, exception,
-                                        stacktrace) {
+                                    fadeInDuration: const Duration(seconds: 1),
+                                    errorBuilder:
+                                        (context, exception, stacktrace) {
                                       return Image.asset(
                                         "assets/images/football_news.webp",
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.contain,
                                         width: 20.w,
-                                        height: 20.h,);
+                                        height: 20.h,
+                                      );
                                     },
-                                    loadingBuilder:
-                                        (context, progress) {
+                                    loadingBuilder: (context, progress) {
                                       debugPrint(
                                           'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
                                       return Container(
@@ -163,26 +156,22 @@ class HToHWidget extends StatelessWidget {
                                         child: Stack(
                                           alignment: Alignment.center,
                                           children: [
-                                            if (progress
-                                                .isDownloading &&
-                                                progress.totalBytes !=
-                                                    null)
+                                            if (progress.isDownloading &&
+                                                progress.totalBytes != null)
                                               Text(
                                                   '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
-                                                  style:
-                                                  const TextStyle(
-                                                      color: Colors
-                                                          .red)),
+                                                  style: const TextStyle(
+                                                      color: Colors.red)),
                                             Center(
                                               child: SizedBox(
                                                   width: 10,
                                                   height: 10,
-                                                  child: CircularProgressIndicator(
-                                                      color: Colors
-                                                          .white,
-                                                      value: progress
-                                                          .progressPercentage
-                                                          .value)),
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                          color: Colors.white,
+                                                          value: progress
+                                                              .progressPercentage
+                                                              .value)),
                                             ),
                                           ],
                                         ),
@@ -192,8 +181,6 @@ class HToHWidget extends StatelessWidget {
                                       // );
                                     },
                                   ),
-
-
                                   kSizedBoxW10,
                                   SizedBox(
                                     width:

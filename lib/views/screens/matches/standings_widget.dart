@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/utils/app_theme.dart';
@@ -23,17 +22,17 @@ class StandingsWidget extends StatelessWidget {
           SizedBox(height: 10.h),
           Table(
             //border: TableBorder.all(color: Colors.white),
-            children: const [
+            children: [
               TableRow(children: [
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         '#',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -42,13 +41,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         '',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -57,13 +56,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         'Team',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -72,13 +71,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         'P',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -87,13 +86,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         'W',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -102,13 +101,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         'D',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -117,13 +116,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         'L',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -132,13 +131,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         '+/-',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -147,13 +146,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         'GD',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -162,13 +161,13 @@ class StandingsWidget extends StatelessWidget {
                 ),
                 TableCell(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                    padding: EdgeInsets.only(top: 2.0.h),
                     child: Center(
                       child: Text(
                         'Pts',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -192,16 +191,13 @@ class StandingsWidget extends StatelessWidget {
                       TableRow(children: [
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Center(
-
                               child: Text(
-                               "${ rankingModel['data']['rankings'][index]['rank']}"
-                                    ,
-
+                                "${rankingModel['data']['rankings'][index]['rank']}",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -210,23 +206,21 @@ class StandingsWidget extends StatelessWidget {
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
-                            child:
-                  CustomFastCacheNetworkImage(
-                  url: rankingModel['data']['rankings'][index]['team']['logo'],
-                  width: 15,
-                  height: 15)
-
-                          ),
+                              padding: EdgeInsets.only(top: 2.0.h),
+                              child: CustomFastCacheNetworkImage(
+                                  url: rankingModel['data']['rankings'][index]
+                                      ['team']['logo'],
+                                  width: 15,
+                                  height: 15)),
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Text(
-                              "${ rankingModel['data']['rankings'][index]['team']['name']}",
+                              "${rankingModel['data']['rankings'][index]['team']['name']}",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 8,
+                                fontSize: 8.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -234,14 +228,14 @@ class StandingsWidget extends StatelessWidget {
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Center(
                               child: Text(
                                 rankingModel['data']['rankings'][index]
                                     ['matches_total'],
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -250,14 +244,14 @@ class StandingsWidget extends StatelessWidget {
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Center(
                               child: Text(
                                 rankingModel['data']['rankings'][index]
                                     ['matches_won'],
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -266,14 +260,14 @@ class StandingsWidget extends StatelessWidget {
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Center(
                               child: Text(
                                 rankingModel['data']['rankings'][index]
                                     ['matches_draw'],
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -282,14 +276,14 @@ class StandingsWidget extends StatelessWidget {
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Center(
                               child: Text(
                                 rankingModel['data']['rankings'][index]
                                     ['matches_lost'],
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -298,13 +292,13 @@ class StandingsWidget extends StatelessWidget {
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Center(
                               child: Text(
                                 "${rankingModel['data']['rankings'][index]['goals_pro']}-${rankingModel['data']['rankings'][index]['goals_against']}",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -313,13 +307,13 @@ class StandingsWidget extends StatelessWidget {
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Center(
                               child: Text(
                                 "${int.parse(rankingModel['data']['rankings'][index]['goals_pro']) - int.parse(rankingModel['data']['rankings'][index]['goals_against'])}",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -328,14 +322,14 @@ class StandingsWidget extends StatelessWidget {
                         ),
                         TableCell(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 2.0),
+                            padding: EdgeInsets.only(top: 2.0.h),
                             child: Center(
                               child: Text(
                                 rankingModel['data']['rankings'][index]
                                     ['points'],
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
