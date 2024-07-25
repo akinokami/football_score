@@ -88,7 +88,7 @@ class HToHWidget extends StatelessWidget {
                                       return Container(
                                         width: 20.w,
                                         height: 20.h,
-                                        color: secondaryColor,
+                                        //color: secondaryColor,
                                         child: Stack(
                                           alignment: Alignment.center,
                                           children: [
@@ -151,7 +151,7 @@ class HToHWidget extends StatelessWidget {
                                       return Container(
                                         width: 20.w,
                                         height: 20.h,
-                                        color: secondaryColor,
+                                        //color: secondaryColor,
                                         child: Stack(
                                           alignment: Alignment.center,
                                           children: [

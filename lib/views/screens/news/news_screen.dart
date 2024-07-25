@@ -151,7 +151,7 @@ class NewsScreen extends StatelessWidget {
                                                 return Container(
                                                   height: 70.h,
                                                   width: 70.w,
-                                                  color: secondaryColor,
+                                                  //color: secondaryColor,
                                                   child: Stack(
                                                     alignment: Alignment.center,
                                                     children: [

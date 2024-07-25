@@ -100,7 +100,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                       return Container(
                                         height: 50.h,
                                         width: 50.w,
-                                        color: secondaryColor,
+                                        //color: secondaryColor,
                                         child: Stack(
                                           alignment: Alignment.center,
                                           children: [
@@ -253,7 +253,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                       return Container(
                                         height: 50.h,
                                         width: 50.w,
-                                        color: secondaryColor,
+                                        //color: secondaryColor,
                                         child: Stack(
                                           alignment: Alignment.center,
                                           children: [

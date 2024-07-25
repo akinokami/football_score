@@ -92,7 +92,7 @@ class LineupWidget extends StatelessWidget {
                                           return Container(
                                             width: 30.w,
                                             height: 30.h,
-                                            color: secondaryColor,
+                                            //color: secondaryColor,
                                             child: Stack(
                                               alignment: Alignment.center,
                                               children: [
@@ -172,7 +172,7 @@ class LineupWidget extends StatelessWidget {
                                             return Container(
                                               width: 30.w,
                                               height: 30.h,
-                                              color: secondaryColor,
+                                              //color: secondaryColor,
                                               child: Stack(
                                                 alignment: Alignment.center,
                                                 children: [

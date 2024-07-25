@@ -286,7 +286,7 @@ class StatsWidget extends StatelessWidget {
                                     return Container(
                                       width: 15.w,
                                       height: 15.h,
-                                      color: secondaryColor,
+                                      //color: secondaryColor,
                                       child: Stack(
                                         alignment: Alignment.center,
                                         children: [

@@ -76,7 +76,7 @@ class NewsDetailsScreen extends StatelessWidget {
                   return Container(
                     height: 180.h,
                     width: double.infinity,
-                    color: secondaryColor,
+                    //color: secondaryColor,
                     child: Stack(
                       alignment: Alignment.center,
                       children: [

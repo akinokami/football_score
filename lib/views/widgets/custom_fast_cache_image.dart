@@ -35,7 +35,7 @@ class CustomFastCacheNetworkImage extends StatelessWidget {
         return Container(
           height: height.h,
           width: width.w,
-          color: secondaryColor,
+          //color: secondaryColor,
           child: Stack(
             alignment: Alignment.center,
             children: [

@@ -73,7 +73,7 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                       return Container(
                         width: 40.w,
                         height: 40.h,
-                        color: secondaryColor,
+                        //color: secondaryColor,
                         child: Stack(
                           alignment: Alignment.center,
                           children: [

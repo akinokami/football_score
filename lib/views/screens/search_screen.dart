@@ -256,8 +256,8 @@ class _SearchScreenState extends State<SearchScreen>
                                                                 return Container(
                                                                   width: 18.w,
                                                                   height: 18.h,
-                                                                  color:
-                                                                      secondaryColor,
+                                                                  // color:
+                                                                  //     secondaryColor,
                                                                   child: Stack(
                                                                     alignment:
                                                                         Alignment
@@ -370,8 +370,8 @@ class _SearchScreenState extends State<SearchScreen>
                                                               return Container(
                                                                 width: 18.w,
                                                                 height: 18.h,
-                                                                color:
-                                                                    secondaryColor,
+                                                                // color:
+                                                                //     secondaryColor,
                                                                 child: Stack(
                                                                   alignment:
                                                                       Alignment
@@ -571,8 +571,8 @@ class _SearchScreenState extends State<SearchScreen>
                                                           return Container(
                                                             width: 70.w,
                                                             height: 70.h,
-                                                            color:
-                                                                secondaryColor,
+                                                            // color:
+                                                            //     secondaryColor,
                                                             child: Stack(
                                                               alignment:
                                                                   Alignment
