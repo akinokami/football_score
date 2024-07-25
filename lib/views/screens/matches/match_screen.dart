@@ -122,6 +122,12 @@ class MatchScreen extends StatelessWidget {
                               shrinkWrap: true,
                               itemCount: matchController.matchList.length,
                               itemBuilder: (context, index) {
+                                String? dateUtc = (matchController
+                                                .matchList[index].startPlay ??
+                                            '')
+                                        .contains('.')
+                                    ? matchController.matchList[index].startPlay
+                                    : "${matchController.matchList[index].startPlay}.000Z";
                                 return GestureDetector(
                                   onTap: () {
                                     Get.to(
@@ -207,7 +213,10 @@ class MatchScreen extends StatelessWidget {
                                                       fontSize: 8.sp),
                                                 ),
                                                 Text(
-                                                  "${DateFormat('yyyy-MM-dd').format(DateTime.parse(matchController.matchList[index].startPlay ?? '').add(const Duration(hours: 8)))}",
+                                                  DateFormat('yyyy-MM-dd')
+                                                      .format(DateTime.parse(
+                                                              dateUtc ?? '')
+                                                          .toLocal()),
                                                   textAlign: TextAlign.left,
                                                   style: TextStyle(
                                                       color: lightWhiteColor,

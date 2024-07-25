@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:football_score/controller/app_config_controller.dart';
@@ -73,13 +75,19 @@ class MatchController extends GetxController {
 
       if (matchModel.value.list != null) {
         matchList.value = matchModel.value.list!.where((element) {
-          // return DateFormat('yyyy-MM-dd').format(
-          //         DateTime.parse(element.startPlay ?? '')
-          //             .add(const Duration(hours: 8))) ==
-          //     DateFormat('yyyy-MM-dd').format(selectedDate.value);
+          // print(
+          //     "dateUtc>>>> ${DateTime.parse(element.startPlay ?? '').toUtc()}");
+          // print(
+          //     "dateLocal>>>> ${DateTime.parse(element.startPlay ?? '').toLocal()}");
+          String? dateUtc = (element.startPlay ?? '').contains('.')
+              ? element.startPlay
+              : "${element.startPlay}.000Z";
           return DateFormat('yyyy-MM-dd')
-                  .format(DateTime.parse(element.startPlay ?? '').toLocal()) ==
+                  .format(DateTime.parse(dateUtc ?? "").toLocal()) ==
               DateFormat('yyyy-MM-dd').format(selectedDate.value);
+          // return DateFormat('yyyy-MM-dd')
+          //         .format(DateTime.parse(element.startPlay ?? '').toLocal()) ==
+          //     DateFormat('yyyy-MM-dd').format(selectedDate.value);
         }).toList();
       }
     } catch (e) {
@@ -93,6 +101,4 @@ class MatchController extends GetxController {
   void scrollToSelectedDate() {
     datePickerController.animateToDate(selectedDate.value);
   }
-
-
 }

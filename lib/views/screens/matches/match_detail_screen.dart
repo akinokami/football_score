@@ -43,7 +43,12 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
   @override
   Widget build(BuildContext context) {
     final matchDetailController = Get.put(MatchDetailController());
-
+    String? dateUtc = (matchDetailController
+                    .matchDetailModel.value.matchSample?.startPlay ??
+                '')
+            .contains('.')
+        ? matchDetailController.matchDetailModel.value.matchSample?.startPlay
+        : "${matchDetailController.matchDetailModel.value.matchSample?.startPlay}.000Z";
     return Scaffold(
         backgroundColor: primaryColor,
         appBar: AppBar(
@@ -134,12 +139,22 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   width:
                                       MediaQuery.of(context).size.width * .25,
                                   child: Text(
-                                    "${DateFormat('d MMM, h:mm a').format(DateTime.parse(matchDetailController.matchDetailModel.value.matchSample?.startPlay ?? '').add(const Duration(hours: 8)))}",
-                                    // DateFormat('d MMM, h:mm a').format(
-                                    //   DateTime.parse(
-                                    //     "${matchDetailController.matchDetailModel.value.matchSample?.dateUtc ?? ''} ${matchDetailController.matchDetailModel.value.matchSample?.timeUtc ?? ''}",
-                                    //   ),
-                                    // ),
+                                    DateFormat('d MMM, h:mm a').format(
+                                        DateTime.parse((matchDetailController
+                                                            .matchDetailModel
+                                                            .value
+                                                            .matchSample
+                                                            ?.startPlay ??
+                                                        '')
+                                                    .contains('.')
+                                                ? matchDetailController
+                                                        .matchDetailModel
+                                                        .value
+                                                        .matchSample
+                                                        ?.startPlay ??
+                                                    ""
+                                                : "${matchDetailController.matchDetailModel.value.matchSample?.startPlay}.000Z")
+                                            .add(const Duration(hours: 8))),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.white,
