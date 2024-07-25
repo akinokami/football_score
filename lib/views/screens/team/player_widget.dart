@@ -164,8 +164,9 @@ class PlayerWidget extends StatelessWidget {
                                       Opacity(
                                         opacity: 0.5,
                                         child: CustomText(
-                                          text:
-                                              "No.${teamMemberModel?.memberList?[index].playerList?[index1].shirtnumber ?? ''} ~ Age.${teamMemberModel?.memberList?[index].playerList?[index1].age ?? ''} ~ ${teamMemberModel?.memberList?[index].playerList?[index1].nationalityName ?? ''}",
+                                          text: index == 0
+                                              ? "Age.${teamMemberModel?.memberList?[index].playerList?[index1].age ?? ''} ~ ${teamMemberModel?.memberList?[index].playerList?[index1].nationalityName ?? ''}"
+                                              : "No.${teamMemberModel?.memberList?[index].playerList?[index1].shirtnumber ?? ''} ~ Age.${teamMemberModel?.memberList?[index].playerList?[index1].age ?? ''} ~ ${teamMemberModel?.memberList?[index].playerList?[index1].nationalityName ?? ''}",
                                           size: 10.sp,
                                         ),
                                       ),

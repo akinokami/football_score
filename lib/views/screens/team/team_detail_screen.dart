@@ -147,6 +147,10 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                         color: secondaryColor,
                       ),
                       labelColor: Colors.white,
+                      labelStyle: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
                       unselectedLabelColor: Colors.white,
                       dividerColor: Colors.transparent,
                       tabs: [

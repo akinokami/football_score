@@ -337,6 +337,10 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         labelColor: Colors.white,
                         unselectedLabelColor: Colors.white,
                         dividerColor: Colors.transparent,
+                        labelStyle: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                         tabs: [
                           Tab(
                             text: 'overall'.tr,
