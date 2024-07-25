@@ -2,14 +2,12 @@ import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../utils/app_theme.dart';
-
 class CustomFastCacheNetworkImage extends StatelessWidget {
   const CustomFastCacheNetworkImage(
       {super.key,
       required this.url,
-       this.placeHolderUrl,
-       this.assetsImagesName,
+      this.placeHolderUrl,
+      this.assetsImagesName,
       required this.width,
       required this.height});
   final String? url;
@@ -23,11 +21,16 @@ class CustomFastCacheNetworkImage extends StatelessWidget {
       width: width.w,
       height: height.h,
       fit: BoxFit.contain,
-      url: url ?? (placeHolderUrl??'https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg'),
+      url: url ??
+          (placeHolderUrl ??
+              'https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg'),
       fadeInDuration: const Duration(seconds: 1),
       errorBuilder: (context, exception, stacktrace) {
-        return Image.asset("assets/images/${assetsImagesName??"football_news"}.webp",
-            fit: BoxFit.contain, width: width.w, height: height.w);
+        return Image.asset(
+            "assets/images/${assetsImagesName ?? "football_news"}.webp",
+            fit: BoxFit.contain,
+            width: width.w,
+            height: height.w);
       },
       loadingBuilder: (context, progress) {
         debugPrint(
