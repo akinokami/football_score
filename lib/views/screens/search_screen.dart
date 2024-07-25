@@ -223,7 +223,7 @@ class _SearchScreenState extends State<SearchScreen>
                                                             FastCachedImage(
                                                               width: 18.w,
                                                               height: 18.h,
-                                                              fit: BoxFit.cover,
+                                                              fit: BoxFit.contain,
                                                               url: matchController
                                                                   .matchSearchList[
                                                               index]
@@ -235,7 +235,7 @@ class _SearchScreenState extends State<SearchScreen>
                                                                   stacktrace) {
                                                                 return Image.asset(
                                                                   "assets/images/football_news.webp",
-                                                                  fit: BoxFit.cover,
+                                                                  fit: BoxFit.contain,
                                                                   width: 18.w,
                                                                   height: 18.h,);
                                                               },
@@ -331,7 +331,7 @@ class _SearchScreenState extends State<SearchScreen>
                                                           FastCachedImage(
                                                             width: 18.w,
                                                             height: 18.h,
-                                                            fit: BoxFit.cover,
+                                                            fit: BoxFit.contain,
                                                             url: matchController
                                                                 .matchSearchList[
                                                             index]
@@ -343,7 +343,7 @@ class _SearchScreenState extends State<SearchScreen>
                                                                 stacktrace) {
                                                               return Image.asset(
                                                                   "assets/images/football_news.webp",
-                                                                  fit: BoxFit.cover,
+                                                                  fit: BoxFit.contain,
                                                                 width: 18.w,
                                                                 height: 18.h,);
                                                             },

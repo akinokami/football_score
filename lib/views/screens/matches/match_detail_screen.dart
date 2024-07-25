@@ -82,7 +82,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   FastCachedImage(
                                     width: 50.w,
                                     height: 50.h,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.contain,
                                     url: matchDetailController
                                         .matchDetailModel
                                         .value
@@ -95,7 +95,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                         stacktrace) {
                                       return Image.asset(
                                           "assets/images/football_news.webp",
-                                          fit: BoxFit.cover,
+                                          fit: BoxFit.contain,
                                           width: 50.w,
                                           height: 50.w);
                                     },
@@ -245,7 +245,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   FastCachedImage(
                                     width: 50.w,
                                     height: 50.h,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.contain,
                                     url: matchDetailController
                                         .matchDetailModel
                                         .value
@@ -258,7 +258,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                         stacktrace) {
                                       return Image.asset(
                                           "assets/images/football_news.webp",
-                                          fit: BoxFit.cover,
+                                          fit: BoxFit.contain,
                                           width: 50.w,
                                           height: 50.w);
                                     },

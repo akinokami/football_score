@@ -157,7 +157,7 @@ class FixWidget extends StatelessWidget {
                                                 FastCachedImage(
                                                   width: 20.w,
                                                   height: 20.h,
-                                                  fit: BoxFit.cover,
+                                                  fit: BoxFit.contain,
                                                   url:teamFixModel
                                                       ?.matchList?[index]
                                                       .teamALogo ??
@@ -168,7 +168,7 @@ class FixWidget extends StatelessWidget {
                                                       stacktrace) {
                                                     return Image.asset(
                                                         "assets/images/football_news.webp",
-                                                        fit: BoxFit.cover,
+                                                      fit: BoxFit.contain,
                                                       width: 20.w,
                                                       height: 20.h,);
                                                   },
@@ -229,7 +229,7 @@ class FixWidget extends StatelessWidget {
                                                 FastCachedImage(
                                                   width: 20.w,
                                                   height: 20.h,
-                                                  fit: BoxFit.cover,
+                                                  fit: BoxFit.contain,
                                                   url:teamFixModel
                                                       ?.matchList?[index]
                                                       .teamBLogo ??
@@ -240,7 +240,7 @@ class FixWidget extends StatelessWidget {
                                                       stacktrace) {
                                                     return Image.asset(
                                                       "assets/images/football_news.webp",
-                                                      fit: BoxFit.cover,
+                                                      fit: BoxFit.contain,
                                                       width: 20.w,
                                                       height: 20.h,);
                                                   },

@@ -22,12 +22,12 @@ class CustomFastCacheNetworkImage extends StatelessWidget {
     return FastCachedImage(
       width: width.w,
       height: height.h,
-      fit: BoxFit.cover,
+      fit: BoxFit.contain,
       url: url ?? (placeHolderUrl??'https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg'),
       fadeInDuration: const Duration(seconds: 1),
       errorBuilder: (context, exception, stacktrace) {
         return Image.asset("assets/images/${assetsImagesName??"football_news"}.webp",
-            fit: BoxFit.cover, width: width.w, height: height.w);
+            fit: BoxFit.contain, width: width.w, height: height.w);
       },
       loadingBuilder: (context, progress) {
         debugPrint(

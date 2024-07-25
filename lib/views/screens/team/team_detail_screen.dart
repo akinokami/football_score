@@ -56,7 +56,7 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                   FastCachedImage(
                     width: 40.w,
                     height: 40.h,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                     url: teamDetailController.teamDetailModel.value.teamImg ??
                         "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
                     fadeInDuration:
@@ -65,7 +65,7 @@ class _TeamDetailScreenState extends State<TeamDetailScreen>
                         stacktrace) {
                       return Image.asset(
                         "assets/images/football_news.webp",
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         width: 40.w,
                         height: 40.h,);
                     },

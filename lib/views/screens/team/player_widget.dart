@@ -98,7 +98,7 @@ class PlayerWidget extends StatelessWidget {
                                     FastCachedImage(
                                       width: 30.w,
                                       height: 30.h,
-                                      fit: BoxFit.cover,
+                                      fit: BoxFit.contain,
                                       url: teamMemberModel
                                           ?.memberList?[index]
                                           .playerList?[index1]
@@ -110,7 +110,7 @@ class PlayerWidget extends StatelessWidget {
                                           stacktrace) {
                                         return Image.asset(
                                             "assets/images/football_news.webp",
-                                            fit: BoxFit.cover,
+                                          fit: BoxFit.contain,
                                           width: 30.w,
                                           height: 30.h,);
                                       },
