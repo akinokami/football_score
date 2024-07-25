@@ -18,6 +18,21 @@ class MatchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final appConfigController = Get.put(AppConfigController());
     final matchController = Get.put(MatchController());
+
+    Future<void> selectCalenderDate(BuildContext context) async {
+      final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: matchController.selectedDate.value,
+        firstDate: DateTime.now().subtract(const Duration(days: 100)),
+        lastDate: DateTime.now().add(const Duration(days: 399)),
+      );
+      if (picked != null) {
+        matchController.selectedDate.value = picked;
+        matchController.scrollToSelectedDate();
+        matchController.getMatches(matchController.selectedUrl.value);
+      }
+    }
+
     return Scaffold(
         backgroundColor: primaryColor,
         appBar: AppBar(
@@ -29,22 +44,38 @@ class MatchScreen extends StatelessWidget {
           padding: EdgeInsets.all(6.h),
           child: Column(
             children: [
-              DatePicker(
-                DateTime.now().subtract(const Duration(days: 100)),
-                controller: matchController.datePickerController,
-                initialSelectedDate: matchController.selectedDate.value,
-                selectionColor: secondaryColor,
-                deactivatedColor: Colors.red,
-                dateTextStyle: TextStyle(color: Colors.white, fontSize: 10.sp),
-                monthTextStyle: TextStyle(color: Colors.white, fontSize: 10.sp),
-                dayTextStyle: TextStyle(color: Colors.white, fontSize: 10.sp),
-                width: 60.w,
-                height: 70.h,
-                onDateChange: (date) {
-                  matchController.selectedDate.value = date;
-                  matchController.scrollToSelectedDate();
-                  matchController.getMatches(matchController.selectedUrl.value);
-                },
+              Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () => selectCalenderDate(context),
+                  child: Icon(
+                    Icons.calendar_month,
+                    color: secondaryColor,
+                    size: 20.sp,
+                  ),
+                ),
+              ),
+              Obx(
+                () => DatePicker(
+                  DateTime.now().subtract(const Duration(days: 100)),
+                  controller: matchController.datePickerController,
+                  initialSelectedDate: matchController.selectedDate.value,
+                  selectionColor: secondaryColor,
+                  deactivatedColor: Colors.red,
+                  dateTextStyle:
+                      TextStyle(color: Colors.white, fontSize: 10.sp),
+                  monthTextStyle:
+                      TextStyle(color: Colors.white, fontSize: 10.sp),
+                  dayTextStyle: TextStyle(color: Colors.white, fontSize: 10.sp),
+                  width: 60.w,
+                  height: 70.h,
+                  onDateChange: (date) {
+                    matchController.selectedDate.value = date;
+                    matchController.scrollToSelectedDate();
+                    matchController
+                        .getMatches(matchController.selectedUrl.value);
+                  },
+                ),
               ),
               SizedBox(
                 height: 10.h,
