@@ -51,7 +51,11 @@ class NewsController extends GetxController {
     try {
       final result = await ApiRepo().getNews(url: url);
       newsModel.value = result;
-      articleList.value = result.articles ?? [];
+      if (newsModel.value.articles?.isNotEmpty ?? true) {
+        articleList.value =
+            result.articles?.where((element) => element.thumb != "").toList() ??
+                [];
+      }
     } catch (e) {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);

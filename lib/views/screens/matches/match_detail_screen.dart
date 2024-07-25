@@ -43,12 +43,6 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
   @override
   Widget build(BuildContext context) {
     final matchDetailController = Get.put(MatchDetailController());
-    String? dateUtc = (matchDetailController
-                    .matchDetailModel.value.matchSample?.startPlay ??
-                '')
-            .contains('.')
-        ? matchDetailController.matchDetailModel.value.matchSample?.startPlay
-        : "${matchDetailController.matchDetailModel.value.matchSample?.startPlay}.000Z";
     return Scaffold(
         backgroundColor: primaryColor,
         appBar: AppBar(

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:football_score/controller/app_config_controller.dart';

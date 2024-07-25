@@ -44,7 +44,8 @@ class AppConfigController extends GetxController {
                   element.id != "6" &&
                   element.id != "113" &&
                   element.id != "114" &&
-                  element.id != "14")
+                  element.id != "14" &&
+                  element.id != "99")
               .toList() ??
           [];
       print("asfdfdffdf");
