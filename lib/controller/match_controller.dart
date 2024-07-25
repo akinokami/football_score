@@ -27,7 +27,14 @@ class MatchController extends GetxController {
     startMatch();
     // print("date>>>>>>${DateTime.now()}");
     // print("date utc>>>>>>${DateTime.now().toUtc()}");
+    var dateUtc = DateTime.now().toUtc();
+    print("dateUtc: $dateUtc"); // 2019-10-10 12:05:01
 
+// convert it to local
+    var dateLocal = dateUtc.toLocal();
+    print("local: $dateLocal");
+
+    print("selectedDate: ${selectedDate.value}");
     super.onInit();
   }
 
@@ -67,9 +74,12 @@ class MatchController extends GetxController {
 
       if (matchModel.value.list != null) {
         matchList.value = matchModel.value.list!.where((element) {
-          return DateFormat('yyyy-MM-dd').format(
-                  DateTime.parse(element.startPlay ?? '')
-                      .add(const Duration(hours: 8))) ==
+          // return DateFormat('yyyy-MM-dd').format(
+          //         DateTime.parse(element.startPlay ?? '')
+          //             .add(const Duration(hours: 8))) ==
+          //     DateFormat('yyyy-MM-dd').format(selectedDate.value);
+          return DateFormat('yyyy-MM-dd')
+                  .format(DateTime.parse(element.startPlay ?? '').toLocal()) ==
               DateFormat('yyyy-MM-dd').format(selectedDate.value);
         }).toList();
       }
