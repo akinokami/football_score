@@ -1,3 +1,4 @@
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/language/languages.dart';
@@ -9,30 +10,12 @@ import 'utils/global.dart';
 
 void main() async {
   await GetStorage.init();
+  WidgetsFlutterBinding.ensureInitialized();
 
-  // runApp(EasyLocalization(
-  //   supportedLocales: const [
-  //     Locale(
-  //       'en',
-  //     ),
-  //     Locale("zh"),
-  //   ],
-  //   startLocale: const Locale('en'),
-  //   path: 'assets/translations',
-  //   fallbackLocale: const Locale('en'),
-  //   useFallbackTranslations: true,
-  //   useOnlyLangCode: true,
-  //   assetLoader: const CodegenLoader(),
-  //   child: const MyApp(),
-  // ));
-
+  await FastCachedImageConfig.init(clearCacheAfter: const Duration(days: 3), );
   runApp(const MyApp());
 }
 
-// initialization() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await EasyLocalization.ensureInitialized();
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

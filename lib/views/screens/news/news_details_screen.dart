@@ -1,3 +1,4 @@
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/models/news_model.dart';
@@ -40,7 +41,48 @@ class NewsDetailsScreen extends StatelessWidget {
             CustomText(text:articles?.time??"",
                ),
             kSizedBoxH10,
-            Image.network(imageUrl??"",height: 180.h,fit: BoxFit.cover,),
+            FastCachedImage(
+              width: double.infinity,
+              height: 180.h,fit: BoxFit.cover,
+              url: imageUrl??"https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
+
+              fadeInDuration: const Duration(seconds: 1),
+              errorBuilder: (context, exception, stacktrace) {
+                return Image.asset("assets/images/football_news.webp",fit: BoxFit.cover, height: 180.h,width: double.infinity,);
+              },
+
+              loadingBuilder: (context, progress) {
+                debugPrint(
+                    'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
+                return Container(
+                  height: 180.h,
+                  width: double.infinity,
+
+                  color: secondaryColor,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      if (progress.isDownloading && progress.totalBytes != null)
+                        Text(
+                            '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
+                            style: const TextStyle(color: Colors.red)),
+                      Center(
+                        child: SizedBox(
+                            width: 10,
+                            height: 10,
+                            child: CircularProgressIndicator(
+                                color: Colors.white,
+                                value: progress.progressPercentage.value)),
+                      ),
+                    ],
+                  ),
+                );
+                // return Center(
+                //   child: CircularProgressIndicator(),
+                // );
+              },
+            ),
+
             kSizedBoxH10,
             Text(removeHtmlTags(articles?.body??""),style:  TextStyle(color: Colors.white,fontSize: 12.sp)),
 

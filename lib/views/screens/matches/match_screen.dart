@@ -137,7 +137,7 @@ class MatchScreen extends StatelessWidget {
                                                     .selectedIndex.value ==
                                                 index
                                             ? whiteColor
-                                            : blackTextColor,
+                                            : whiteColor,
                                       ),
                                     ),
                                   ),

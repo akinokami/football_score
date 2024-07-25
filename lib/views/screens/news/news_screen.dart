@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/controller/app_config_controller.dart';
@@ -122,20 +123,49 @@ class NewsScreen extends StatelessWidget {
                                               Radius.circular(10))),
                                       child: Row(
                                         children: [
-                                          CachedNetworkImage(
+                                          FastCachedImage(
                                             width: 70.w,
                                             height: 70.h,
-                                            imageUrl: newsController
-                                                    .articleList[index].thumb ??
-                                                '',
-                                            placeholder: (context, url) =>
-                                                const Center(
-                                                    child:
-                                                        CircularProgressIndicator()),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                                    const Icon(Icons.error),
+                                            fit: BoxFit.cover,
+                                            url: newsController
+                                                .articleList[index].thumb??"https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
+
+                                            fadeInDuration: const Duration(seconds: 1),
+                                            errorBuilder: (context, exception, stacktrace) {
+                                              return Image.asset("assets/images/football_news.webp",fit: BoxFit.cover,width: 70.w, height: 70.w);
+                                            },
+
+                                            loadingBuilder: (context, progress) {
+                                              debugPrint(
+                                                  'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
+                                              return Container(
+                                                height: 70.h,
+width: 70.w,
+                                                color: secondaryColor,
+                                                child: Stack(
+                                                  alignment: Alignment.center,
+                                                  children: [
+                                                    if (progress.isDownloading && progress.totalBytes != null)
+                                                      Text(
+                                                          '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
+                                                          style: const TextStyle(color: Colors.red)),
+                                                    Center(
+                                                      child: SizedBox(
+                                                          width: 10,
+                                                          height: 10,
+                                                          child: CircularProgressIndicator(
+                                                              color: Colors.white,
+                                                              value: progress.progressPercentage.value)),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                              // return Center(
+                                              //   child: CircularProgressIndicator(),
+                                              // );
+                                            },
                                           ),
+
                                          kSizedBoxW10,
                                           Expanded(
                                             child: CustomText(
