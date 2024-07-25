@@ -6,7 +6,6 @@ import 'package:football_score/services/api_repo.dart';
 import 'package:football_score/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:timezone/timezone.dart' as tz;
 
 class MatchController extends GetxController {
   final selectedIndex = 0.obs;
@@ -95,20 +94,5 @@ class MatchController extends GetxController {
     datePickerController.animateToDate(selectedDate.value);
   }
 
-  String convertUtcToLocal(String utcTimeString) {
-    // Parse UTC time string into DateTime object
-    DateTime utcTime = DateTime.parse(utcTimeString).toUtc();
 
-    String localTimeZone = tz.local.name;
-    // Get local time zone
-    tz.Location? location = tz.getLocation(localTimeZone);
-
-    // Convert UTC time to local time
-    tz.TZDateTime localTime = tz.TZDateTime.from(utcTime, location);
-
-    // Format local time as a string (adjust format as needed)
-    String formattedLocalTime = localTime.toString();
-
-    return formattedLocalTime;
-  }
 }
