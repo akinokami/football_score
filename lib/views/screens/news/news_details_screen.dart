@@ -45,6 +45,7 @@ class NewsDetailsScreen extends StatelessWidget {
               text: articles?.title ?? "",
               fontWeight: FontWeight.bold,
               size: 14.sp,
+              maxLines: 3,
               textColor: Colors.white,
             ),
             CustomText(
@@ -53,7 +54,8 @@ class NewsDetailsScreen extends StatelessWidget {
             kSizedBoxH10,
             ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
-              child: FastCachedImage(
+              child:
+              FastCachedImage(
                 width: double.infinity,
                 height: 180.h,
                 fit: BoxFit.cover,

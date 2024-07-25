@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/utils/app_theme.dart';
@@ -57,17 +58,64 @@ class LineupWidget extends StatelessWidget {
                                     textColor: Colors.white,
                                   ),
                                   kSizedBoxW10,
-                                  CachedNetworkImage(
+                                  FastCachedImage(
                                     width: 30.w,
                                     height: 30.h,
-                                    imageUrl: lineupModel?.lupList?[0].lupData!
-                                            .home!.start![index].person?.logo ??
-                                        '',
-                                    placeholder: (context, url) => const Center(
-                                        child: CircularProgressIndicator()),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
+                                    fit: BoxFit.cover,
+                                    url:lineupModel?.lupList?[0].lupData!
+                                        .home!.start![index].person?.logo  ??
+                                        "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
+                                    fadeInDuration:
+                                    const Duration(seconds: 1),
+                                    errorBuilder: (context, exception,
+                                        stacktrace) {
+                                      return Image.asset(
+                                        "assets/images/football_news.webp",
+                                        fit: BoxFit.cover,
+                                        width: 30.w,
+                                        height: 30.h,);
+                                    },
+                                    loadingBuilder:
+                                        (context, progress) {
+                                      debugPrint(
+                                          'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
+                                      return Container(
+                                        width: 30.w,
+                                        height: 30.h,
+                                        color: secondaryColor,
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            if (progress
+                                                .isDownloading &&
+                                                progress.totalBytes !=
+                                                    null)
+                                              Text(
+                                                  '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
+                                                  style:
+                                                  const TextStyle(
+                                                      color: Colors
+                                                          .red)),
+                                            Center(
+                                              child: SizedBox(
+                                                  width: 10,
+                                                  height: 10,
+                                                  child: CircularProgressIndicator(
+                                                      color: Colors
+                                                          .white,
+                                                      value: progress
+                                                          .progressPercentage
+                                                          .value)),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                      // return Center(
+                                      //   child: CircularProgressIndicator(),
+                                      // );
+                                    },
                                   ),
+
                                   kSizedBoxW20,
                                 ],
                               ),
@@ -91,24 +139,69 @@ class LineupWidget extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     kSizedBoxW20,
-                                    CachedNetworkImage(
+                                    FastCachedImage(
                                       width: 30.w,
                                       height: 30.h,
-                                      imageUrl: lineupModel
-                                              ?.lupList?[0]
-                                              .lupData
-                                              ?.away
-                                              ?.start?[index]
-                                              .person
-                                              ?.logo ??
-                                          '',
-                                      placeholder: (context, url) =>
-                                          const Center(
-                                              child:
-                                                  CircularProgressIndicator()),
-                                      errorWidget: (context, url, error) =>
-                                          const Icon(Icons.error),
+                                      fit: BoxFit.cover,
+                                      url:lineupModel
+                                          ?.lupList?[0]
+                                          .lupData
+                                          ?.away
+                                          ?.start?[index]
+                                          .person
+                                          ?.logo  ??
+                                          "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
+                                      fadeInDuration:
+                                      const Duration(seconds: 1),
+                                      errorBuilder: (context, exception,
+                                          stacktrace) {
+                                        return Image.asset(
+                                          "assets/images/football_news.webp",
+                                          fit: BoxFit.cover,
+                                          width: 30.w,
+                                          height: 30.h,);
+                                      },
+                                      loadingBuilder:
+                                          (context, progress) {
+                                        debugPrint(
+                                            'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
+                                        return Container(
+                                          width: 30.w,
+                                          height: 30.h,
+                                          color: secondaryColor,
+                                          child: Stack(
+                                            alignment: Alignment.center,
+                                            children: [
+                                              if (progress
+                                                  .isDownloading &&
+                                                  progress.totalBytes !=
+                                                      null)
+                                                Text(
+                                                    '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
+                                                    style:
+                                                    const TextStyle(
+                                                        color: Colors
+                                                            .red)),
+                                              Center(
+                                                child: SizedBox(
+                                                    width: 10,
+                                                    height: 10,
+                                                    child: CircularProgressIndicator(
+                                                        color: Colors
+                                                            .white,
+                                                        value: progress
+                                                            .progressPercentage
+                                                            .value)),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                        // return Center(
+                                        //   child: CircularProgressIndicator(),
+                                        // );
+                                      },
                                     ),
+
                                     kSizedBoxW10,
                                     CustomText(
                                       text: lineupModel
@@ -163,17 +256,64 @@ class LineupWidget extends StatelessWidget {
                                     textColor: Colors.white,
                                   ),
                                   kSizedBoxW10,
-                                  CachedNetworkImage(
+                                  FastCachedImage(
                                     width: 30.w,
                                     height: 30.h,
-                                    imageUrl: lineupModel?.lupList?[0].lupData!
-                                            .home!.sub![index].person?.logo ??
-                                        '',
-                                    placeholder: (context, url) => const Center(
-                                        child: CircularProgressIndicator()),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
+                                    fit: BoxFit.cover,
+                                    url:lineupModel?.lupList?[0].lupData!
+                                        .home!.sub![index].person?.logo  ??
+                                        "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
+                                    fadeInDuration:
+                                    const Duration(seconds: 1),
+                                    errorBuilder: (context, exception,
+                                        stacktrace) {
+                                      return Image.asset(
+                                        "assets/images/football_news.webp",
+                                        fit: BoxFit.cover,
+                                        width: 30.w,
+                                        height: 30.h,);
+                                    },
+                                    loadingBuilder:
+                                        (context, progress) {
+                                      debugPrint(
+                                          'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
+                                      return Container(
+                                        width: 30.w,
+                                        height: 30.h,
+                                        color: secondaryColor,
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            if (progress
+                                                .isDownloading &&
+                                                progress.totalBytes !=
+                                                    null)
+                                              Text(
+                                                  '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
+                                                  style:
+                                                  const TextStyle(
+                                                      color: Colors
+                                                          .red)),
+                                            Center(
+                                              child: SizedBox(
+                                                  width: 10,
+                                                  height: 10,
+                                                  child: CircularProgressIndicator(
+                                                      color: Colors
+                                                          .white,
+                                                      value: progress
+                                                          .progressPercentage
+                                                          .value)),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                      // return Center(
+                                      //   child: CircularProgressIndicator(),
+                                      // );
+                                    },
                                   ),
+
                                   kSizedBoxW20,
                                 ],
                               ),
@@ -197,24 +337,69 @@ class LineupWidget extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     kSizedBoxW20,
-                                    CachedNetworkImage(
+                                    FastCachedImage(
                                       width: 30.w,
                                       height: 30.h,
-                                      imageUrl: lineupModel
-                                              ?.lupList?[0]
-                                              .lupData
-                                              ?.away
-                                              ?.sub?[index]
-                                              .person
-                                              ?.logo ??
-                                          '',
-                                      placeholder: (context, url) =>
-                                          const Center(
-                                              child:
-                                                  CircularProgressIndicator()),
-                                      errorWidget: (context, url, error) =>
-                                          const Icon(Icons.error),
+                                      fit: BoxFit.cover,
+                                      url:lineupModel
+                                          ?.lupList?[0]
+                                          .lupData
+                                          ?.away
+                                          ?.sub?[index]
+                                          .person
+                                          ?.logo  ??
+                                          "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
+                                      fadeInDuration:
+                                      const Duration(seconds: 1),
+                                      errorBuilder: (context, exception,
+                                          stacktrace) {
+                                        return Image.asset(
+                                          "assets/images/football_news.webp",
+                                          fit: BoxFit.cover,
+                                          width: 30.w,
+                                          height: 30.h,);
+                                      },
+                                      loadingBuilder:
+                                          (context, progress) {
+                                        debugPrint(
+                                            'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
+                                        return Container(
+                                          width: 30.w,
+                                          height: 30.h,
+                                          color: secondaryColor,
+                                          child: Stack(
+                                            alignment: Alignment.center,
+                                            children: [
+                                              if (progress
+                                                  .isDownloading &&
+                                                  progress.totalBytes !=
+                                                      null)
+                                                Text(
+                                                    '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
+                                                    style:
+                                                    const TextStyle(
+                                                        color: Colors
+                                                            .red)),
+                                              Center(
+                                                child: SizedBox(
+                                                    width: 10,
+                                                    height: 10,
+                                                    child: CircularProgressIndicator(
+                                                        color: Colors
+                                                            .white,
+                                                        value: progress
+                                                            .progressPercentage
+                                                            .value)),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                        // return Center(
+                                        //   child: CircularProgressIndicator(),
+                                        // );
+                                      },
                                     ),
+
                                     kSizedBoxW10,
                                     CustomText(
                                       text: lineupModel

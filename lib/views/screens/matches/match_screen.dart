@@ -7,6 +7,7 @@ import 'package:football_score/controller/match_controller.dart';
 import 'package:football_score/utils/app_theme.dart';
 import 'package:football_score/utils/dimen_const.dart';
 import 'package:football_score/views/screens/matches/match_detail_screen.dart';
+import 'package:football_score/views/widgets/custom_fast_cache_image.dart';
 import 'package:football_score/views/widgets/custom_text.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +22,6 @@ class MatchScreen extends StatelessWidget {
 
     Future<void> selectCalenderDate(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
-
         context: context,
         initialDate: matchController.selectedDate.value,
         firstDate: DateTime.now().subtract(const Duration(days: 100)),
@@ -31,8 +31,10 @@ class MatchScreen extends StatelessWidget {
             data: ThemeData.light().copyWith(
               primaryColor: secondaryColor, // Header background color
               hintColor: greyColor, // Header text and button color
-              colorScheme: ColorScheme.light(primary: secondaryColor), // Selected date color
-              buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.values[1]), // Button text color
+              colorScheme: ColorScheme.light(
+                  primary: secondaryColor), // Selected date color
+              buttonTheme: ButtonThemeData(
+                  textTheme: ButtonTextTheme.values[1]), // Button text color
             ),
             child: child!,
           );
@@ -218,21 +220,12 @@ class MatchScreen extends StatelessWidget {
                                                   ),
                                                 ),
                                                 kSizedBoxW5,
-                                                CachedNetworkImage(
-                                                  width: 18.w,
-                                                  height: 18.h,
-                                                  imageUrl: matchController
-                                                          .matchList[index]
-                                                          .teamALogo ??
-                                                      '',
-                                                  placeholder: (context, url) =>
-                                                      const Center(
-                                                          child:
-                                                              CircularProgressIndicator()),
-                                                  errorWidget: (context, url,
-                                                          error) =>
-                                                      const Icon(Icons.error),
-                                                ),
+                                                CustomFastCacheNetworkImage(
+                                                    url: matchController
+                                                        .matchList[index]
+                                                        .teamALogo,
+                                                    width: 18,
+                                                    height: 18)
                                               ],
                                             ),
                                           ),
@@ -277,21 +270,13 @@ class MatchScreen extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                CachedNetworkImage(
-                                                  width: 18.w,
-                                                  height: 18.h,
-                                                  imageUrl: matchController
-                                                          .matchList[index]
-                                                          .teamBLogo ??
-                                                      '',
-                                                  placeholder: (context, url) =>
-                                                      const Center(
-                                                          child:
-                                                              CircularProgressIndicator()),
-                                                  errorWidget: (context, url,
-                                                          error) =>
-                                                      const Icon(Icons.error),
-                                                ),
+                                                CustomFastCacheNetworkImage(
+                                                    url: matchController
+                                                        .matchList[index]
+                                                        .teamBLogo,
+                                                    width: 18,
+                                                    height: 18),
+
                                                 kSizedBoxW5,
                                                 SizedBox(
                                                   width: MediaQuery.of(context)

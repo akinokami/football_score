@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/utils/app_theme.dart';
 
+import '../../widgets/custom_fast_cache_image.dart';
+
 class StandingsWidget extends StatelessWidget {
   final Map<String, dynamic> rankingModel;
   const StandingsWidget({super.key, required this.rankingModel});
@@ -209,7 +211,12 @@ class StandingsWidget extends StatelessWidget {
                         TableCell(
                           child: Padding(
                             padding: EdgeInsets.only(top: 2.0),
-                            child: CachedNetworkImage(imageUrl:rankingModel['data']['rankings'][index]['team']['logo'],width: 15,height: 15, ),
+                            child:
+                  CustomFastCacheNetworkImage(
+                  url: rankingModel['data']['rankings'][index]['team']['logo'],
+                  width: 15,
+                  height: 15)
+
                           ),
                         ),
                         TableCell(

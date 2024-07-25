@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:football_score/models/team_info_model.dart';
@@ -181,13 +182,65 @@ class InfoWidget extends StatelessWidget {
                                 ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(50.r),
-                                  child: CachedNetworkImage(
-                                    imageUrl: teamInfoModel?.teamRecord?[0]
-                                            .trophyData?[index].personLogo ??
-                                        '',
+                                  child:
+                                  FastCachedImage(
                                     width: 20.w,
                                     height: 20.h,
+                                    fit: BoxFit.cover,
+                                    url: teamInfoModel?.teamRecord?[0]
+                                        .trophyData?[index].personLogo ??
+                                        "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
+                                    fadeInDuration:
+                                    const Duration(seconds: 1),
+                                    errorBuilder: (context, exception,
+                                        stacktrace) {
+                                      return Image.asset(
+                                        "assets/images/football_news.webp",
+                                        fit: BoxFit.cover,
+                                        width: 20.w,
+                                        height: 20.h,);
+                                    },
+                                    loadingBuilder:
+                                        (context, progress) {
+                                      debugPrint(
+                                          'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
+                                      return Container(
+                                        width: 20.w,
+                                        height: 20.h,
+                                        color: secondaryColor,
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            if (progress
+                                                .isDownloading &&
+                                                progress.totalBytes !=
+                                                    null)
+                                              Text(
+                                                  '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
+                                                  style:
+                                                  const TextStyle(
+                                                      color: Colors
+                                                          .red)),
+                                            Center(
+                                              child: SizedBox(
+                                                  width: 10,
+                                                  height: 10,
+                                                  child: CircularProgressIndicator(
+                                                      color: Colors
+                                                          .white,
+                                                      value: progress
+                                                          .progressPercentage
+                                                          .value)),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                      // return Center(
+                                      //   child: CircularProgressIndicator(),
+                                      // );
+                                    },
                                   ),
+
                                 ),
                                 SizedBox(
                                   width: 10.w,
@@ -278,18 +331,64 @@ class InfoWidget extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  CachedNetworkImage(
-                                    color: secondaryColor,
+                                  FastCachedImage(
                                     width: 35.w,
                                     height: 35.h,
-                                    imageUrl: teamInfoModel
-                                            ?.trophyInfo?[index].trophyImg ??
-                                        '',
-                                    placeholder: (context, url) => const Center(
-                                        child: CircularProgressIndicator()),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
+                                    fit: BoxFit.cover,
+                                    url: teamInfoModel
+                                        ?.trophyInfo?[index].trophyImg ??
+                                        "https://fawslfulltime.co.uk/wp/wp-content/uploads/2019/01/football.jpg",
+                                    fadeInDuration:
+                                    const Duration(seconds: 1),
+                                    errorBuilder: (context, exception,
+                                        stacktrace) {
+                                      return Image.asset(
+                                        "assets/images/football_news.webp",
+                                        fit: BoxFit.cover,
+                                        width: 35.w,
+                                        height: 35.h,);
+                                    },
+                                    loadingBuilder:
+                                        (context, progress) {
+                                      debugPrint(
+                                          'Progress: ${progress.isDownloading} ${progress.downloadedBytes} / ${progress.totalBytes}');
+                                      return Container(
+                                        width: 35.w,
+                                        height: 35.h,
+                                        color: secondaryColor,
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            if (progress
+                                                .isDownloading &&
+                                                progress.totalBytes !=
+                                                    null)
+                                              Text(
+                                                  '${progress.downloadedBytes ~/ 1024} / ${progress.totalBytes! ~/ 1024} kb',
+                                                  style:
+                                                  const TextStyle(
+                                                      color: Colors
+                                                          .red)),
+                                            Center(
+                                              child: SizedBox(
+                                                  width: 10,
+                                                  height: 10,
+                                                  child: CircularProgressIndicator(
+                                                      color: Colors
+                                                          .white,
+                                                      value: progress
+                                                          .progressPercentage
+                                                          .value)),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                      // return Center(
+                                      //   child: CircularProgressIndicator(),
+                                      // );
+                                    },
                                   ),
+
                                   Opacity(
                                     opacity: 0.7,
                                     child: CustomText(
