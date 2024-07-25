@@ -21,10 +21,22 @@ class MatchScreen extends StatelessWidget {
 
     Future<void> selectCalenderDate(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
+
         context: context,
         initialDate: matchController.selectedDate.value,
         firstDate: DateTime.now().subtract(const Duration(days: 100)),
         lastDate: DateTime.now().add(const Duration(days: 399)),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: ThemeData.light().copyWith(
+              primaryColor: secondaryColor, // Header background color
+              hintColor: greyColor, // Header text and button color
+              colorScheme: ColorScheme.light(primary: secondaryColor), // Selected date color
+              buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.values[1]), // Button text color
+            ),
+            child: child!,
+          );
+        },
       );
       if (picked != null) {
         matchController.selectedDate.value = picked;
