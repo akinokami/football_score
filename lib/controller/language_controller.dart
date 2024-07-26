@@ -25,7 +25,7 @@ class LanguageController extends GetxController {
     final box = GetStorage();
     box.write('language', languageCode);
 
-    Get.find<AppConfigController>().getAppConfig();
+    Get.find<AppConfigController>().getAppConfig('language');
     Future.delayed(const Duration(seconds: 2), () {
       matchController.startMatch();
       newsController.startNew();

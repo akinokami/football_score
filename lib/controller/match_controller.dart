@@ -22,18 +22,8 @@ class MatchController extends GetxController {
   void onInit() {
     Future.delayed(const Duration(milliseconds: 500), () {
       scrollToSelectedDate();
+      startMatch();
     });
-    startMatch();
-    // print("date>>>>>>${DateTime.now()}");
-    // print("date utc>>>>>>${DateTime.now().toUtc()}");
-    var dateUtc = DateTime.now().toUtc();
-    print("dateUtc: $dateUtc"); // 2019-10-10 12:05:01
-
-// convert it to local
-    var dateLocal = dateUtc.toLocal();
-    print("local: $dateLocal");
-
-    print("selectedDate: ${selectedDate.value}");
     super.onInit();
   }
 

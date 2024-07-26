@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:football_score/views/screens/home._menu.dart';
+import 'package:football_score/views/screens/intro/intro_screen.dart';
+import 'package:football_score/views/screens/no_internet_widget.dart';
+import 'package:football_score/views/screens/wrong_widget.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../models/app_model.dart';
 import '../services/api_repo.dart';
@@ -11,13 +16,16 @@ class AppConfigController extends GetxController {
   RxList<MatchTab> mTabList = <MatchTab>[].obs;
   RxList<News> newsTabList = <News>[].obs;
 
+  String first = '';
+
   @override
   void onInit() {
-    getAppConfig();
+    getAppConfig('');
+
     super.onInit();
   }
 
-  Future<void> getAppConfig() async {
+  Future<void> getAppConfig(String? fromPage) async {
     isLoading.value = true;
     try {
       final result = await ApiRepo().getAppConfig();
@@ -48,11 +56,26 @@ class AppConfigController extends GetxController {
                   element.id != "99")
               .toList() ??
           [];
-      print("asfdfdffdf");
+      if (fromPage != 'language') {
+        final box = GetStorage();
+        first = box.read('first') ?? '';
+
+        // Future.delayed(const Duration(seconds: 3), () {
+        (first == '')
+            ? Get.offAll(() => const IntroScreen())
+            : Get.offAll(() => HomeMenu());
+        // });
+      }
     } catch (e) {
       isLoading.value = false;
-      constants.showSnackBar(
-          title: 'Error', msg: e.toString(), textColor: Colors.red);
+      print(e);
+      if (e.toString() == "No internet connection !") {
+        Get.offAll(() => const NoInternetWidget());
+      } else {
+        Get.offAll(() => const WrongWidget());
+      }
+      // constants.showSnackBar(
+      //     title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {
       isLoading.value = false;
     }

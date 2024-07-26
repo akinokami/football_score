@@ -12,9 +12,9 @@ class ApiUtils {
     _dio.options.baseUrl = ApiConstant.baseUrl;
     _dio.interceptors
         .add(LogInterceptor(requestBody: true, responseBody: true));
-    _dio.options.connectTimeout = const Duration(seconds: 20);
-    _dio.options.receiveTimeout = const Duration(seconds: 20);
-    _dio.options.sendTimeout = const Duration(seconds: 20);
+    _dio.options.connectTimeout = const Duration(seconds: 30);
+    _dio.options.receiveTimeout = const Duration(seconds: 30);
+    _dio.options.sendTimeout = const Duration(seconds: 30);
     _dio.options.headers['Content-Type'] = 'application/json';
     _dio.options.headers['Accept'] = '*/*';
 
