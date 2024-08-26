@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:football_score/views/screens/home._menu.dart';
 import 'package:football_score/views/screens/intro/intro_screen.dart';
 import 'package:football_score/views/screens/no_internet_widget.dart';
@@ -8,7 +7,6 @@ import 'package:get_storage/get_storage.dart';
 
 import '../models/app_model.dart';
 import '../services/api_repo.dart';
-import '../utils/constants.dart';
 
 class AppConfigController extends GetxController {
   final isLoading = false.obs;
@@ -37,7 +35,9 @@ class AppConfigController extends GetxController {
                   element.id != 262 &&
                   element.id != 4 &&
                   element.id != 3 &&
-                  element.id != 5)
+                  element.id != 5 &&
+                  element.id != 129 &&
+                  element.id != 43)
               .toList() ??
           [];
 
